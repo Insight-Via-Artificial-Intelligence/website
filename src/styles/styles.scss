@@ -1,0 +1,610 @@
+// Custom color variables
+$primary: #7952b3;
+$success: #28a745;
+$purple: #6f42c1;
+
+@import "bootstrap/scss/bootstrap.scss";
+
+// Global styles
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+}
+
+// Hero section styles
+.hero-section-gradient {
+  background: 
+    radial-gradient(circle at 20% 80%, #43e97b 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, #00f2fe 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, #4facfe 0%, transparent 50%),
+    radial-gradient(circle at 60% 80%, #36d1dc 0%, transparent 50%),
+    radial-gradient(circle at 90% 70%, #5b86e5 0%, transparent 50%),
+    radial-gradient(circle at 10% 20%, #2a5298 0%, transparent 50%),
+    radial-gradient(circle at 70% 10%, #3b82c4 0%, transparent 50%),
+    radial-gradient(circle at 30% 90%, #00d4ff 0%, transparent 50%),
+    linear-gradient(135deg, #0f2027 0%, #1e3c72 50%, #203a43 100%);
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 0; // No padding needed since navbar is transparent initially
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    opacity: 0.8;
+  }
+  
+  // Animated background particles
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Ccircle cx='40' cy='40' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    animation: float 20s ease-in-out infinite;
+  }
+}
+
+.min-vh-75 {
+  min-height: 75vh;
+}
+
+.min-vh-100 {
+  min-height: 100vh;
+}
+
+.hero-tagline {
+  position: relative;
+  z-index: 2;
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
+  
+  @media (max-width: 768px) {
+    font-size: clamp(1.8rem, 6vw, 3rem);
+    line-height: 1.2;
+  }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem 0;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.hero-logo {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 2rem;
+  
+  svg {
+    transition: all 0.3s ease;
+    
+    @media (max-width: 768px) {
+      width: 80px;
+      height: 80px;
+    }
+    
+    @media (max-width: 576px) {
+      width: 60px;
+      height: 60px;
+    }
+  }
+}
+
+.tech-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.bg-purple {
+  background-color: $purple !important;
+}
+
+// Card hover effects
+.hover-card {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+  }
+}
+
+// Feature icons animation
+.feature-icon {
+  transition: all 0.3s ease;
+  
+  .hover-card:hover & {
+    transform: scale(1.1);
+  }
+}
+
+// Button styles
+.btn {
+  border-radius: 50px;
+  padding: 12px 30px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Subtle gradient button styling
+.btn-primary {
+  background: linear-gradient(135deg, #4facfe 0%, #3b8cd4 100%);
+  border: none;
+  color: white;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #3b8cd4 0%, #2a7bc0 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(75, 172, 254, 0.4);
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+  
+  &:focus, &:active {
+    background: linear-gradient(135deg, #4facfe 0%, #3b8cd4 100%);
+    border: none;
+    box-shadow: 0 0 0 0.2rem rgba(75, 172, 254, 0.25);
+    color: white;
+  }
+  
+  span, & > * {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// Section spacing
+section {
+  padding: 4rem 0;
+  
+  @media (max-width: 768px) {
+    padding: 2rem 0;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .hero-section {
+    text-align: center;
+  }
+  
+  .display-4 {
+    font-size: 2.5rem;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    
+    .btn {
+      width: 100%;
+    }
+  }
+  
+  .floating-card {
+    margin-top: 2rem;
+  }
+}
+
+// Custom spacing utilities
+.py-6 {
+  padding-top: 4rem !important;
+  padding-bottom: 4rem !important;
+}
+
+.mb-6 {
+  margin-bottom: 4rem !important;
+}
+
+// Content sections styling
+.content-text {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  
+  .lead {
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+}
+
+// Section heading styles with gradient and effects
+.display-4 {
+  text-transform: uppercase !important;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 25%, #43e97b 50%, #36d1dc 75%, #5b86e5 100%);
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.05em;
+  
+  // Fallback for browsers that don't support background-clip: text
+  @supports not (-webkit-background-clip: text) {
+    color: #00f2fe;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+  }
+}
+
+// Also apply to h2 elements with similar classes
+.h2.fw-bold {
+  text-transform: uppercase !important;
+  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 25%, #43e97b 50%, #36d1dc 75%, #5b86e5 100%);
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.03em;
+  
+  // Fallback for browsers that don't support background-clip: text
+  @supports not (-webkit-background-clip: text) {
+    color: #00f2fe;
+    text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
+  }
+}
+
+// Icon styling for capabilities and other sections
+.capability-icon,
+.value-icon,
+.delivery-icon,
+.why-icon {
+  min-width: 60px;
+  text-align: center;
+  
+  span {
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover span {
+    transform: scale(1.1);
+  }
+}
+
+// Vision section gradient styling
+.vision-section-gradient {
+  background: 
+    radial-gradient(circle at 30% 20%, #5b86e5 0%, transparent 50%),
+    radial-gradient(circle at 70% 80%, #43e97b 0%, transparent 50%),
+    radial-gradient(circle at 90% 30%, #00f2fe 0%, transparent 50%),
+    radial-gradient(circle at 10% 70%, #4facfe 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, #36d1dc 0%, transparent 50%),
+    linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #203a43 100%);
+  position: relative;
+  overflow: hidden;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.04) 0%, transparent 50%);
+    opacity: 0.6;
+  }
+}
+
+.vision-content {
+  position: relative;
+  z-index: 3;
+  padding: 2rem 0;
+}
+
+.vision-background-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: clamp(8rem, 20vw, 25rem);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.08);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+  text-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+  
+  @media (max-width: 768px) {
+    font-size: clamp(4rem, 15vw, 12rem);
+    letter-spacing: 0.1em;
+  }
+}
+
+// Capabilities section dark gradient styling
+.capabilities-section-gradient {
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(30, 60, 114, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(32, 58, 67, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(44, 83, 100, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 90% 20%, rgba(42, 82, 152, 0.7) 0%, transparent 50%),
+    linear-gradient(135deg, #0a1a2a 0%, #1a2332 25%, #243447 50%, #2d4059 75%, #34495e 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 25% 75%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.01) 0%, transparent 50%);
+    opacity: 0.8;
+  }
+  
+  // Override text colors for dark background
+  .text-muted {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+  
+  .lead {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  // Override gradient headings to be white text
+  .display-4,
+  .h2.fw-bold {
+    color: white !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -moz-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: white !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  // Content positioning
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// Why Work With Us section gradient styling (similar to capabilities)
+.why-work-with-us-section-gradient {
+  background: 
+    radial-gradient(circle at 20% 30%, rgba(30, 60, 114, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(32, 58, 67, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 50% 90%, rgba(44, 83, 100, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 90% 20%, rgba(42, 82, 152, 0.7) 0%, transparent 50%),
+    linear-gradient(135deg, #0a1a2a 0%, #1a2332 25%, #243447 50%, #2d4059 75%, #34495e 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 25% 75%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.01) 0%, transparent 50%);
+    opacity: 0.8;
+  }
+  
+  // Override text colors for dark background
+  .lead {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  // Override gradient headings to be white text
+  .display-4,
+  .h2.fw-bold {
+    color: white !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -moz-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: white !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  // Content positioning
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// Navbar styles
+.navbar-modern {
+  padding: 1rem 0;
+  transition: all 0.4s ease;
+  z-index: 1030;
+  
+  // Transparent state (initial)
+  &.navbar-transparent {
+    background-color: transparent !important;
+    backdrop-filter: none;
+    box-shadow: none;
+  }
+  
+  // Scrolled state (sticky)
+  &.navbar-scrolled {
+    background-color: rgba(33, 37, 41, 0.7) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 0;
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 0.2s ease;
+      color: white !important;
+      text-decoration: none;
+    }
+    
+    &:focus {
+      color: white !important;
+      text-decoration: none;
+    }
+  }
+  
+  .nav-link-modern {
+    font-weight: 500;
+    margin: 0 0.5rem;
+    position: relative;
+    transition: all 0.3s ease;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 50%;
+      background-color: white;
+      transition: all 0.3s ease;
+    }
+    
+    &:hover {
+      color: rgba(255, 255, 255, 0.9) !important;
+      
+      &::after {
+        width: 100%;
+        left: 0;
+      }
+    }
+    
+    &:focus {
+      color: white !important;
+    }
+  }
+  
+  // Button styling in navbar
+  .btn-outline-light {
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+  }
+  
+  .btn-primary {
+    border-radius: 25px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg, #4facfe 0%, #3b8cd4 100%);
+    border: none;
+    
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(75, 172, 254, 0.4);
+      background: linear-gradient(135deg, #3b8cd4 0%, #2a7bc0 100%);
+    }
+  }
+}
+
+// Fixed navbar effect
+.fixed-top {
+  z-index: 1030;
+}
+
+// Font weight utilities
+.fw-500 {
+  font-weight: 500 !important;
+}
+
+// Mobile navbar improvements
+@media (max-width: 991.98px) {
+  .navbar-modern {
+    &.navbar-transparent {
+      .navbar-collapse {
+        background-color: rgba(33, 37, 41, 0.8);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+        padding: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+    }
+    
+    .navbar-collapse {
+      .d-flex {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        
+        .btn {
+          width: 100%;
+        }
+      }
+    }
+    
+    .nav-link-modern {
+      text-align: center;
+      padding: 0.75rem 0;
+    }
+  }
+}
