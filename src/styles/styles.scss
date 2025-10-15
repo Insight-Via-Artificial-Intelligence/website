@@ -1,14 +1,65 @@
+// Avenir LT Std font face definitions
+@font-face {
+  font-family: 'Avenir LT Std';
+  src: url('/fonts/Avenir LT Std/Avenir LT Std 45 Book/Avenir LT Std 45 Book.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir LT Std';
+  src: url('/fonts/Avenir LT Std/Avenir LT Std 55 Roman/Avenir LT Std 55 Roman.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir LT Std';
+  src: url('/fonts/Avenir LT Std/Avenir LT Std 65 Medium/Avenir LT Std 65 Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir LT Std';
+  src: url('/fonts/Avenir LT Std/Avenir LT Std 85 Heavy/Avenir LT Std 85 Heavy.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Avenir LT Std';
+  src: url('/fonts/Avenir LT Std/Avenir LT Std 95 Black/Avenir LT Std 95 Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 // Custom color variables
 $primary: #7952b3;
 $success: #28a745;
 $purple: #6f42c1;
 
+// Override Bootstrap's default font family before importing
+$font-family-sans-serif: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
 @import "bootstrap/scss/bootstrap.scss";
 
 // Global styles
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
+}
+
+// Heading styles - use Avenir LT Std 95 Black (placed after Bootstrap to override)
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-weight: 900 !important; // This will use the Black variant (95 Black)
 }
 
 // Hero section styles
@@ -258,7 +309,9 @@ section {
 // Section heading styles with gradient and effects
 .display-4 {
   text-transform: uppercase !important;
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 25%, #43e97b 50%, #36d1dc 75%, #5b86e5 100%);
+  font-family: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-weight: 900 !important;
+  background: linear-gradient(135deg, #00f2fe 0%, #36d1dc 25%, #43e97b 50%, #4facfe 75%, #5b86e5 100%);
   text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -276,7 +329,9 @@ section {
 // Also apply to h2 elements with similar classes
 .h2.fw-bold {
   text-transform: uppercase !important;
-  background: linear-gradient(135deg, #00f2fe 0%, #4facfe 25%, #43e97b 50%, #36d1dc 75%, #5b86e5 100%);
+  font-family: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+  font-weight: 900 !important;
+  background: linear-gradient(135deg, #00f2fe 0%, #36d1dc 25%, #43e97b 50%, #4facfe 75%, #5b86e5 100%);
   text-shadow: 1px 1px 2px rgba(255,255,255,0.5);
   -webkit-background-clip: text;
   -moz-background-clip: text;
@@ -407,6 +462,8 @@ section {
     -moz-background-clip: unset !important;
     background-clip: unset !important;
     -webkit-text-fill-color: white !important;
+    font-family: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    font-weight: 900 !important;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   }
   
@@ -455,6 +512,8 @@ section {
     -moz-background-clip: unset !important;
     background-clip: unset !important;
     -webkit-text-fill-color: white !important;
+    font-family: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    font-weight: 900 !important;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
   }
   
