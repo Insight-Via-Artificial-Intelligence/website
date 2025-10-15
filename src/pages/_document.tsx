@@ -40,6 +40,11 @@ export default function Document() {
           type="font/otf"
           crossOrigin="anonymous"
         />
+        {/* Bootstrap Icons */}
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+          rel="stylesheet"
+        />
       </Head>
       <body>
         <Main />

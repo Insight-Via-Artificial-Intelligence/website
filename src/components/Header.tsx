@@ -1,12 +1,18 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
 import { useState, useEffect } from "react";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const router = useRouter();
+
+  // Check if we're on a solutions page
+  const isSolutionsPage = router.pathname === '/process-guardian' || router.pathname === '/vital-guardian';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -21,7 +27,7 @@ const Header: React.FC = () => {
   return (
     <Navbar 
       expand="lg" 
-      className={`navbar-modern fixed-top ${isScrolled ? 'navbar-scrolled' : 'navbar-transparent'}`} 
+      className={`navbar-modern fixed-top ${isSolutionsPage ? 'navbar-gradient' : (isScrolled ? 'navbar-scrolled' : 'navbar-transparent')}`} 
       variant="dark"
     >
       <Container>
@@ -42,9 +48,18 @@ const Header: React.FC = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto align-items-center">
-            <Nav.Link href="#solutions" className="nav-link-modern text-white fw-500 mx-3">
-              Solutions
-            </Nav.Link>
+            <NavDropdown 
+              title="Solutions" 
+              id="solutions-dropdown" 
+              className="nav-dropdown-modern text-white fw-500 mx-3"
+            >
+              <NavDropdown.Item as={Link} href="/process-guardian">
+                Process Guardian
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} href="/vital-guardian">
+                Vital Guardian
+              </NavDropdown.Item>
+            </NavDropdown>
             <Nav.Link href="#projects" className="nav-link-modern text-white fw-500 mx-3">
               Projects
             </Nav.Link>
