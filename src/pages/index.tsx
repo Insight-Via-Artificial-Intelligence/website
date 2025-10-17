@@ -22,13 +22,16 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="hero-section-gradient text-white">
+        <div className="hero-dots-background"></div>
+        <div className="hero-circles-background"></div>
+        <div className="hero-background-image"></div>
         <Container>
-          <Row className="justify-content-center align-items-center min-vh-100">
-            <Col lg={12} xl={10} className="text-center">
+          <Row className="justify-content-center">
+            <Col lg={12} xl={10} className="text-center position-relative">
               <div className="hero-content">
                 <h1 className="hero-tagline fw-bold mb-0" style={{ fontSize: '4rem', lineHeight: '1.1' }}>
                   <span style={{ 
-                    color: '#0ce76fff', 
+                    color: '#52d37b', 
                     textShadow: '0 0 20px rgba(72, 243, 86, 0.62), 0 0 40px rgba(6, 182, 212, 0.4), 0 0 60px rgba(6, 182, 212, 0.2)' 
                   }}>
                     Amplifying Human Potential
