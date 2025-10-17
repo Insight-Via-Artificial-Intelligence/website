@@ -3,8 +3,10 @@
 
 // Vital Guardian specific styles
 
-// Apply FormaDJR Text font to all content on Vital Guardian page (except header and footer)
-section:not(.navbar-modern):not(footer) {
+// Apply FormaDJR Text font to all content on Vital Guardian page only
+// Use a more specific selector that only targets vital guardian page content
+body:has(.vital-guardian-hero-image) section:not(.navbar-modern):not(footer),
+.vital-guardian-hero-image {
   font-family: 'FormaDJR Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
   line-height: 1.4 !important;
   
@@ -26,9 +28,8 @@ section:not(.navbar-modern):not(footer) {
   }
 }
 
-// Override headings to use FormaDJR Text
-.vital-guardian-hero-image,
-.py-6 {
+// Override headings to use FormaDJR Text only on Vital Guardian page
+body:has(.vital-guardian-hero-image) section {
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6,
   .display-4, .display-5,
@@ -302,8 +303,8 @@ section:not(.navbar-modern):not(footer) {
   }
 }
 
-// Section spacing
-.py-6 {
+// Section spacing - only apply on vital guardian pages
+body:has(.vital-guardian-hero-image) .py-6 {
   padding-top: 6rem !important;
   padding-bottom: 6rem !important;
 }
@@ -313,8 +314,8 @@ section:not(.navbar-modern):not(footer) {
   color: #059669 !important;
 }
 
-// Dark blue gradient for headings (not on hero or CTA sections)
-section:not(.vital-guardian-hero-image):not(.solutions-cta-gradient) {
+// Dark blue gradient for headings (only on vital guardian page, not on hero or CTA sections)
+body:has(.vital-guardian-hero-image) section:not(.vital-guardian-hero-image):not(.solutions-cta-gradient) {
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6,
   .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
@@ -367,9 +368,9 @@ section:not(.vital-guardian-hero-image):not(.solutions-cta-gradient) {
   animation: pulse-vital 2s ease-in-out infinite;
 }
 
-// Responsive adjustments
+// Responsive adjustments - only apply on vital guardian pages
 @media (max-width: 768px) {
-  .py-6 {
+  body:has(.vital-guardian-hero-image) .py-6 {
     padding-top: 4rem !important;
     padding-bottom: 4rem !important;
   }

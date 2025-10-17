@@ -171,7 +171,7 @@ export default function VitalGuardian() {
           <Row className="justify-content-center">
             <Col lg={10}>
               <div className="text-center mb-5">
-                <h2 className="display-4 fw-bold mb-4">
+                <h2 className="display-5 fw-bold mb-4">
                   Team Safety Revolutionized
                 </h2>
                 <p className="lead">
