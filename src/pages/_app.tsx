@@ -1,5 +1,4 @@
 import "@/styles/shared.scss";
-import "@/styles/styles.scss";
 import "@/styles/home.scss";
 import "@/styles/process-guardian.scss";
 import "@/styles/vital-guardian.scss";
