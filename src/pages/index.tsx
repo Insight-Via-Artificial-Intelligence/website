@@ -24,6 +24,7 @@ export default function Home() {
       <section className="hero-section-gradient text-white">
         <div className="hero-dots-background"></div>
         <div className="hero-circles-background"></div>
+        <div className="hero-flower-background"></div>
         <div className="hero-background-image"></div>
         <Container>
           <Row className="justify-content-center">
@@ -83,8 +84,9 @@ export default function Home() {
       </section>
 
       {/* Mission Section */}
-      <section id="mission" className="py-6">
-        <Container>
+      <section id="mission" className="mission-section-gradient text-white py-6">
+        <div className="mission-flower-background"></div>
+        <Container className="position-relative" style={{ zIndex: 2 }}>
           <Row className="justify-content-center">
             <Col lg={10}>
               <div className="text-center mb-5">
