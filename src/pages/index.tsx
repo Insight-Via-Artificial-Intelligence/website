@@ -18,6 +18,30 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
+      <style jsx>{`
+        @keyframes rotateGradient {
+          0% {
+            background: linear-gradient(white, white) padding-box, linear-gradient(0deg, #3b82f6 0%, #10b981 100%) border-box;
+          }
+          25% {
+            background: linear-gradient(white, white) padding-box, linear-gradient(90deg, #3b82f6 0%, #10b981 100%) border-box;
+          }
+          50% {
+            background: linear-gradient(white, white) padding-box, linear-gradient(180deg, #3b82f6 0%, #10b981 100%) border-box;
+          }
+          75% {
+            background: linear-gradient(white, white) padding-box, linear-gradient(270deg, #3b82f6 0%, #10b981 100%) border-box;
+          }
+          100% {
+            background: linear-gradient(white, white) padding-box, linear-gradient(360deg, #3b82f6 0%, #10b981 100%) border-box;
+          }
+        }
+        
+        .rotating-gradient {
+          animation: rotateGradient 4s linear infinite;
+        }
+      `}</style>
+
       <Header />
 
       {/* Hero Section */}
@@ -93,16 +117,16 @@ export default function Home() {
                 <h2 className="display-4 fw-bold mb-4" data-text="MISSION">MISSION</h2>
               </div>
               <div className="content-text">
-                <p className="mb-4">
+                <p className="fs-5 lh-base mb-4">
                   We transform frontier research into secure, human-aligned artificial intelligence systems that serve people and society — from sensor to signal to solution. Our mission is to build operational, trustworthy technology that empowers confident, ethical decision-making across diverse fields including Defence, Health, Government, and Culture.
                 </p>
-                <p className="mb-4">
+                <p className="fs-5 lh-base mb-4">
                   We believe that trust is foundational — our systems are designed to be transparent, explainable, and reliable, so users and partners can depend on them even in the most critical environments.
                 </p>
-                <p className="mb-4">
+                <p className="fs-5 lh-base mb-4">
                   At our core, we are collaborators — working closely with domain experts, end-users, and stakeholders to ensure our solutions address real-world needs and create meaningful impact. Through this partnership-driven approach, we turn cutting-edge research into practical tools that enhance human capability and societal wellbeing.
                 </p>
-                <p>
+                <p className="fs-5 lh-base">
                   Our impact is measured not only by technological innovation but by the lasting value and empowerment we deliver to communities, organisations, and individuals. We exist to create solutions that respect human dignity, support informed choices, and ultimately enable people to flourish.
                 </p>
               </div>
@@ -141,8 +165,11 @@ export default function Home() {
                 <div className="g-4">
                   <div className="mb-3">
                     <div className="d-flex align-items-start mb-3">
-                      <div className="capability-icon me-3">
-                        <span className="fs-3">🧠</span>
+                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                        <img src="/cap1.svg" alt="Frontier AI expertise" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                       </div>
                       <div>
                         <h5 className="fw-bold mb-2">Frontier AI expertise</h5>
@@ -152,8 +179,11 @@ export default function Home() {
                   </div>
                   <div className="mb-3">
                     <div className="d-flex align-items-start mb-3">
-                      <div className="capability-icon me-3">
-                        <span className="fs-3">🥽</span>
+                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                        <img src="/cap2.svg" alt="Immersive VR/AR solutions" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                       </div>
                       <div>
                         <h5 className="fw-bold mb-2">Immersive VR/AR solutions</h5>
@@ -163,8 +193,11 @@ export default function Home() {
                   </div>
                   <div className="mb-3">
                     <div className="d-flex align-items-start mb-3">
-                      <div className="capability-icon me-3">
-                        <span className="fs-3">🤝</span>
+                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                        <img src="/cap3.svg" alt="Human–machine teaming" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                       </div>
                       <div>
                         <h5 className="fw-bold mb-2">Human–machine teaming</h5>
@@ -174,8 +207,11 @@ export default function Home() {
                   </div>
                   <div className="mb-3">
                     <div className="d-flex align-items-start">
-                      <div className="capability-icon me-3">
-                        <span className="fs-3">⚡</span>
+                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                        <img src="/cap4.svg" alt="Applied innovation" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                       </div>
                       <div>
                         <h5 className="fw-bold mb-2">Applied innovation</h5>
@@ -199,8 +235,11 @@ export default function Home() {
                 <div className="g-4">
                   <div className="mb-3">
                     <div className="d-flex align-items-start mb-3">
-                      <div className="capability-icon me-3">
-                        <span className="fs-3">🔒</span>
+                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                        <img src="/cap5.svg" alt="Privacy by design" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                       </div>
                       <div>
                         <h5 className="fw-bold mb-2">Privacy by design</h5>
@@ -210,8 +249,11 @@ export default function Home() {
                   </div>
                   <div className="mb-3">
                     <div className="d-flex align-items-start mb-3">
-                      <div className="capability-icon me-3">
-                        <span className="fs-3">🛡️</span>
+                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                        <img src="/cap6.svg" alt="Security-hardened systems" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                       </div>
                       <div>
                         <h5 className="fw-bold mb-2">Security-hardened systems</h5>
@@ -221,8 +263,11 @@ export default function Home() {
                   </div>
                   <div className="mb-3">
                     <div className="d-flex align-items-start mb-3">
-                      <div className="capability-icon me-3">
-                        <span className="fs-3">⚖️</span>
+                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                        <img src="/cap7.svg" alt="Ethical and compliant frameworks" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                       </div>
                       <div>
                         <h5 className="fw-bold mb-2">Ethical and compliant frameworks</h5>
@@ -232,8 +277,11 @@ export default function Home() {
                   </div>
                   <div className="mb-3">
                     <div className="d-flex align-items-start">
-                      <div className="capability-icon me-3">
-                        <span className="fs-3">✅</span>
+                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                        <img src="/cap8.svg" alt="Operational assurance" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                       </div>
                       <div>
                         <h5 className="fw-bold mb-2">Operational assurance</h5>
@@ -277,8 +325,11 @@ export default function Home() {
                   <div className="g-4">
                     <div className="mb-3">
                       <div className="d-flex align-items-start mb-3">
-                        <div className="capability-icon me-3">
-                          <span className="fs-3">🚀</span>
+                        <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                          <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                          <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                          <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                          <img src="/cap9.svg" alt="End-to-end delivery" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                         </div>
                         <div>
                           <h5 className="fw-bold mb-2">End-to-end delivery</h5>
@@ -288,8 +339,11 @@ export default function Home() {
                     </div>
                     <div className="mb-3">
                       <div className="d-flex align-items-start mb-3">
-                        <div className="capability-icon me-3">
-                          <span className="fs-3">🔧</span>
+                        <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                          <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                          <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                          <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                          <img src="/cap10.svg" alt="Flexible, modular platforms" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                         </div>
                         <div>
                           <h5 className="fw-bold mb-2">Flexible, modular platforms</h5>
@@ -299,8 +353,11 @@ export default function Home() {
                     </div>
                     <div className="mb-3">
                       <div className="d-flex align-items-start mb-3">
-                        <div className="capability-icon me-3">
-                          <span className="fs-3">👥</span>
+                        <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                          <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                          <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                          <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                          <img src="/cap11.svg" alt="Adoption-focused design" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                         </div>
                         <div>
                           <h5 className="fw-bold mb-2">Adoption-focused design</h5>
@@ -310,8 +367,11 @@ export default function Home() {
                     </div>
                     <div className="mb-3">
                       <div className="d-flex align-items-start">
-                        <div className="capability-icon me-3">
-                          <span className="fs-3">♻️</span>
+                        <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                          <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                          <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                          <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                          <img src="/cap12.svg" alt="Sustainable capability" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                         </div>
                         <div>
                           <h5 className="fw-bold mb-2">Sustainable capability</h5>
@@ -354,66 +414,78 @@ export default function Home() {
           
           <Row className="g-4">
             <Col lg={6}>
-              <div className="d-flex align-items-start mb-4">
-                <div className="value-icon me-3">
-                  <span className="fs-3">👤</span>
-                </div>
-                <div>
+              <div 
+                className="p-4 rounded-3 h-100 rotating-gradient" 
+                style={{ 
+                  border: '2px solid transparent'
+                }}
+              >
+                <div className="text-center">
                   <h5 className="fw-bold mb-2">Human-first technology</h5>
                   <p className="text-muted mb-0">We design solutions that empower and augment people's capabilities, always prioritising human agency and dignity. Technology should be a tool that enhances potential, never a replacement that diminishes it.</p>
                 </div>
               </div>
             </Col>
             <Col lg={6}>
-              <div className="d-flex align-items-start mb-4">
-                <div className="value-icon me-3">
-                  <span className="fs-3">🤝</span>
-                </div>
-                <div>
+              <div 
+                className="p-4 rounded-3 h-100 rotating-gradient" 
+                style={{ 
+                  border: '2px solid transparent'
+                }}
+              >
+                <div className="text-center">
                   <h5 className="fw-bold mb-2">Together, not transactional</h5>
                   <p className="text-muted mb-0">We believe relationships are built on shared purpose and mutual respect. Whether with users, clients, or colleagues, we treat everyone as valued partners, not just means to a business outcome.</p>
                 </div>
               </div>
             </Col>
             <Col lg={6}>
-              <div className="d-flex align-items-start mb-4">
-                <div className="value-icon me-3">
-                  <span className="fs-3">🎯</span>
-                </div>
-                <div>
+              <div 
+                className="p-4 rounded-3 h-100 rotating-gradient" 
+                style={{ 
+                  border: '2px solid transparent'
+                }}
+              >
+                <div className="text-center">
                   <h5 className="fw-bold mb-2">Purpose over hype</h5>
                   <p className="text-muted mb-0">Our innovation is guided by genuine needs and meaningful impact, not by fleeting trends or empty buzzwords. Every idea is tested against real-world relevance and long-term value.</p>
                 </div>
               </div>
             </Col>
             <Col lg={6}>
-              <div className="d-flex align-items-start mb-4">
-                <div className="value-icon me-3">
-                  <span className="fs-3">🛠️</span>
-                </div>
-                <div>
+              <div 
+                className="p-4 rounded-3 h-100 rotating-gradient" 
+                style={{ 
+                  border: '2px solid transparent'
+                }}
+              >
+                <div className="text-center">
                   <h5 className="fw-bold mb-2">Craft with integrity</h5>
                   <p className="text-muted mb-0">Excellence in technology requires a foundation of ethics and honesty. We hold ourselves accountable to the highest standards, ensuring that our work is trustworthy, responsible, and transparent.</p>
                 </div>
               </div>
             </Col>
             <Col lg={6}>
-              <div className="d-flex align-items-start mb-4">
-                <div className="value-icon me-3">
-                  <span className="fs-3">📋</span>
-                </div>
-                <div>
+              <div 
+                className="p-4 rounded-3 h-100 rotating-gradient" 
+                style={{ 
+                  border: '2px solid transparent'
+                }}
+              >
+                <div className="text-center">
                   <h5 className="fw-bold mb-2">Proof through delivery</h5>
                   <p className="text-muted mb-0">Ideas are only as good as their execution. We measure success by delivering working, reliable systems that users can trust, understand, and rely on day after day.</p>
                 </div>
               </div>
             </Col>
             <Col lg={6}>
-              <div className="d-flex align-items-start mb-4">
-                <div className="value-icon me-3">
-                  <span className="fs-3">🔐</span>
-                </div>
-                <div>
+              <div 
+                className="p-4 rounded-3 h-100 rotating-gradient" 
+                style={{ 
+                  border: '2px solid transparent'
+                }}
+              >
+                <div className="text-center">
                   <h5 className="fw-bold mb-2">Trust matters</h5>
                   <p className="text-muted mb-0">Trust is the cornerstone of everything we do. We cultivate openness, consistency, and integrity in all relationships and solutions, building confidence that lasts beyond contracts and deadlines.</p>
                 </div>
@@ -435,10 +507,13 @@ export default function Home() {
           
           <Row className="g-2">
             <Col lg={11} className="offset-lg-0">
-              <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
+              <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
                 <div className="d-flex align-items-center text-white">
-                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle bg-primary" style={{ width: '60px', height: '60px', background: 'linear-gradient(135deg, #1e40af 0%, #0ea5e9 100%)', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
-                    <span className="fs-2 text-white">🔄</span>
+                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                    <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                    <img src="/del1.svg" alt="Comprehensive systems" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                   </div>
                   <div>
                     <h5 className="fw-bold mb-2 text-white">Comprehensive systems</h5>
@@ -448,36 +523,13 @@ export default function Home() {
               </div>
             </Col>
             <Col lg={11} className="offset-lg-1">
-              <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
+              <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
                 <div className="d-flex align-items-center text-white">
-                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle" style={{ width: '60px', height: '60px', background: 'linear-gradient(135deg, #1e40af 0%, #0ea5e9 100%)', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
-                    <span className="fs-2 text-white">💡</span>
-                  </div>
-                  <div>
-                    <h5 className="fw-bold mb-2 text-white">Actionable intelligence</h5>
-                    <p className="mb-0 opacity-90">Transform diverse, complex datasets into insights that are understandable, timely, and directly usable in operational decisions.</p>
-                  </div>
-                </div>
-              </div>
-            </Col>
-            <Col lg={11} className="offset-lg-0">
-              <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
-                <div className="d-flex align-items-center text-white">
-                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle" style={{ width: '60px', height: '60px', background: 'linear-gradient(135deg, #1e40af 0%, #0ea5e9 100%)', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
-                    <span className="fs-2 text-white">🛡️</span>
-                  </div>
-                  <div>
-                    <h5 className="fw-bold mb-2 text-white">Secure, resilient platforms</h5>
-                    <p className="mb-0 opacity-90">Engineered for mission-critical and regulated environments, ensuring data protection, compliance, and uninterrupted performance.</p>
-                  </div>
-                </div>
-              </div>
-            </Col>
-            <Col lg={11} className="offset-lg-1">
-              <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
-                <div className="d-flex align-items-center text-white">
-                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle" style={{ width: '60px', height: '60px', background: 'linear-gradient(135deg, #1e40af 0%, #0ea5e9 100%)', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
-                    <span className="fs-2 text-white">👤</span>
+                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                    <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                    <img src="/del2.svg" alt="Human-first design" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                   </div>
                   <div>
                     <h5 className="fw-bold mb-2 text-white">Human-first design</h5>
@@ -487,10 +539,45 @@ export default function Home() {
               </div>
             </Col>
             <Col lg={11} className="offset-lg-0">
-              <div className="p-3 rounded-pill" style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
+              <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
                 <div className="d-flex align-items-center text-white">
-                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle" style={{ width: '60px', height: '60px', background: 'linear-gradient(135deg, #1e40af 0%, #0ea5e9 100%)', boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)' }}>
-                    <span className="fs-2 text-white">🤝</span>
+                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                    <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                    <img src="/del3.svg" alt="Actionable intelligence" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                  </div>
+                  <div>
+                    <h5 className="fw-bold mb-2 text-white">Actionable intelligence</h5>
+                    <p className="mb-0 opacity-90">Transform diverse, complex datasets into insights that are understandable, timely, and directly usable in operational decisions.</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col lg={11} className="offset-lg-1">
+              <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
+                <div className="d-flex align-items-center text-white">
+                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                    <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                    <img src="/del4.svg" alt="Secure, resilient platforms" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                  </div>
+                  <div>
+                    <h5 className="fw-bold mb-2 text-white">Secure, resilient platforms</h5>
+                    <p className="mb-0 opacity-90">Engineered for mission-critical and regulated environments, ensuring data protection, compliance, and uninterrupted performance.</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col lg={11} className="offset-lg-0">
+              <div className="p-3 rounded-pill" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
+                <div className="d-flex align-items-center text-white">
+                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                    <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                    <img src="/del5.svg" alt="Collaborative innovation" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                   </div>
                   <div>
                     <h5 className="fw-bold mb-2 text-white">Collaborative innovation</h5>
@@ -521,7 +608,7 @@ export default function Home() {
                   <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
                   <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
                   <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                  <span className="fs-3 position-relative" style={{ zIndex: 1 }}>✅</span>
+                  <img src="/why1.svg" alt="Reliable results" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                 </div>
                 <div>
                   <h5 className="fw-bold mb-2 text-white">Reliable results</h5>
@@ -536,7 +623,7 @@ export default function Home() {
                   <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
                   <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
                   <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                  <span className="fs-3 position-relative" style={{ zIndex: 1 }}>🧠</span>
+                  <img src="/why2.svg" alt="Deep technical expertise" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                 </div>
                 <div>
                   <h5 className="fw-bold mb-2 text-white">Deep technical expertise</h5>
@@ -550,7 +637,7 @@ export default function Home() {
                   <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
                   <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
                   <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                  <span className="fs-3 position-relative" style={{ zIndex: 1 }}>💬</span>
+                  <img src="/why3.svg" alt="Clarity and collaboration" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                 </div>
                 <div>
                   <h5 className="fw-bold mb-2 text-white">Clarity and collaboration</h5>
@@ -564,7 +651,7 @@ export default function Home() {
                   <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
                   <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
                   <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                  <span className="fs-3 position-relative" style={{ zIndex: 1 }}>⚡</span>
+                  <img src="/why4.svg" alt="Reduced operational burden" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                 </div>
                 <div>
                   <h5 className="fw-bold mb-2 text-white">Reduced operational burden</h5>
@@ -578,7 +665,7 @@ export default function Home() {
                   <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
                   <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
                   <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                  <span className="fs-3 position-relative" style={{ zIndex: 1 }}>🤝</span>
+                  <img src="/why5.svg" alt="Integrity and trust" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
                 </div>
                 <div>
                   <h5 className="fw-bold mb-2 text-white">Integrity and trust</h5>
