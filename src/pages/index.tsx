@@ -65,7 +65,7 @@ export default function Home() {
             </Col>
             <Col lg={7}>
               <div className="content-text">
-                <p className="lead mb-4">
+                <p className="mb-4">
                   IVAI is an Australian-based technology company dedicated to transforming frontier research into secure, human-centred solutions. By integrating advanced AI, statistical computing, UX design, and systems engineering, we create operational technologies that serve people and society — from sensor to signal to solution.
                 </p>
                 <p className="mb-4">
@@ -93,7 +93,7 @@ export default function Home() {
                 <h2 className="display-4 fw-bold mb-4" data-text="MISSION">MISSION</h2>
               </div>
               <div className="content-text">
-                <p className="lead mb-4">
+                <p className="mb-4">
                   We transform frontier research into secure, human-aligned artificial intelligence systems that serve people and society — from sensor to signal to solution. Our mission is to build operational, trustworthy technology that empowers confident, ethical decision-making across diverse fields including Defence, Health, Government, and Culture.
                 </p>
                 <p className="mb-4">
