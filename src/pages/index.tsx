@@ -136,254 +136,296 @@ export default function Home() {
       </section>
 
       {/* Capabilities Section */}
-      <section id="capabilities" className="capabilities-section-gradient text-white py-6">
-        <Container>
-          <div className="text-center mb-5">
-            <h2 className="display-4 fw-bold mb-4" data-text="CAPABILITIES">CAPABILITIES</h2>
-          </div>
-        </Container>
+      <section id="capabilities" className="capabilities-section-gradient text-white position-relative" style={{ paddingLeft: '0', paddingRight: '0', paddingTop: '0', paddingBottom: '0' }}>
+        <div className="position-fixed" style={{ 
+          left: '20px', 
+          top: '50%', 
+          transform: 'translateY(-50%)',
+          transformOrigin: 'center',
+          zIndex: 1000,
+          writingMode: 'vertical-rl',
+          textOrientation: 'mixed'
+        }}>
+          <h2 className="display-4 fw-bold mb-0" data-text="CAPABILITIES" style={{ 
+            whiteSpace: 'nowrap',
+            letterSpacing: '0.2em',
+            fontSize: '3rem'
+          }}>
+            CAPABILITIES
+          </h2>
+        </div>
         
-        <Container>
-          {/* Research & Development - Image Left, Text Right */}
-          <Row className="mb-6 align-items-center">
-            <Col lg={4} className="mb-4 mb-lg-0">
-              <div className="capability-image">
-                <img 
-                  src="/research.jpg" 
-                  alt="Research & Development" 
-                  className="img-fluid rounded shadow-lg"
-                  style={{ width: '100%', height: '500px', objectFit: 'cover', objectPosition: 'center 30%' }}
-                />
+        <div style={{ marginLeft: '100px' }}>
+          {/* Research & Development - Full Width Image with Text Below */}
+          <div className="mb-0">
+            <div className="capability-image position-relative" style={{ marginLeft: '-100px', marginRight: '-15px' }}>
+              <img 
+                src="/research.jpg" 
+                alt="Research & Development" 
+                className="img-fluid shadow-lg"
+                style={{ width: '100vw', height: '100vh', objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+              />
+              {/* Overlay all text on bottom of image */}
+              <div className="position-absolute w-100" style={{ 
+                bottom: '0', 
+                left: '0', 
+                background: 'linear-gradient(transparent, rgba(5, 10, 20, 0.99))',
+                padding: '6rem 2rem 4rem 2rem'
+              }}>
+                <Container>
+                  <Row className="justify-content-center">
+                    <Col lg={10}>
+                      <div className="text-center mb-5">
+                        <h3 className="h2 fw-bold mb-3 text-white">RESEARCH & DEVELOPMENT</h3>
+                        <p className="lead mb-0 text-white">
+                          Our team drives innovation at the cutting edge of AI and immersive technologies, delivering technical breakthroughs that underpin our solutions.
+                        </p>
+                      </div>
+                      <Row className="g-4">
+                        <Col md={6}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap1.svg" alt="Frontier AI expertise" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Frontier AI expertise</h5>
+                              <p className="text-white-50 mb-0">Advanced machine learning, computer vision, natural language processing, and multimodal data fusion.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap2.svg" alt="Immersive VR/AR solutions" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Immersive VR/AR solutions</h5>
+                              <p className="text-white-50 mb-0">Using human-factors research to create realistic, effective, and safe training, simulation, and scenario validation tools.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap3.svg" alt="Human–machine teaming" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Human–machine teaming</h5>
+                              <p className="text-white-50 mb-0">Optimising how AI systems and people interact to maximise decision-making speed, accuracy, and effectiveness.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6}>
+                          <div className="d-flex align-items-start">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap4.svg" alt="Applied innovation" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Applied innovation</h5>
+                              <p className="text-white-50 mb-0">Rapidly turning new research insights into demonstrable prototypes and proof-of-concept systems.</p>
+                            </div>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Container>
               </div>
-            </Col>
-            <Col lg={8}>
-              <div className="capability-content">
-                <h3 className="h2 fw-bold mb-4">RESEARCH & DEVELOPMENT</h3>
-                <p className="lead mb-4">
-                  Our team drives innovation at the cutting edge of AI and immersive technologies, delivering technical breakthroughs that underpin our solutions.
-                </p>
-                <div className="g-4">
-                  <div className="mb-3">
-                    <div className="d-flex align-items-start mb-3">
-                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
-                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                        <img src="/cap1.svg" alt="Frontier AI expertise" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
-                      </div>
-                      <div>
-                        <h5 className="fw-bold mb-2">Frontier AI expertise</h5>
-                        <p className="text-muted mb-0">Advanced machine learning, computer vision, natural language processing, and multimodal data fusion.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mb-3">
-                    <div className="d-flex align-items-start mb-3">
-                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
-                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                        <img src="/cap2.svg" alt="Immersive VR/AR solutions" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
-                      </div>
-                      <div>
-                        <h5 className="fw-bold mb-2">Immersive VR/AR solutions</h5>
-                        <p className="text-muted mb-0">Using human-factors research to create realistic, effective, and safe training, simulation, and scenario validation tools.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mb-3">
-                    <div className="d-flex align-items-start mb-3">
-                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
-                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                        <img src="/cap3.svg" alt="Human–machine teaming" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
-                      </div>
-                      <div>
-                        <h5 className="fw-bold mb-2">Human–machine teaming</h5>
-                        <p className="text-muted mb-0">Optimising how AI systems and people interact to maximise decision-making speed, accuracy, and effectiveness.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mb-3">
-                    <div className="d-flex align-items-start">
-                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
-                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                        <img src="/cap4.svg" alt="Applied innovation" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
-                      </div>
-                      <div>
-                        <h5 className="fw-bold mb-2">Applied innovation</h5>
-                        <p className="text-muted mb-0">Rapidly turning new research insights into demonstrable prototypes and proof-of-concept systems.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </Col>
-          </Row>
+            </div>
+          </div>
 
-          {/* Trusted & Secure Technology - Text Left, Image Right */}
-          <Row className="mb-6 align-items-center">
-            <Col lg={8} className="order-2 order-lg-1">
-              <div className="capability-content py-5">
-                <h3 className="h2 fw-bold mb-4">TRUSTED & SECURE TECHNOLOGY</h3>
-                <p className="lead mb-4">
-                  We build systems and platforms that organisations can rely on, embedding privacy, security, and ethical assurance at every layer of technology. Our capabilities serve critical sectors including Defence, Government, and Health.
-                </p>
-                <div className="g-4">
-                  <div className="mb-3">
-                    <div className="d-flex align-items-start mb-3">
-                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
-                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                        <img src="/cap5.svg" alt="Privacy by design" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+          {/* Trusted & Secure Technology - Full Width Image with Text Below */}
+          <div className="mb-0">
+            <div className="capability-image position-relative" style={{ marginLeft: '-100px', marginRight: '-15px' }}>
+              <img 
+                src="/trusted.jpg" 
+                alt="Trusted & Secure Technology" 
+                className="img-fluid shadow-lg"
+                style={{ width: '100vw', height: '100vh', objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+              />
+              {/* Overlay all text on bottom of image */}
+              <div className="position-absolute w-100" style={{ 
+                bottom: '0', 
+                left: '0', 
+                background: 'linear-gradient(transparent, rgba(5, 10, 20, 0.99))',
+                padding: '6rem 2rem 4rem 2rem'
+              }}>
+                <Container>
+                  <Row className="justify-content-center">
+                    <Col lg={10}>
+                      <div className="text-center mb-5">
+                        <h3 className="h2 fw-bold mb-3 text-white">TRUSTED & SECURE TECHNOLOGY</h3>
+                        <p className="lead mb-0 text-white">
+                          We build systems and platforms that organisations can rely on, embedding privacy, security, and ethical assurance at every layer of technology. Our capabilities serve critical sectors including Defence, Government, and Health.
+                        </p>
                       </div>
-                      <div>
-                        <h5 className="fw-bold mb-2">Privacy by design</h5>
-                        <p className="text-muted mb-0">Protecting sensitive data through encryption, access control, and robust governance practices.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mb-3">
-                    <div className="d-flex align-items-start mb-3">
-                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
-                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                        <img src="/cap6.svg" alt="Security-hardened systems" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
-                      </div>
-                      <div>
-                        <h5 className="fw-bold mb-2">Security-hardened systems</h5>
-                        <p className="text-muted mb-0">Architectures designed for cloud, hybrid, and isolated air-gapped environments.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mb-3">
-                    <div className="d-flex align-items-start mb-3">
-                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
-                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                        <img src="/cap7.svg" alt="Ethical and compliant frameworks" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
-                      </div>
-                      <div>
-                        <h5 className="fw-bold mb-2">Ethical and compliant frameworks</h5>
-                        <p className="text-muted mb-0">Aligning solutions with Defence, Government, Health, and industry standards for trust, transparency, and accountability.</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="mb-3">
-                    <div className="d-flex align-items-start">
-                      <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
-                        <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
-                        <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                        <img src="/cap8.svg" alt="Operational assurance" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
-                      </div>
-                      <div>
-                        <h5 className="fw-bold mb-2">Operational assurance</h5>
-                        <p className="text-muted mb-0">Technologies built to be auditable, resilient, and verifiable in mission-critical environments.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                      <Row className="g-4">
+                        <Col md={6}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap5.svg" alt="Privacy by design" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Privacy by design</h5>
+                              <p className="text-white-50 mb-0">Protecting sensitive data through encryption, access control, and robust governance practices.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap6.svg" alt="Security-hardened systems" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Security-hardened systems</h5>
+                              <p className="text-white-50 mb-0">Architectures designed for cloud, hybrid, and isolated air-gapped environments.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap7.svg" alt="Ethical and compliant frameworks" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Ethical and compliant frameworks</h5>
+                              <p className="text-white-50 mb-0">Aligning solutions with Defence, Government, Health, and industry standards for trust, transparency, and accountability.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6}>
+                          <div className="d-flex align-items-start">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap8.svg" alt="Operational assurance" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Operational assurance</h5>
+                              <p className="text-white-50 mb-0">Technologies built to be auditable, resilient, and verifiable in mission-critical environments.</p>
+                            </div>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Container>
               </div>
-            </Col>
-            <Col lg={4} className="order-1 order-lg-2 mb-4 mb-lg-0">
-              <div className="capability-image">
-                <img 
-                  src="/trusted.jpg" 
-                  alt="Trusted & Secure Technology" 
-                  className="img-fluid rounded shadow-lg"
-                  style={{ width: '100%', height: '500px', objectFit: 'cover', objectPosition: 'center 40%' }}
-                />
-              </div>
-            </Col>
-          </Row>
+            </div>
+          </div>
 
-          {/* Real-World Impact - Image Left, Text Right */}
-          <Row className="align-items-center">
-            <Col lg={4} className="mb-4 mb-lg-0">
-              <div className="capability-image">
-                <img 
-                  src="/realworld.jpg" 
-                  alt="Real-World Impact" 
-                  className="img-fluid rounded shadow-lg"
-                  style={{ width: '100%', height: '500px', objectFit: 'cover', objectPosition: 'center 60%' }}
-                />
+          {/* Real-World Impact - Full Width Image with Text Below */}
+          <div className="mb-0">
+            <div className="capability-image position-relative" style={{ marginLeft: '-100px', marginRight: '-15px' }}>
+              <img 
+                src="/realworld.jpg" 
+                alt="Real-World Impact" 
+                className="img-fluid shadow-lg"
+                style={{ width: '100vw', height: '100vh', objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+              />
+              {/* Overlay all text on bottom of image */}
+              <div className="position-absolute w-100" style={{ 
+                bottom: '0', 
+                left: '0', 
+                background: 'linear-gradient(transparent, rgba(5, 10, 20, 0.99))',
+                padding: '6rem 2rem 4rem 2rem'
+              }}>
+                <Container>
+                  <Row className="justify-content-center">
+                    <Col lg={10}>
+                      <div className="text-center mb-5">
+                        <h3 className="h2 fw-bold mb-3 text-white">REAL-WORLD IMPACT</h3>
+                        <p className="lead mb-0 text-white">
+                          We deliver operational solutions that scale, integrate, and provide tangible outcomes in complex environments.
+                        </p>
+                      </div>
+                      <Row className="g-4">
+                        <Col md={6}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap9.svg" alt="End-to-end delivery" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">End-to-end delivery</h5>
+                              <p className="text-white-50 mb-0">Managing the full lifecycle from concept and prototyping through deployment, maintenance, and continuous improvement.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap10.svg" alt="Flexible, modular platforms" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Flexible, modular platforms</h5>
+                              <p className="text-white-50 mb-0">Architectures designed to run reliably across cloud, hybrid, and fully on-prem environments, while integrating with existing enterprise and government systems.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap11.svg" alt="Adoption-focused design" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Adoption-focused design</h5>
+                              <p className="text-white-50 mb-0">Co-created with end-users and domain experts to ensure usability, relevance, and practical impact.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6}>
+                          <div className="d-flex align-items-start">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap12.svg" alt="Sustainable capability" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Sustainable capability</h5>
+                              <p className="text-white-50 mb-0">Solutions that evolve with your organisation, adapting to new challenges, data sources, and operational demands.</p>
+                            </div>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Container>
               </div>
-            </Col>
-            <Col lg={8}>
-              <div className="capability-content py-5">
-                <h3 className="h2 fw-bold mb-4">REAL-WORLD IMPACT</h3>
-                  <p className="lead mb-4">
-                    We deliver operational solutions that scale, integrate, and provide tangible outcomes in complex environments.
-                  </p>
-                  <div className="g-4">
-                    <div className="mb-3">
-                      <div className="d-flex align-items-start mb-3">
-                        <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
-                          <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
-                          <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
-                          <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                          <img src="/cap9.svg" alt="End-to-end delivery" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
-                        </div>
-                        <div>
-                          <h5 className="fw-bold mb-2">End-to-end delivery</h5>
-                          <p className="text-muted mb-0">Managing the full lifecycle from concept and prototyping through deployment, maintenance, and continuous improvement.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3">
-                      <div className="d-flex align-items-start mb-3">
-                        <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
-                          <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
-                          <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
-                          <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                          <img src="/cap10.svg" alt="Flexible, modular platforms" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
-                        </div>
-                        <div>
-                          <h5 className="fw-bold mb-2">Flexible, modular platforms</h5>
-                          <p className="text-muted mb-0">Architectures designed to run reliably across cloud, hybrid, and fully on-prem environments, while integrating with existing enterprise and government systems.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3">
-                      <div className="d-flex align-items-start mb-3">
-                        <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
-                          <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
-                          <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
-                          <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                          <img src="/cap11.svg" alt="Adoption-focused design" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
-                        </div>
-                        <div>
-                          <h5 className="fw-bold mb-2">Adoption-focused design</h5>
-                          <p className="text-muted mb-0">Co-created with end-users and domain experts to ensure usability, relevance, and practical impact.</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mb-3">
-                      <div className="d-flex align-items-start">
-                        <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
-                          <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
-                          <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
-                          <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
-                          <img src="/cap12.svg" alt="Sustainable capability" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
-                        </div>
-                        <div>
-                          <h5 className="fw-bold mb-2">Sustainable capability</h5>
-                          <p className="text-muted mb-0">Solutions that evolve with your organisation, adapting to new challenges, data sources, and operational demands.</p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Col>
-          </Row>
-        </Container>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Vision Section */}
