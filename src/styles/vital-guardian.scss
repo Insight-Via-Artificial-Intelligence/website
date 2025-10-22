@@ -87,6 +87,7 @@ body:has(.vital-guardian-hero-image) section {
     z-index: 2;
     display: flex;
     justify-content: center;
+    padding-top: 5rem;
     
     .vital-guardian-logo {
       filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.8));
@@ -94,6 +95,7 @@ body:has(.vital-guardian-hero-image) section {
       max-width: 500px;
       width: 100%;
       height: auto;
+      margin-top: 5rem;
       
       &:hover {
         transform: scale(1.02);
