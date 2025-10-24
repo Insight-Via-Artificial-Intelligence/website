@@ -617,8 +617,20 @@ export default function Home() {
       </section>
 
       {/* Why Work With Us Section */}
-      <section id="why-work-with-us" className="why-work-with-us-section-gradient text-white py-6">
-        <Container>
+      <section id="why-work-with-us" className="why-work-with-us-section-gradient text-white py-6 position-relative">
+        {/* Background Image */}
+        <div className="position-absolute w-100 h-100" style={{ 
+          top: '0', 
+          left: '0', 
+          backgroundImage: 'url(/girl_code.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: '0.2',
+          zIndex: '1'
+        }}></div>
+        
+        <Container className="position-relative" style={{ zIndex: '2' }}>
           <div className="text-center mb-5">
             <h2 className="display-4 fw-bold mb-4" data-text="WHY WORK WITH US">WHY WORK WITH US</h2>
             <p className="lead">
