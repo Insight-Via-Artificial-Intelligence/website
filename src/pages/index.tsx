@@ -177,7 +177,7 @@ export default function Home() {
                             </div>
                             <div className="text-start">
                               <h5 className="fw-bold mb-2 text-white">Frontier AI expertise</h5>
-                              <p className="text-white-50 mb-0">Advanced machine learning, computer vision, natural language processing, and multimodal data fusion.</p>
+                              <p className="text-white opacity-75 mb-0">Advanced machine learning, computer vision, natural language processing, and multimodal data fusion.</p>
                             </div>
                           </div>
                         </Col>
@@ -191,7 +191,7 @@ export default function Home() {
                             </div>
                             <div className="text-start">
                               <h5 className="fw-bold mb-2 text-white">Immersive VR/AR solutions</h5>
-                              <p className="text-white-50 mb-0">Using human-factors research to create realistic, effective, and safe training, simulation, and scenario validation tools.</p>
+                              <p className="text-white opacity-75 mb-0">Using human-factors research to create realistic, effective, and safe training, simulation, and scenario validation tools.</p>
                             </div>
                           </div>
                         </Col>
@@ -205,7 +205,7 @@ export default function Home() {
                             </div>
                             <div className="text-start">
                               <h5 className="fw-bold mb-2 text-white">Human–machine teaming</h5>
-                              <p className="text-white-50 mb-0">Optimising how AI systems and people interact to maximise decision-making speed, accuracy, and effectiveness.</p>
+                              <p className="text-white opacity-75 mb-0">Optimising how AI systems and people interact to maximise decision-making speed, accuracy, and effectiveness.</p>
                             </div>
                           </div>
                         </Col>
@@ -219,7 +219,7 @@ export default function Home() {
                             </div>
                             <div className="text-start">
                               <h5 className="fw-bold mb-2 text-white">Applied innovation</h5>
-                              <p className="text-white-50 mb-0">Rapidly turning new research insights into demonstrable prototypes and proof-of-concept systems.</p>
+                              <p className="text-white opacity-75 mb-0">Rapidly turning new research insights into demonstrable prototypes and proof-of-concept systems.</p>
                             </div>
                           </div>
                         </Col>
@@ -267,7 +267,7 @@ export default function Home() {
                             </div>
                             <div className="text-start">
                               <h5 className="fw-bold mb-2 text-white">Privacy by design</h5>
-                              <p className="text-white-50 mb-0">Protecting sensitive data through encryption, access control, and robust governance practices.</p>
+                              <p className="text-white opacity-75 mb-0">Protecting sensitive data through encryption, access control, and robust governance practices.</p>
                             </div>
                           </div>
                         </Col>
@@ -281,7 +281,7 @@ export default function Home() {
                             </div>
                             <div className="text-start">
                               <h5 className="fw-bold mb-2 text-white">Security-hardened systems</h5>
-                              <p className="text-white-50 mb-0">Architectures designed for cloud, hybrid, and isolated air-gapped environments.</p>
+                              <p className="text-white opacity-75 mb-0">Architectures designed for cloud, hybrid, and isolated air-gapped environments.</p>
                             </div>
                           </div>
                         </Col>
@@ -295,7 +295,7 @@ export default function Home() {
                             </div>
                             <div className="text-start">
                               <h5 className="fw-bold mb-2 text-white">Ethical and compliant frameworks</h5>
-                              <p className="text-white-50 mb-0">Aligning solutions with Defence, Government, Health, and industry standards for trust, transparency, and accountability.</p>
+                              <p className="text-white opacity-75 mb-0">Aligning solutions with Defence, Government, Health, and industry standards for trust, transparency, and accountability.</p>
                             </div>
                           </div>
                         </Col>
@@ -309,7 +309,7 @@ export default function Home() {
                             </div>
                             <div className="text-start">
                               <h5 className="fw-bold mb-2 text-white">Operational assurance</h5>
-                              <p className="text-white-50 mb-0">Technologies built to be auditable, resilient, and verifiable in mission-critical environments.</p>
+                              <p className="text-white opacity-75 mb-0">Technologies built to be auditable, resilient, and verifiable in mission-critical environments.</p>
                             </div>
                           </div>
                         </Col>
@@ -357,7 +357,7 @@ export default function Home() {
                             </div>
                             <div className="text-start">
                               <h5 className="fw-bold mb-2 text-white">End-to-end delivery</h5>
-                              <p className="text-white-50 mb-0">Managing the full lifecycle from concept and prototyping through deployment, maintenance, and continuous improvement.</p>
+                              <p className="text-white opacity-75 mb-0">Managing the full lifecycle from concept and prototyping through deployment, maintenance, and continuous improvement.</p>
                             </div>
                           </div>
                         </Col>
@@ -371,7 +371,7 @@ export default function Home() {
                             </div>
                             <div className="text-start">
                               <h5 className="fw-bold mb-2 text-white">Flexible, modular platforms</h5>
-                              <p className="text-white-50 mb-0">Architectures designed to run reliably across cloud, hybrid, and fully on-prem environments, while integrating with existing enterprise and government systems.</p>
+                              <p className="text-white opacity-75 mb-0">Architectures designed to run reliably across cloud, hybrid, and fully on-prem environments, while integrating with existing enterprise and government systems.</p>
                             </div>
                           </div>
                         </Col>
@@ -385,7 +385,7 @@ export default function Home() {
                             </div>
                             <div className="text-start">
                               <h5 className="fw-bold mb-2 text-white">Adoption-focused design</h5>
-                              <p className="text-white-50 mb-0">Co-created with end-users and domain experts to ensure usability, relevance, and practical impact.</p>
+                              <p className="text-white opacity-75 mb-0">Co-created with end-users and domain experts to ensure usability, relevance, and practical impact.</p>
                             </div>
                           </div>
                         </Col>
@@ -399,7 +399,7 @@ export default function Home() {
                             </div>
                             <div className="text-start">
                               <h5 className="fw-bold mb-2 text-white">Sustainable capability</h5>
-                              <p className="text-white-50 mb-0">Solutions that evolve with your organisation, adapting to new challenges, data sources, and operational demands.</p>
+                              <p className="text-white opacity-75 mb-0">Solutions that evolve with your organisation, adapting to new challenges, data sources, and operational demands.</p>
                             </div>
                           </div>
                         </Col>
