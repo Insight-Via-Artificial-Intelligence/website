@@ -13,9 +13,16 @@ export default function Home() {
   const [isWhoWeAreVisible, setIsWhoWeAreVisible] = useState(false);
   const [isMissionVisible, setIsMissionVisible] = useState(false);
   const [isVisionVisible, setIsVisionVisible] = useState(false);
+  const [isWhyWorkWithUsVisible, setIsWhyWorkWithUsVisible] = useState(false); // Change back to false after testing
   const whoWeAreRef = useRef<HTMLElement>(null);
   const missionRef = useRef<HTMLElement>(null);
   const visionRef = useRef<HTMLElement>(null);
+  const whyWorkWithUsRef = useRef<HTMLElement>(null);
+
+  // Debug: Log state changes
+  useEffect(() => {
+    console.log('Why Work With Us visibility changed:', isWhyWorkWithUsVisible);
+  }, [isWhyWorkWithUsVisible]);
 
   useEffect(() => {
     const currentRef = whoWeAreRef.current;
@@ -128,6 +135,46 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const currentRef = whyWorkWithUsRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            console.log('Why Work With Us intersection:', entry.isIntersecting, entry.intersectionRatio);
+            if (entry.isIntersecting) {
+              console.log('Why Work With Us section visible, triggering animation');
+              setTimeout(() => {
+                console.log('Setting isWhyWorkWithUsVisible to true');
+                setIsWhyWorkWithUsVisible(true);
+              }, 100); // Small delay to ensure proper state update
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.3,
+          rootMargin: '-100px 0px -100px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -137,7 +184,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <style jsx>{`
+      <style jsx global>{`
         @keyframes rotateGradient {
           0% {
             background: linear-gradient(white, white) padding-box, linear-gradient(0deg, #3b82f6 0%, #10b981 100%) border-box;
@@ -248,6 +295,37 @@ export default function Home() {
           filter: blur(0px);
           opacity: 1;
           transform: translateY(0);
+        }
+
+        /* Why Work With Us cascade animation - Force override all Bootstrap styles */
+        #why-work-with-us .why-item {
+          opacity: 0 !important;
+          transform: translateY(40px) !important;
+          transition: all 1.2s ease-out !important;
+          will-change: opacity, transform !important;
+          backface-visibility: hidden !important;
+        }
+
+        #why-work-with-us .why-item.visible {
+          opacity: 1 !important;
+          transform: translateY(0px) !important;
+        }
+
+        /* Force staggered delays - much more aggressive */
+        #why-work-with-us .why-item:nth-child(1) { 
+          transition-delay: 0.2s !important; 
+        }
+        #why-work-with-us .why-item:nth-child(2) { 
+          transition-delay: 0.5s !important; 
+        }
+        #why-work-with-us .why-item:nth-child(3) { 
+          transition-delay: 0.8s !important; 
+        }
+        #why-work-with-us .why-item:nth-child(4) { 
+          transition-delay: 1.1s !important; 
+        }
+        #why-work-with-us .why-item:nth-child(5) { 
+          transition-delay: 1.4s !important; 
         }
       `}</style>
 
@@ -826,7 +904,7 @@ export default function Home() {
       </section>
 
       {/* Why Work With Us Section */}
-      <section id="why-work-with-us" className="why-work-with-us-section-gradient text-white py-6 position-relative">
+      <section ref={whyWorkWithUsRef} id="why-work-with-us" className="why-work-with-us-section-gradient text-white py-6 position-relative">
         {/* Background Image */}
         <div className="position-absolute w-100 h-100" style={{ 
           top: '0', 
@@ -847,8 +925,8 @@ export default function Home() {
             </p>
           </div>
           
-          <Row className="g-2 justify-content-center">
-            <Col lg={10}>
+          <Row className={`g-2 justify-content-center why-items ${isWhyWorkWithUsVisible ? 'animate' : ''}`}>
+            <Col lg={10} className={`why-item ${isWhyWorkWithUsVisible ? 'visible' : ''}`}>
               <div className="d-flex align-items-center mb-2 p-4 rounded-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)' }}>
                 <div className="why-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                   {/* Three long dashes positioned around the circle */}
@@ -863,7 +941,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={10}>
+            <Col lg={10} className={`why-item ${isWhyWorkWithUsVisible ? 'visible' : ''}`}>
               <div className="d-flex align-items-center mb-2 p-4 rounded-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)' }}>
                 <div className="why-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                   {/* Three long dashes positioned around the circle */}
@@ -878,7 +956,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={10}>
+            <Col lg={10} className={`why-item ${isWhyWorkWithUsVisible ? 'visible' : 'hidden'}`}>
               <div className="d-flex align-items-center mb-2 p-4 rounded-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)' }}>
                 <div className="why-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                   <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -892,7 +970,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={10}>
+            <Col lg={10} className={`why-item ${isWhyWorkWithUsVisible ? 'visible' : ''}`}>
               <div className="d-flex align-items-center mb-2 p-4 rounded-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)' }}>
                 <div className="why-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                   <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -906,7 +984,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={10}>
+            <Col lg={10} className={`why-item ${isWhyWorkWithUsVisible ? 'visible' : ''}`}>
               <div className="d-flex align-items-center p-4 rounded-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)' }}>
                 <div className="why-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                   <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
