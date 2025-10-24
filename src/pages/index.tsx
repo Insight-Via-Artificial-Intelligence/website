@@ -14,10 +14,12 @@ export default function Home() {
   const [isMissionVisible, setIsMissionVisible] = useState(false);
   const [isVisionVisible, setIsVisionVisible] = useState(false);
   const [isWhyWorkWithUsVisible, setIsWhyWorkWithUsVisible] = useState(false); // Change back to false after testing
+  const [isWhatWeDeliverVisible, setIsWhatWeDeliverVisible] = useState(false);
   const whoWeAreRef = useRef<HTMLElement>(null);
   const missionRef = useRef<HTMLElement>(null);
   const visionRef = useRef<HTMLElement>(null);
   const whyWorkWithUsRef = useRef<HTMLElement>(null);
+  const whatWeDeliverRef = useRef<HTMLElement>(null);
 
   // Debug: Log state changes
   useEffect(() => {
@@ -149,6 +151,47 @@ export default function Home() {
                 console.log('Setting isWhyWorkWithUsVisible to true');
                 setIsWhyWorkWithUsVisible(true);
               }, 100); // Small delay to ensure proper state update
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.3,
+          rootMargin: '-100px 0px -100px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // What We Deliver intersection observer
+  useEffect(() => {
+    const currentRef = whatWeDeliverRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            console.log('What We Deliver intersection:', entry.isIntersecting, entry.intersectionRatio);
+            if (entry.isIntersecting) {
+              console.log('What We Deliver section visible, triggering animation');
+              setTimeout(() => {
+                console.log('Setting isWhatWeDeliverVisible to true');
+                setIsWhatWeDeliverVisible(true);
+              }, 100);
               observer.unobserve(entry.target);
             }
           });
@@ -325,6 +368,46 @@ export default function Home() {
           transition-delay: 1.1s !important; 
         }
         #why-work-with-us .why-item:nth-child(5) { 
+          transition-delay: 1.4s !important; 
+        }
+
+        /* What We Deliver cascade animation - Alternating slide directions */
+        #what-we-deliver .delivery-item {
+          opacity: 0 !important;
+          transition: all 1.2s ease-out !important;
+          will-change: opacity, transform !important;
+          backface-visibility: hidden !important;
+        }
+
+        /* Slide from right (odd items: 1st, 3rd, 5th) */
+        #what-we-deliver .delivery-item:nth-child(odd) {
+          transform: translateX(60px) !important;
+        }
+
+        /* Slide from left (even items: 2nd, 4th) */
+        #what-we-deliver .delivery-item:nth-child(even) {
+          transform: translateX(-60px) !important;
+        }
+
+        #what-we-deliver .delivery-item.visible {
+          opacity: 1 !important;
+          transform: translateX(0px) !important;
+        }
+
+        /* Staggered delays for cascade effect */
+        #what-we-deliver .delivery-item:nth-child(1) { 
+          transition-delay: 0.2s !important; 
+        }
+        #what-we-deliver .delivery-item:nth-child(2) { 
+          transition-delay: 0.5s !important; 
+        }
+        #what-we-deliver .delivery-item:nth-child(3) { 
+          transition-delay: 0.8s !important; 
+        }
+        #what-we-deliver .delivery-item:nth-child(4) { 
+          transition-delay: 1.1s !important; 
+        }
+        #what-we-deliver .delivery-item:nth-child(5) { 
           transition-delay: 1.4s !important; 
         }
       `}</style>
@@ -809,7 +892,7 @@ export default function Home() {
       </section>
 
       {/* What We Deliver Section */}
-      <section id="what-we-deliver" className="py-6">
+      <section ref={whatWeDeliverRef} id="what-we-deliver" className="py-6">
         <Container>
           <div className="text-center mb-5">
             <h2 className="display-4 fw-bold mb-4" data-text="WHAT WE DELIVER">WHAT WE DELIVER</h2>
@@ -819,7 +902,7 @@ export default function Home() {
           </div>
           
           <Row className="g-2">
-            <Col lg={11} className="offset-lg-0">
+            <Col lg={11} className={`offset-lg-0 delivery-item ${isWhatWeDeliverVisible ? 'visible' : ''}`}>
               <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
                 <div className="d-flex align-items-center text-white">
                   <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
@@ -835,7 +918,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={11} className="offset-lg-1">
+            <Col lg={11} className={`offset-lg-1 delivery-item ${isWhatWeDeliverVisible ? 'visible' : ''}`}>
               <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
                 <div className="d-flex align-items-center text-white">
                   <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
@@ -851,7 +934,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={11} className="offset-lg-0">
+            <Col lg={11} className={`offset-lg-0 delivery-item ${isWhatWeDeliverVisible ? 'visible' : ''}`}>
               <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
                 <div className="d-flex align-items-center text-white">
                   <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
@@ -867,7 +950,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={11} className="offset-lg-1">
+            <Col lg={11} className={`offset-lg-1 delivery-item ${isWhatWeDeliverVisible ? 'visible' : ''}`}>
               <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
                 <div className="d-flex align-items-center text-white">
                   <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
@@ -883,7 +966,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={11} className="offset-lg-0">
+            <Col lg={11} className={`offset-lg-0 delivery-item ${isWhatWeDeliverVisible ? 'visible' : ''}`}>
               <div className="p-3 rounded-pill" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
                 <div className="d-flex align-items-center text-white">
                   <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
