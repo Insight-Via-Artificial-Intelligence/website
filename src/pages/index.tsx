@@ -7,8 +7,53 @@ import Card from "react-bootstrap/Card";
 import Badge from "react-bootstrap/Badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
+  const [isWhoWeAreVisible, setIsWhoWeAreVisible] = useState(false);
+  const whoWeAreRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const currentRef = whoWeAreRef.current;
+    
+    // Add a small delay to ensure the page is fully loaded
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              console.log('Who We Are section is visible!'); // Debug log
+              setIsWhoWeAreVisible(true);
+              // Stop observing after animation triggers
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.5, // Trigger when 50% of the section is visible
+          rootMargin: '-50px 0px -50px 0px' // Only trigger when well into the viewport
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+        console.log('Observer attached to Who We Are section'); // Debug log
+      } else {
+        console.log('Who We Are ref is null'); // Debug log
+      }
+
+      // Cleanup function for the timer's observer
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500); // 500ms delay
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
   return (
     <>
       <Head>
@@ -36,9 +81,56 @@ export default function Home() {
             background: linear-gradient(white, white) padding-box, linear-gradient(360deg, #3b82f6 0%, #10b981 100%) border-box;
           }
         }
+
+        @keyframes slideInFromRight {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slideInFromLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
         
         .rotating-gradient {
           animation: rotateGradient 4s linear infinite;
+        }
+
+        .slide-in-right {
+          opacity: 0;
+          transform: translateX(50px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+          will-change: opacity, transform;
+        }
+
+        .slide-in-right.animate {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        .slide-in-left {
+          opacity: 0;
+          transform: translateX(-50px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+          transition-delay: 0.2s;
+          will-change: opacity, transform;
+        }
+
+        .slide-in-left.animate {
+          opacity: 1;
+          transform: translateX(0);
         }
       `}</style>
 
@@ -71,14 +163,16 @@ export default function Home() {
       </section>
 
       {/* Who We Are Section */}
-      <section id="who-we-are" className="py-6 bg-light">
+      <section ref={whoWeAreRef} id="who-we-are" className="py-6 bg-light">
         <Container>
           <div className="text-center mb-5">
             <h2 className="display-4 fw-bold mb-4" data-text="WHO WE ARE">WHO WE ARE</h2>
+            {/* Temporary debug indicator */}
+            <p style={{ color: 'red', fontSize: '12px' }}>Animation State: {isWhoWeAreVisible ? 'VISIBLE' : 'HIDDEN'}</p>
           </div>
           <Row className="justify-content-center align-items-center">
             <Col lg={5} className="mb-4 mb-lg-0">
-              <div className="who-we-are-image">
+              <div className={`who-we-are-image slide-in-right ${isWhoWeAreVisible ? 'animate' : ''}`}>
                 <img 
                   src="/who.jpg" 
                   alt="Who We Are - IVAI Team" 
@@ -88,7 +182,7 @@ export default function Home() {
               </div>
             </Col>
             <Col lg={7}>
-              <div className="content-text">
+              <div className={`content-text slide-in-left ${isWhoWeAreVisible ? 'animate' : ''}`}>
                 <p className="mb-4">
                   IVAI is an Australian-based technology company dedicated to transforming frontier research into secure, human-centred solutions. By integrating advanced AI, statistical computing, UX design, and systems engineering, we create operational technologies that serve people and society — from sensor to signal to solution.
                 </p>
