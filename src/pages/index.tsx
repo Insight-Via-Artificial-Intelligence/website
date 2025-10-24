@@ -12,8 +12,10 @@ import { useEffect, useRef, useState } from "react";
 export default function Home() {
   const [isWhoWeAreVisible, setIsWhoWeAreVisible] = useState(false);
   const [isMissionVisible, setIsMissionVisible] = useState(false);
+  const [isVisionVisible, setIsVisionVisible] = useState(false);
   const whoWeAreRef = useRef<HTMLElement>(null);
   const missionRef = useRef<HTMLElement>(null);
+  const visionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const currentRef = whoWeAreRef.current;
@@ -90,6 +92,42 @@ export default function Home() {
       clearTimeout(timer);
     };
   }, []);
+
+  useEffect(() => {
+    const currentRef = visionRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setIsVisionVisible(true);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.5,
+          rootMargin: '-50px 0px -50px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -196,6 +234,21 @@ export default function Home() {
         .slide-in-up.animate p:nth-child(2) { transition-delay: 0.2s; }
         .slide-in-up.animate p:nth-child(3) { transition-delay: 0.3s; }
         .slide-in-up.animate p:nth-child(4) { transition-delay: 0.4s; }
+
+        /* Vision blur-to-focus animation */
+        .blur-to-focus {
+          filter: blur(8px);
+          opacity: 0.3;
+          transform: translateY(20px);
+          transition: filter 1.2s ease-out, opacity 1.2s ease-out, transform 1.2s ease-out;
+          will-change: filter, opacity, transform;
+        }
+
+        .blur-to-focus.animate {
+          filter: blur(0px);
+          opacity: 1;
+          transform: translateY(0);
+        }
       `}</style>
 
       <Header />
@@ -569,13 +622,13 @@ export default function Home() {
       </section>
 
       {/* Vision Section */}
-      <section id="vision" className="vision-section-gradient text-white">
+      <section ref={visionRef} id="vision" className="vision-section-gradient text-white">
         <div className="vision-background-text">VISION</div>
         <Container>
           <Row className="justify-content-center align-items-center h-100">
             <Col lg={10} xl={8}>
               <div className="text-center vision-content">
-                <p className="fs-4 fw-semibold lh-base">
+                <p className={`fs-4 fw-semibold lh-base blur-to-focus ${isVisionVisible ? 'animate' : ''}`}>
                   A future where technology amplifies human potential—never replaces it—and is built and deployed with unwavering commitment to scientific rigour, ethical responsibility, and masterful craftsmanship.
                 </p>
               </div>
