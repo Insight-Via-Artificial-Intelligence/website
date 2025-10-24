@@ -136,42 +136,27 @@ export default function Home() {
       </section>
 
       {/* Capabilities Section */}
-      <section id="capabilities" className="capabilities-section-gradient text-white position-relative" style={{ paddingLeft: '0', paddingRight: '0', paddingTop: '0', paddingBottom: '0' }}>
-        <div className="position-fixed" style={{ 
-          left: '20px', 
-          top: '50%', 
-          transform: 'translateY(-50%)',
-          transformOrigin: 'center',
-          zIndex: 1000,
-          writingMode: 'vertical-rl',
-          textOrientation: 'mixed'
-        }}>
-          <h2 className="display-4 fw-bold mb-0" data-text="CAPABILITIES" style={{ 
-            whiteSpace: 'nowrap',
-            letterSpacing: '0.2em',
-            fontSize: '3rem'
-          }}>
-            CAPABILITIES
-          </h2>
+      <section id="capabilities" className="capabilities-section-gradient text-white position-relative" style={{ padding: '0' }}>
+        <div className="position-absolute w-100 d-flex justify-content-center" style={{ top: '60px', zIndex: 1000 }}>
+          <h2 className="display-4 fw-bold mb-0" data-text="CAPABILITIES">CAPABILITIES</h2>
         </div>
         
-        <div style={{ marginLeft: '100px' }}>
-          {/* Research & Development - Full Width Image with Text Below */}
-          <div className="mb-0">
-            <div className="capability-image position-relative" style={{ marginLeft: '-100px', marginRight: '-15px' }}>
-              <img 
-                src="/research.jpg" 
-                alt="Research & Development" 
-                className="img-fluid shadow-lg"
-                style={{ width: '100vw', height: '100vh', objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
-              />
-              {/* Overlay all text on bottom of image */}
-              <div className="position-absolute w-100" style={{ 
-                bottom: '0', 
-                left: '0', 
-                background: 'linear-gradient(transparent, rgba(5, 10, 20, 0.99))',
-                padding: '6rem 2rem 4rem 2rem'
-              }}>
+        {/* Research & Development - Full Width Image with Text Below */}
+        <div className="mb-0">
+          <div className="capability-image position-relative">
+            <img 
+              src="/research.jpg" 
+              alt="Research & Development" 
+              className="img-fluid shadow-lg"
+              style={{ width: '100vw', height: '100vh', objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+            />
+            {/* Overlay all text on bottom of image */}
+            <div className="position-absolute w-100" style={{ 
+              bottom: '0', 
+              left: '0', 
+              background: 'linear-gradient(transparent, rgba(5, 10, 20, 0.99))',
+              padding: '6rem 2rem 4rem 2rem'
+            }}>
                 <Container>
                   <Row className="justify-content-center">
                     <Col lg={10}>
@@ -338,7 +323,7 @@ export default function Home() {
 
           {/* Real-World Impact - Full Width Image with Text Below */}
           <div className="mb-0">
-            <div className="capability-image position-relative" style={{ marginLeft: '-100px', marginRight: '-15px' }}>
+            <div className="capability-image position-relative">
               <img 
                 src="/realworld.jpg" 
                 alt="Real-World Impact" 
@@ -425,7 +410,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* Vision Section */}
