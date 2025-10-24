@@ -11,7 +11,9 @@ import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
   const [isWhoWeAreVisible, setIsWhoWeAreVisible] = useState(false);
+  const [isMissionVisible, setIsMissionVisible] = useState(false);
   const whoWeAreRef = useRef<HTMLElement>(null);
+  const missionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const currentRef = whoWeAreRef.current;
@@ -23,6 +25,44 @@ export default function Home() {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
               setIsWhoWeAreVisible(true);
+              // Stop observing after animation triggers
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.5, // Trigger when 50% of the section is visible
+          rootMargin: '-50px 0px -50px 0px' // Only trigger when well into the viewport
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      // Cleanup function for the timer's observer
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500); // 500ms delay
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const currentRef = missionRef.current;
+    
+    // Add a small delay to ensure the page is fully loaded
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setIsMissionVisible(true);
               // Stop observing after animation triggers
               observer.unobserve(entry.target);
             }
@@ -128,6 +168,34 @@ export default function Home() {
           opacity: 1;
           transform: translateX(0);
         }
+
+        .slide-in-up {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+          will-change: opacity, transform;
+        }
+
+        .slide-in-up.animate {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .slide-in-up p {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .slide-in-up.animate p {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .slide-in-up.animate p:nth-child(1) { transition-delay: 0.1s; }
+        .slide-in-up.animate p:nth-child(2) { transition-delay: 0.2s; }
+        .slide-in-up.animate p:nth-child(3) { transition-delay: 0.3s; }
+        .slide-in-up.animate p:nth-child(4) { transition-delay: 0.4s; }
       `}</style>
 
       <Header />
@@ -196,7 +264,7 @@ export default function Home() {
       </section>
 
       {/* Mission Section */}
-      <section id="mission" className="mission-section-gradient text-white py-6">
+      <section ref={missionRef} id="mission" className="mission-section-gradient text-white py-6">
         <div className="mission-flower-background"></div>
         <Container className="position-relative" style={{ zIndex: 2 }}>
           <Row className="justify-content-center">
@@ -204,7 +272,7 @@ export default function Home() {
               <div className="text-center mb-5">
                 <h2 className="display-4 fw-bold mb-4" data-text="MISSION">MISSION</h2>
               </div>
-              <div className="content-text">
+              <div className={`content-text slide-in-up ${isMissionVisible ? 'animate' : ''}`}>
                 <p className="fs-5 lh-base mb-4">
                   We transform frontier research into secure, human-aligned artificial intelligence systems that serve people and society — from sensor to signal to solution. Our mission is to build operational, trustworthy technology that empowers confident, ethical decision-making across diverse fields including Defence, Health, Government, and Culture.
                 </p>
