@@ -22,7 +22,6 @@ export default function Home() {
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              console.log('Who We Are section is visible!'); // Debug log
               setIsWhoWeAreVisible(true);
               // Stop observing after animation triggers
               observer.unobserve(entry.target);
@@ -37,9 +36,6 @@ export default function Home() {
 
       if (currentRef) {
         observer.observe(currentRef);
-        console.log('Observer attached to Who We Are section'); // Debug log
-      } else {
-        console.log('Who We Are ref is null'); // Debug log
       }
 
       // Cleanup function for the timer's observer
@@ -167,12 +163,10 @@ export default function Home() {
         <Container>
           <div className="text-center mb-5">
             <h2 className="display-4 fw-bold mb-4" data-text="WHO WE ARE">WHO WE ARE</h2>
-            {/* Temporary debug indicator */}
-            <p style={{ color: 'red', fontSize: '12px' }}>Animation State: {isWhoWeAreVisible ? 'VISIBLE' : 'HIDDEN'}</p>
           </div>
           <Row className="justify-content-center align-items-center">
             <Col lg={5} className="mb-4 mb-lg-0">
-              <div className={`who-we-are-image slide-in-right ${isWhoWeAreVisible ? 'animate' : ''}`}>
+              <div className={`who-we-are-image slide-in-left ${isWhoWeAreVisible ? 'animate' : ''}`}>
                 <img 
                   src="/who.jpg" 
                   alt="Who We Are - IVAI Team" 
@@ -182,7 +176,7 @@ export default function Home() {
               </div>
             </Col>
             <Col lg={7}>
-              <div className={`content-text slide-in-left ${isWhoWeAreVisible ? 'animate' : ''}`}>
+              <div className={`content-text slide-in-right ${isWhoWeAreVisible ? 'animate' : ''}`}>
                 <p className="mb-4">
                   IVAI is an Australian-based technology company dedicated to transforming frontier research into secure, human-centred solutions. By integrating advanced AI, statistical computing, UX design, and systems engineering, we create operational technologies that serve people and society — from sensor to signal to solution.
                 </p>
