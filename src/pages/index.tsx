@@ -199,8 +199,8 @@ export default function Home() {
           });
         },
         { 
-          threshold: 0.3,
-          rootMargin: '-100px 0px -100px 0px'
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
         }
       );
 
@@ -439,19 +439,19 @@ export default function Home() {
 
         /* Staggered delays for cascade effect */
         #what-we-deliver .delivery-item:nth-child(1) { 
-          transition-delay: 0.2s !important; 
+          transition-delay: 0.1s !important; 
         }
         #what-we-deliver .delivery-item:nth-child(2) { 
-          transition-delay: 0.5s !important; 
+          transition-delay: 0.3s !important; 
         }
         #what-we-deliver .delivery-item:nth-child(3) { 
-          transition-delay: 0.8s !important; 
+          transition-delay: 0.5s !important; 
         }
         #what-we-deliver .delivery-item:nth-child(4) { 
-          transition-delay: 1.1s !important; 
+          transition-delay: 0.7s !important; 
         }
         #what-we-deliver .delivery-item:nth-child(5) { 
-          transition-delay: 1.4s !important; 
+          transition-delay: 0.9s !important; 
         }
 
         /* Values section fade-in and slide-up animation */
