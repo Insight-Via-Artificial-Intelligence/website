@@ -15,6 +15,7 @@ export default function VitalGuardian() {
   const [teamSafetyVisible, setTeamSafetyVisible] = useState(false);
   const [valueVisible, setValueVisible] = useState(false);
   const [protectVisible, setProtectVisible] = useState(false);
+  const [signalsVisible, setSignalsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -28,6 +29,7 @@ export default function VitalGuardian() {
     const teamSafetySection = document.getElementById('team-safety-section');
     const valueSection = document.getElementById('value-section');
     const protectSection = document.getElementById('protect-section');
+    const signalsSection = document.getElementById('signals-section');
     
     const observers: IntersectionObserver[] = [];
     
@@ -89,6 +91,21 @@ export default function VitalGuardian() {
       );
       protectObserver.observe(protectSection);
       observers.push(protectObserver);
+    }
+    
+    if (signalsSection) {
+      const signalsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setSignalsVisible(true);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      signalsObserver.observe(signalsSection);
+      observers.push(signalsObserver);
     }
     
     return () => {
@@ -1107,6 +1124,7 @@ export default function VitalGuardian() {
 
       {/* VG Ins Outs Image Section */}
       <section 
+        id="signals-section"
         className="pt-5 position-relative"
         style={{ 
           background: "linear-gradient(0deg, #002048 0%, #1e3870ff 50%, #003372 100%)"
@@ -1129,7 +1147,10 @@ export default function VitalGuardian() {
                   height: "auto",
                   display: "block",
                   margin: "3rem auto 0 auto",
-                  mixBlendMode: "lighten"
+                  mixBlendMode: "lighten",
+                  opacity: signalsVisible ? 1 : 0,
+                  transform: signalsVisible ? 'scale(1)' : 'scale(0.8)',
+                  transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
                 }}
               />
             </Col>
