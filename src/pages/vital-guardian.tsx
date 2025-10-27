@@ -13,6 +13,7 @@ export default function VitalGuardian() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [processVisible, setProcessVisible] = useState(false);
   const [teamSafetyVisible, setTeamSafetyVisible] = useState(false);
+  const [valueVisible, setValueVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -24,6 +25,7 @@ export default function VitalGuardian() {
     // Intersection Observer for process section
     const processSection = document.getElementById('process-section');
     const teamSafetySection = document.getElementById('team-safety-section');
+    const valueSection = document.getElementById('value-section');
     
     const observers: IntersectionObserver[] = [];
     
@@ -55,6 +57,21 @@ export default function VitalGuardian() {
       );
       teamSafetyObserver.observe(teamSafetySection);
       observers.push(teamSafetyObserver);
+    }
+    
+    if (valueSection) {
+      const valueObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setValueVisible(true);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      valueObserver.observe(valueSection);
+      observers.push(valueObserver);
     }
     
     return () => {
@@ -928,7 +945,7 @@ export default function VitalGuardian() {
       </section>
 
       {/* Value Section */}
-      <section className="py-6">
+      <section id="value-section" className="py-6">
         <Container>
           <Row className="justify-content-center">
             <Col lg={10}>
@@ -944,23 +961,58 @@ export default function VitalGuardian() {
                 <Card.Body className="p-5">
                   <h4 className="fw-bold mb-4">For Organizations</h4>
                   <ul className="list-unstyled">
-                    <li className="mb-3">
+                    <li 
+                      className="mb-3"
+                      style={{
+                        opacity: valueVisible ? 1 : 0,
+                        transform: `translateY(${valueVisible ? '0' : '20px'})`,
+                        transition: 'all 0.6s ease-out 0.1s'
+                      }}
+                    >
                       <i className="bi bi-check2-circle text-success me-2"></i>
                       Reduced workplace incidents and liability
                     </li>
-                    <li className="mb-3">
+                    <li 
+                      className="mb-3"
+                      style={{
+                        opacity: valueVisible ? 1 : 0,
+                        transform: `translateY(${valueVisible ? '0' : '20px'})`,
+                        transition: 'all 0.6s ease-out 0.2s'
+                      }}
+                    >
                       <i className="bi bi-check2-circle text-success me-2"></i>
                       Enhanced operational resilience
                     </li>
-                    <li className="mb-3">
+                    <li 
+                      className="mb-3"
+                      style={{
+                        opacity: valueVisible ? 1 : 0,
+                        transform: `translateY(${valueVisible ? '0' : '20px'})`,
+                        transition: 'all 0.6s ease-out 0.3s'
+                      }}
+                    >
                       <i className="bi bi-check2-circle text-success me-2"></i>
                       Improved workforce productivity and performance
                     </li>
-                    <li className="mb-3">
+                    <li 
+                      className="mb-3"
+                      style={{
+                        opacity: valueVisible ? 1 : 0,
+                        transform: `translateY(${valueVisible ? '0' : '20px'})`,
+                        transition: 'all 0.6s ease-out 0.4s'
+                      }}
+                    >
                       <i className="bi bi-check2-circle text-success me-2"></i>
                       Real-time safety compliance monitoring
                     </li>
-                    <li className="mb-3">
+                    <li 
+                      className="mb-3"
+                      style={{
+                        opacity: valueVisible ? 1 : 0,
+                        transform: `translateY(${valueVisible ? '0' : '20px'})`,
+                        transition: 'all 0.6s ease-out 0.5s'
+                      }}
+                    >
                       <i className="bi bi-check2-circle text-success me-2"></i>
                       Data-driven decision making for team safety
                     </li>
@@ -973,23 +1025,58 @@ export default function VitalGuardian() {
                 <Card.Body className="p-5">
                   <h4 className="fw-bold mb-4">For Personnel</h4>
                   <ul className="list-unstyled">
-                    <li className="mb-3">
+                    <li 
+                      className="mb-3"
+                      style={{
+                        opacity: valueVisible ? 1 : 0,
+                        transform: `translateY(${valueVisible ? '0' : '20px'})`,
+                        transition: 'all 0.6s ease-out 0.1s'
+                      }}
+                    >
                       <i className="bi bi-check2-circle text-success me-2"></i>
                       Proactive health and safety monitoring
                     </li>
-                    <li className="mb-3">
+                    <li 
+                      className="mb-3"
+                      style={{
+                        opacity: valueVisible ? 1 : 0,
+                        transform: `translateY(${valueVisible ? '0' : '20px'})`,
+                        transition: 'all 0.6s ease-out 0.2s'
+                      }}
+                    >
                       <i className="bi bi-check2-circle text-success me-2"></i>
                       Early warning of fatigue and heat stress
                     </li>
-                    <li className="mb-3">
+                    <li 
+                      className="mb-3"
+                      style={{
+                        opacity: valueVisible ? 1 : 0,
+                        transform: `translateY(${valueVisible ? '0' : '20px'})`,
+                        transition: 'all 0.6s ease-out 0.3s'
+                      }}
+                    >
                       <i className="bi bi-check2-circle text-success me-2"></i>
                       Personalized wellness insights and recommendations
                     </li>
-                    <li className="mb-3">
+                    <li 
+                      className="mb-3"
+                      style={{
+                        opacity: valueVisible ? 1 : 0,
+                        transform: `translateY(${valueVisible ? '0' : '20px'})`,
+                        transition: 'all 0.6s ease-out 0.4s'
+                      }}
+                    >
                       <i className="bi bi-check2-circle text-success me-2"></i>
                       Enhanced confidence in high-risk environments
                     </li>
-                    <li className="mb-3">
+                    <li 
+                      className="mb-3"
+                      style={{
+                        opacity: valueVisible ? 1 : 0,
+                        transform: `translateY(${valueVisible ? '0' : '20px'})`,
+                        transition: 'all 0.6s ease-out 0.5s'
+                      }}
+                    >
                       <i className="bi bi-check2-circle text-success me-2"></i>
                       Improved work-life balance and recovery
                     </li>
