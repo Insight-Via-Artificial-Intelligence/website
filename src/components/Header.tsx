@@ -13,6 +13,9 @@ const Header: React.FC = () => {
 
   // Check if we're on a solutions page
   const isSolutionsPage = router.pathname === '/process-guardian' || router.pathname === '/vital-guardian';
+  
+  // Check if we're on the contact page
+  const isContactPage = router.pathname === '/contact';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,9 +56,11 @@ const Header: React.FC = () => {
             <Nav.Link href="#projects" className="nav-link-modern text-white fw-500 mx-3">
               Projects
             </Nav.Link>
-            <Button variant="primary" className="ms-3">
-              Contact Us
-            </Button>
+            <Link href={isContactPage ? "/" : "/contact"} passHref legacyBehavior>
+              <Button variant="primary" className="ms-3">
+                {isContactPage ? "Home" : "Contact Us"}
+              </Button>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
