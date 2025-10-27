@@ -154,6 +154,9 @@ export default function VitalGuardian() {
                     variant="light"
                     size="lg"
                     style={{ backgroundColor: "#61c997", borderColor: "#61c997", color: "white" }}
+                    href="/VitalGuardian_Brochure.pdf"
+                    download="VitalGuardian_Brochure.pdf"
+                    as="a"
                   >
                     <i className="bi bi-download me-2"></i>
                     Brochure
@@ -769,7 +772,13 @@ export default function VitalGuardian() {
               <Button variant="light" size="lg" className="me-3">
                 Schedule Consultation
               </Button>
-              <Button variant="outline-light" size="lg">
+              <Button 
+                variant="outline-light" 
+                size="lg"
+                href="/VitalGuardian_Brochure.pdf"
+                download="VitalGuardian_Brochure.pdf"
+                as="a"
+              >
                 Download Brochure
               </Button>
             </Col>
