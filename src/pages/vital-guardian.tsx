@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 export default function VitalGuardian() {
   const [scrollY, setScrollY] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [processVisible, setProcessVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -18,6 +19,28 @@ export default function VitalGuardian() {
     
     // Trigger fade-in animation after component mounts
     const timer = setTimeout(() => setIsLoaded(true), 500);
+    
+    // Intersection Observer for process section
+    const processSection = document.getElementById('process-section');
+    if (processSection) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setProcessVisible(true);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      observer.observe(processSection);
+      
+      return () => {
+        window.removeEventListener('scroll', handleScroll);
+        clearTimeout(timer);
+        observer.disconnect();
+      };
+    }
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -480,7 +503,7 @@ export default function VitalGuardian() {
       </section>
 
       {/* Technology Section */}
-      <section className="vital-guardian-hero-image py-6" style={{ minHeight: "auto", display: "block" }}>
+      <section id="process-section" className="vital-guardian-hero-image py-6" style={{ minHeight: "auto", display: "block" }}>
         <Container>
           <Row className="justify-content-center">
             <Col lg={10}>
@@ -507,7 +530,18 @@ export default function VitalGuardian() {
                 />
                 
                 {/* Top row text overlays */}
-                <div className="position-absolute" style={{ top: "2%", left: "21.3%", transform: "translateX(-50%)", maxWidth: "280px", textAlign: "center" }}>
+                <div 
+                  className="position-absolute" 
+                  style={{ 
+                    top: "2%", 
+                    left: "21.3%", 
+                    transform: `translateX(-50%) translateY(${processVisible ? '0' : '-30px'})`, 
+                    maxWidth: "280px", 
+                    textAlign: "center",
+                    opacity: processVisible ? 1 : 0,
+                    transition: 'all 0.8s ease-out 0.3s'
+                  }}
+                >
                   <h6 className="fw-bold mb-1" style={{ fontSize: "1.3rem", color: "#61b0ff", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}>
                     Discovery First
                   </h6>
@@ -516,7 +550,18 @@ export default function VitalGuardian() {
                   </p>
                 </div>
                 
-                <div className="position-absolute" style={{ top: "2%", left: "50%", transform: "translateX(-50%)", maxWidth: "280px", textAlign: "center" }}>
+                <div 
+                  className="position-absolute" 
+                  style={{ 
+                    top: "2%", 
+                    left: "50%", 
+                    transform: `translateX(-50%) translateY(${processVisible ? '0' : '-30px'})`, 
+                    maxWidth: "280px", 
+                    textAlign: "center",
+                    opacity: processVisible ? 1 : 0,
+                    transition: 'all 0.8s ease-out 0.9s'
+                  }}
+                >
                   <h6 className="fw-bold mb-1" style={{ fontSize: "1.3rem", color: "#61b0ff", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}>
                     Co-Designed Solutions
                   </h6>
@@ -525,7 +570,18 @@ export default function VitalGuardian() {
                   </p>
                 </div>
                 
-                <div className="position-absolute" style={{ top: "2%", left: "78.3%", transform: "translateX(-50%)", maxWidth: "280px", textAlign: "center" }}>
+                <div 
+                  className="position-absolute" 
+                  style={{ 
+                    top: "2%", 
+                    left: "78.3%", 
+                    transform: `translateX(-50%) translateY(${processVisible ? '0' : '-30px'})`, 
+                    maxWidth: "280px", 
+                    textAlign: "center",
+                    opacity: processVisible ? 1 : 0,
+                    transition: 'all 0.8s ease-out 1.5s'
+                  }}
+                >
                   <h6 className="fw-bold mb-1" style={{ fontSize: "1.3rem", color: "#61b0ff", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}>
                     The Result
                   </h6>
@@ -535,29 +591,85 @@ export default function VitalGuardian() {
                 </div>
                 
                 {/* Icons below top text */}
-                <div className="position-absolute" style={{ top: "34%", left: "21.3%", transform: "translateX(-50%)" }}>
+                <div 
+                  className="position-absolute" 
+                  style={{ 
+                    top: "34%", 
+                    left: "21.3%", 
+                    transform: "translateX(-50%)",
+                    opacity: processVisible ? 1 : 0,
+                    transition: 'opacity 0.8s ease-out 0.3s'
+                  }}
+                >
                   <i className="bi bi-search text-white" style={{ fontSize: "4rem", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}></i>
                 </div>
                 
-                <div className="position-absolute" style={{ top: "34%", left: "50%", transform: "translateX(-50%)" }}>
+                <div 
+                  className="position-absolute" 
+                  style={{ 
+                    top: "34%", 
+                    left: "50%", 
+                    transform: "translateX(-50%)",
+                    opacity: processVisible ? 1 : 0,
+                    transition: 'opacity 0.8s ease-out 0.9s'
+                  }}
+                >
                   <i className="bi bi-gear text-white" style={{ fontSize: "4rem", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}></i>
                 </div>
                 
-                <div className="position-absolute" style={{ top: "34%", left: "78.3%", transform: "translateX(-50%)" }}>
+                <div 
+                  className="position-absolute" 
+                  style={{ 
+                    top: "34%", 
+                    left: "78.3%", 
+                    transform: "translateX(-50%)",
+                    opacity: processVisible ? 1 : 0,
+                    transition: 'opacity 0.8s ease-out 1.5s'
+                  }}
+                >
                   <i className="bi bi-trophy text-white" style={{ fontSize: "4rem", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}></i>
                 </div>
                 
                 {/* Icons above bottom text */}
-                <div className="position-absolute" style={{ bottom: "35%", left: "35.3%", transform: "translateX(-50%)" }}>
+                <div 
+                  className="position-absolute" 
+                  style={{ 
+                    bottom: "35%", 
+                    left: "35.3%", 
+                    transform: "translateX(-50%)",
+                    opacity: processVisible ? 1 : 0,
+                    transition: 'opacity 0.8s ease-out 0.6s'
+                  }}
+                >
                   <i className="bi bi-bar-chart text-white" style={{ fontSize: "4rem", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}></i>
                 </div>
                 
-                <div className="position-absolute" style={{ bottom: "35%", left: "63.9%", transform: "translateX(-50%)" }}>
+                <div 
+                  className="position-absolute" 
+                  style={{ 
+                    bottom: "35%", 
+                    left: "63.9%", 
+                    transform: "translateX(-50%)",
+                    opacity: processVisible ? 1 : 0,
+                    transition: 'opacity 0.8s ease-out 1.2s'
+                  }}
+                >
                   <i className="bi bi-shield-check text-white" style={{ fontSize: "4rem", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}></i>
                 </div>
                 
                 {/* Bottom row text overlays */}
-                <div className="position-absolute" style={{ bottom: "2%", left: "35.3%", transform: "translateX(-50%)", maxWidth: "280px", textAlign: "center" }}>
+                <div 
+                  className="position-absolute" 
+                  style={{ 
+                    bottom: "2%", 
+                    left: "35.3%", 
+                    transform: `translateX(-50%) translateY(${processVisible ? '0' : '30px'})`, 
+                    maxWidth: "280px", 
+                    textAlign: "center",
+                    opacity: processVisible ? 1 : 0,
+                    transition: 'all 0.8s ease-out 0.6s'
+                  }}
+                >
                   <h6 className="fw-bold mb-1" style={{ fontSize: "1.3rem", color: "#61b0ff", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}>
                     Tailored Insights
                   </h6>
@@ -566,7 +678,18 @@ export default function VitalGuardian() {
                   </p>
                 </div>
                 
-                <div className="position-absolute" style={{ bottom: "2%", left: "63.7%", transform: "translateX(-50%)", maxWidth: "300px", textAlign: "center" }}>
+                <div 
+                  className="position-absolute" 
+                  style={{ 
+                    bottom: "2%", 
+                    left: "63.7%", 
+                    transform: `translateX(-50%) translateY(${processVisible ? '0' : '30px'})`, 
+                    maxWidth: "300px", 
+                    textAlign: "center",
+                    opacity: processVisible ? 1 : 0,
+                    transition: 'all 0.8s ease-out 1.2s'
+                  }}
+                >
                   <h6 className="fw-bold mb-1" style={{ fontSize: "1.3rem", color: "#61b0ff", textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}>
                     Trusted Outcomes
                   </h6>
