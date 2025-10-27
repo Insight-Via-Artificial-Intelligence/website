@@ -16,12 +16,18 @@ export default function Home() {
   const [isWhyWorkWithUsVisible, setIsWhyWorkWithUsVisible] = useState(false); // Change back to false after testing
   const [isWhatWeDeliverVisible, setIsWhatWeDeliverVisible] = useState(false);
   const [isValuesVisible, setIsValuesVisible] = useState(false);
+  const [isCapabilitiesRnDVisible, setIsCapabilitiesRnDVisible] = useState(false);
+  const [isCapabilitiesTrustedVisible, setIsCapabilitiesTrustedVisible] = useState(false);
+  const [isCapabilitiesImpactVisible, setIsCapabilitiesImpactVisible] = useState(false);
   const whoWeAreRef = useRef<HTMLElement>(null);
   const missionRef = useRef<HTMLElement>(null);
   const visionRef = useRef<HTMLElement>(null);
   const whyWorkWithUsRef = useRef<HTMLElement>(null);
   const whatWeDeliverRef = useRef<HTMLElement>(null);
   const valuesRef = useRef<HTMLElement>(null);
+  const capabilitiesRnDRef = useRef<HTMLDivElement>(null);
+  const capabilitiesTrustedRef = useRef<HTMLDivElement>(null);
+  const capabilitiesImpactRef = useRef<HTMLDivElement>(null);
 
   // Debug: Log state changes
   useEffect(() => {
@@ -242,6 +248,129 @@ export default function Home() {
         { 
           threshold: 0.3,
           rootMargin: '-100px 0px -100px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // Capabilities R&D intersection observer
+  useEffect(() => {
+    const currentRef = capabilitiesRnDRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            console.log('Capabilities R&D intersection:', entry.isIntersecting, entry.intersectionRatio);
+            if (entry.isIntersecting) {
+              console.log('Capabilities R&D section visible, triggering animation');
+              setTimeout(() => {
+                console.log('Setting isCapabilitiesRnDVisible to true');
+                setIsCapabilitiesRnDVisible(true);
+              }, 100);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.3,
+          rootMargin: '0px 0px -150px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // Capabilities Trusted intersection observer
+  useEffect(() => {
+    const currentRef = capabilitiesTrustedRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            console.log('Capabilities Trusted intersection:', entry.isIntersecting, entry.intersectionRatio);
+            if (entry.isIntersecting) {
+              console.log('Capabilities Trusted section visible, triggering animation');
+              setTimeout(() => {
+                console.log('Setting isCapabilitiesTrustedVisible to true');
+                setIsCapabilitiesTrustedVisible(true);
+              }, 100);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.3,
+          rootMargin: '0px 0px -150px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // Capabilities Impact intersection observer
+  useEffect(() => {
+    const currentRef = capabilitiesImpactRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            console.log('Capabilities Impact intersection:', entry.isIntersecting, entry.intersectionRatio);
+            if (entry.isIntersecting) {
+              console.log('Capabilities Impact section visible, triggering animation');
+              setTimeout(() => {
+                console.log('Setting isCapabilitiesImpactVisible to true');
+                setIsCapabilitiesImpactVisible(true);
+              }, 100);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
         }
       );
 
@@ -487,6 +616,34 @@ export default function Home() {
         #values .value-item:nth-child(6) { 
           transition-delay: 1.1s !important; 
         }
+
+        /* Capabilities sections fade-in and slide-up animation */
+        #capabilities .cap-item {
+          opacity: 0 !important;
+          transform: translateY(30px) !important;
+          transition: all 1.0s ease-out !important;
+          will-change: opacity, transform !important;
+          backface-visibility: hidden !important;
+        }
+
+        #capabilities .cap-item.visible {
+          opacity: 1 !important;
+          transform: translateY(0px) !important;
+        }
+
+        /* Staggered delays for capabilities cascade effect */
+        #capabilities .cap-item:nth-child(1) { 
+          transition-delay: 0.1s !important; 
+        }
+        #capabilities .cap-item:nth-child(2) { 
+          transition-delay: 0.25s !important; 
+        }
+        #capabilities .cap-item:nth-child(3) { 
+          transition-delay: 0.4s !important; 
+        }
+        #capabilities .cap-item:nth-child(4) { 
+          transition-delay: 0.55s !important; 
+        }
       `}</style>
 
       <Header />
@@ -589,7 +746,7 @@ export default function Home() {
         </div>
         
         {/* Research & Development - Full Width Image with Text Below */}
-        <div className="mb-0">
+        <div className="mb-0" ref={capabilitiesRnDRef}>
           <div className="capability-image position-relative">
             <img 
               src="/research.jpg" 
@@ -614,7 +771,7 @@ export default function Home() {
                         </p>
                       </div>
                       <Row className="g-4">
-                        <Col md={6}>
+                        <Col md={6} className={`cap-item ${isCapabilitiesRnDVisible ? 'visible' : ''}`}>
                           <div className="d-flex align-items-start mb-3">
                             <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                               <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -628,7 +785,7 @@ export default function Home() {
                             </div>
                           </div>
                         </Col>
-                        <Col md={6}>
+                        <Col md={6} className={`cap-item ${isCapabilitiesRnDVisible ? 'visible' : ''}`}>
                           <div className="d-flex align-items-start mb-3">
                             <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                               <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -642,7 +799,7 @@ export default function Home() {
                             </div>
                           </div>
                         </Col>
-                        <Col md={6}>
+                        <Col md={6} className={`cap-item ${isCapabilitiesRnDVisible ? 'visible' : ''}`}>
                           <div className="d-flex align-items-start mb-3">
                             <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                               <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -656,7 +813,7 @@ export default function Home() {
                             </div>
                           </div>
                         </Col>
-                        <Col md={6}>
+                        <Col md={6} className={`cap-item ${isCapabilitiesRnDVisible ? 'visible' : ''}`}>
                           <div className="d-flex align-items-start">
                             <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                               <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -679,7 +836,7 @@ export default function Home() {
           </div>
 
           {/* Trusted & Secure Technology - Full Width Image with Text Below */}
-          <div className="mb-0">
+          <div className="mb-0" ref={capabilitiesTrustedRef}>
             <div className="capability-image position-relative" style={{ marginLeft: '-100px', marginRight: '-15px' }}>
               <img 
                 src="/trusted.jpg" 
@@ -704,7 +861,7 @@ export default function Home() {
                         </p>
                       </div>
                       <Row className="g-4">
-                        <Col md={6}>
+                        <Col md={6} className={`cap-item ${isCapabilitiesTrustedVisible ? 'visible' : ''}`}>
                           <div className="d-flex align-items-start mb-3">
                             <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                               <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -718,7 +875,7 @@ export default function Home() {
                             </div>
                           </div>
                         </Col>
-                        <Col md={6}>
+                        <Col md={6} className={`cap-item ${isCapabilitiesTrustedVisible ? 'visible' : ''}`}>
                           <div className="d-flex align-items-start mb-3">
                             <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                               <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -732,7 +889,7 @@ export default function Home() {
                             </div>
                           </div>
                         </Col>
-                        <Col md={6}>
+                        <Col md={6} className={`cap-item ${isCapabilitiesTrustedVisible ? 'visible' : ''}`}>
                           <div className="d-flex align-items-start mb-3">
                             <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                               <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -746,7 +903,7 @@ export default function Home() {
                             </div>
                           </div>
                         </Col>
-                        <Col md={6}>
+                        <Col md={6} className={`cap-item ${isCapabilitiesTrustedVisible ? 'visible' : ''}`}>
                           <div className="d-flex align-items-start">
                             <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                               <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -793,8 +950,8 @@ export default function Home() {
                           We deliver operational solutions that scale, integrate, and provide tangible outcomes in complex environments.
                         </p>
                       </div>
-                      <Row className="g-4">
-                        <Col md={6}>
+                      <Row ref={capabilitiesImpactRef} className="g-4">
+                        <Col md={6} className={`cap-item ${isCapabilitiesImpactVisible ? 'visible' : ''}`}>
                           <div className="d-flex align-items-start mb-3">
                             <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                               <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -808,7 +965,7 @@ export default function Home() {
                             </div>
                           </div>
                         </Col>
-                        <Col md={6}>
+                        <Col md={6} className={`cap-item ${isCapabilitiesImpactVisible ? 'visible' : ''}`}>
                           <div className="d-flex align-items-start mb-3">
                             <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                               <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -822,7 +979,7 @@ export default function Home() {
                             </div>
                           </div>
                         </Col>
-                        <Col md={6}>
+                        <Col md={6} className={`cap-item ${isCapabilitiesImpactVisible ? 'visible' : ''}`}>
                           <div className="d-flex align-items-start mb-3">
                             <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                               <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
@@ -836,7 +993,7 @@ export default function Home() {
                             </div>
                           </div>
                         </Col>
-                        <Col md={6}>
+                        <Col md={6} className={`cap-item ${isCapabilitiesImpactVisible ? 'visible' : ''}`}>
                           <div className="d-flex align-items-start">
                             <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
                               <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
