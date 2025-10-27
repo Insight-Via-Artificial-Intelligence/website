@@ -834,23 +834,30 @@ export default function VitalGuardian() {
       </section>
 
       {/* VG Ins Outs Image Section */}
-      <section className="py-0 position-relative">
+      <section 
+        className="pt-5 position-relative"
+        style={{ 
+          background: "linear-gradient(0deg, #002048 0%, #1e3870ff 50%, #003372 100%)"
+        }}
+      >
         <Container fluid className="px-0">
           <Row>
             <Col xs={12} className="px-0 position-relative">
-              <div className="position-absolute w-100 text-center" style={{ top: "5rem", zIndex: 10 }}>
+              <div className="position-absolute w-100 text-center" style={{ top: "3rem", zIndex: 10 }}>
                 <h2 className="display-5 fw-bold text-white mb-0" style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}>
                   Signals to Insights
                 </h2>
               </div>
               <img 
-                src="/VG_ins_outs_f.png" 
+                src="/VG_ins_outs_hr.png" 
                 alt="Vital Guardian Inputs and Outputs" 
-                className="img-fluid w-100"
+                className="img-fluid"
                 style={{
-                  width: "100%",
+                  width: "70%",
                   height: "auto",
-                  display: "block"
+                  display: "block",
+                  margin: "3rem auto 0 auto",
+                  mixBlendMode: "lighten"
                 }}
               />
             </Col>
