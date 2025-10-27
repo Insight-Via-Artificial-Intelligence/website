@@ -14,6 +14,7 @@ export default function VitalGuardian() {
   const [processVisible, setProcessVisible] = useState(false);
   const [teamSafetyVisible, setTeamSafetyVisible] = useState(false);
   const [valueVisible, setValueVisible] = useState(false);
+  const [protectVisible, setProtectVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -26,6 +27,7 @@ export default function VitalGuardian() {
     const processSection = document.getElementById('process-section');
     const teamSafetySection = document.getElementById('team-safety-section');
     const valueSection = document.getElementById('value-section');
+    const protectSection = document.getElementById('protect-section');
     
     const observers: IntersectionObserver[] = [];
     
@@ -72,6 +74,21 @@ export default function VitalGuardian() {
       );
       valueObserver.observe(valueSection);
       observers.push(valueObserver);
+    }
+    
+    if (protectSection) {
+      const protectObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setProtectVisible(true);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      protectObserver.observe(protectSection);
+      observers.push(protectObserver);
     }
     
     return () => {
@@ -1121,7 +1138,7 @@ export default function VitalGuardian() {
       </section>
 
       {/* CTA Section */}
-      <section className="text-white" style={{ background: "linear-gradient(135deg, #61c997 0%, #5bc18e 100%)" }}>
+      <section id="protect-section" className="text-white" style={{ background: "linear-gradient(135deg, #61c997 0%, #5bc18e 100%)" }}>
         <Container className="py-6">
           <Row className="justify-content-center text-center">
             <Col lg={8}>
@@ -1190,7 +1207,10 @@ export default function VitalGuardian() {
                 left: "-80px",
                 width: "240px",
                 height: "auto",
-                zIndex: 1000
+                zIndex: 1000,
+                opacity: protectVisible ? 1 : 0,
+                transform: protectVisible ? 'translateY(0)' : 'translateY(30px)',
+                transition: 'opacity 0.8s ease-out, transform 0.8s ease-out'
               }}
             />
           </div>
