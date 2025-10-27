@@ -15,11 +15,13 @@ export default function Home() {
   const [isVisionVisible, setIsVisionVisible] = useState(false);
   const [isWhyWorkWithUsVisible, setIsWhyWorkWithUsVisible] = useState(false); // Change back to false after testing
   const [isWhatWeDeliverVisible, setIsWhatWeDeliverVisible] = useState(false);
+  const [isValuesVisible, setIsValuesVisible] = useState(false);
   const whoWeAreRef = useRef<HTMLElement>(null);
   const missionRef = useRef<HTMLElement>(null);
   const visionRef = useRef<HTMLElement>(null);
   const whyWorkWithUsRef = useRef<HTMLElement>(null);
   const whatWeDeliverRef = useRef<HTMLElement>(null);
+  const valuesRef = useRef<HTMLElement>(null);
 
   // Debug: Log state changes
   useEffect(() => {
@@ -191,6 +193,47 @@ export default function Home() {
               setTimeout(() => {
                 console.log('Setting isWhatWeDeliverVisible to true');
                 setIsWhatWeDeliverVisible(true);
+              }, 100);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.3,
+          rootMargin: '-100px 0px -100px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // Values intersection observer
+  useEffect(() => {
+    const currentRef = valuesRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            console.log('Values intersection:', entry.isIntersecting, entry.intersectionRatio);
+            if (entry.isIntersecting) {
+              console.log('Values section visible, triggering animation');
+              setTimeout(() => {
+                console.log('Setting isValuesVisible to true');
+                setIsValuesVisible(true);
               }, 100);
               observer.unobserve(entry.target);
             }
@@ -409,6 +452,40 @@ export default function Home() {
         }
         #what-we-deliver .delivery-item:nth-child(5) { 
           transition-delay: 1.4s !important; 
+        }
+
+        /* Values section fade-in and slide-up animation */
+        #values .value-item {
+          opacity: 0 !important;
+          transform: translateY(40px) !important;
+          transition: all 1.2s ease-out !important;
+          will-change: opacity, transform !important;
+          backface-visibility: hidden !important;
+        }
+
+        #values .value-item.visible {
+          opacity: 1 !important;
+          transform: translateY(0px) !important;
+        }
+
+        /* Staggered delays for cascade effect */
+        #values .value-item:nth-child(1) { 
+          transition-delay: 0.1s !important; 
+        }
+        #values .value-item:nth-child(2) { 
+          transition-delay: 0.3s !important; 
+        }
+        #values .value-item:nth-child(3) { 
+          transition-delay: 0.5s !important; 
+        }
+        #values .value-item:nth-child(4) { 
+          transition-delay: 0.7s !important; 
+        }
+        #values .value-item:nth-child(5) { 
+          transition-delay: 0.9s !important; 
+        }
+        #values .value-item:nth-child(6) { 
+          transition-delay: 1.1s !important; 
         }
       `}</style>
 
@@ -799,7 +876,7 @@ export default function Home() {
       </section>
 
       {/* Values Section */}
-      <section id="values" className="py-6 bg-light">
+      <section ref={valuesRef} id="values" className="py-6 bg-light">
         <Container>
           <div className="text-center mb-5">
             <h2 className="display-4 fw-bold mb-4" data-text="VALUES">VALUES</h2>
@@ -809,7 +886,7 @@ export default function Home() {
           </div>
           
           <Row className="g-4">
-            <Col lg={6}>
+            <Col lg={6} className={`value-item ${isValuesVisible ? 'visible' : ''}`}>
               <div 
                 className="p-4 rounded-3 h-100 rotating-gradient" 
                 style={{ 
@@ -822,7 +899,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={6}>
+            <Col lg={6} className={`value-item ${isValuesVisible ? 'visible' : ''}`}>
               <div 
                 className="p-4 rounded-3 h-100 rotating-gradient" 
                 style={{ 
@@ -835,7 +912,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={6}>
+            <Col lg={6} className={`value-item ${isValuesVisible ? 'visible' : ''}`}>
               <div 
                 className="p-4 rounded-3 h-100 rotating-gradient" 
                 style={{ 
@@ -848,7 +925,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={6}>
+            <Col lg={6} className={`value-item ${isValuesVisible ? 'visible' : ''}`}>
               <div 
                 className="p-4 rounded-3 h-100 rotating-gradient" 
                 style={{ 
@@ -861,7 +938,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={6}>
+            <Col lg={6} className={`value-item ${isValuesVisible ? 'visible' : ''}`}>
               <div 
                 className="p-4 rounded-3 h-100 rotating-gradient" 
                 style={{ 
@@ -874,7 +951,7 @@ export default function Home() {
                 </div>
               </div>
             </Col>
-            <Col lg={6}>
+            <Col lg={6} className={`value-item ${isValuesVisible ? 'visible' : ''}`}>
               <div 
                 className="p-4 rounded-3 h-100 rotating-gradient" 
                 style={{ 
