@@ -329,7 +329,16 @@ export default function VitalGuardian() {
 
           <Row className="g-4">
             <Col md={6} lg={4}>
-              <Card className="border-0 shadow-sm" style={{ position: 'relative', marginTop: '80px' }}>
+              <Card 
+                className="border-0 shadow-sm" 
+                style={{ 
+                  position: 'relative', 
+                  marginTop: '80px',
+                  opacity: isLoaded ? 1 : 0,
+                  transform: `translateY(${isLoaded ? '0' : '30px'})`,
+                  transition: 'all 0.8s ease-out 0.2s'
+                }}
+              >
                 <div 
                   style={{
                     position: 'absolute',
@@ -369,7 +378,16 @@ export default function VitalGuardian() {
               </Card>
             </Col>
             <Col md={6} lg={4}>
-              <Card className="border-0 shadow-sm" style={{ position: 'relative', marginTop: '80px' }}>
+              <Card 
+                className="border-0 shadow-sm" 
+                style={{ 
+                  position: 'relative', 
+                  marginTop: '80px',
+                  opacity: isLoaded ? 1 : 0,
+                  transform: `translateY(${isLoaded ? '0' : '30px'})`,
+                  transition: 'all 0.8s ease-out 0.4s'
+                }}
+              >
                 <div 
                   style={{
                     position: 'absolute',
@@ -409,7 +427,16 @@ export default function VitalGuardian() {
               </Card>
             </Col>
             <Col md={6} lg={4}>
-              <Card className="border-0 shadow-sm" style={{ position: 'relative', marginTop: '80px' }}>
+              <Card 
+                className="border-0 shadow-sm" 
+                style={{ 
+                  position: 'relative', 
+                  marginTop: '80px',
+                  opacity: isLoaded ? 1 : 0,
+                  transform: `translateY(${isLoaded ? '0' : '30px'})`,
+                  transition: 'all 0.8s ease-out 0.6s'
+                }}
+              >
                 <div 
                   style={{
                     position: 'absolute',
