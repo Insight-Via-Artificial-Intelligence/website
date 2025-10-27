@@ -157,6 +157,13 @@
     position: relative;
     z-index: 2;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &.contact-box-animate-1 {
+      animation: slideUpFadeIn 0.8s ease-out 0.2s both;
+    }
+
+    &.contact-box-animate-2 {
+      animation: slideUpFadeIn 0.8s ease-out 0.4s both;
+    }
 
     &:hover {
       transform: translateY(-2px);
@@ -263,6 +270,17 @@
   }
   50% {
     transform: translateY(-20px);
+  }
+}
+
+@keyframes slideUpFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

@@ -33,7 +33,7 @@ export default function Contact() {
               <Row>
                 <Col xs={12}>
                   {/* Email Box */}
-                  <div className="contact-box mb-4 contact-box-clickable" onClick={() => window.location.href = 'mailto:contactus@ivai.com.au'} style={{ cursor: 'pointer' }}>
+                  <div className="contact-box mb-4 contact-box-clickable contact-box-animate-1" onClick={() => window.location.href = 'mailto:contactus@ivai.com.au'} style={{ cursor: 'pointer' }}>
                     <div className="contact-box-content text-center">
                       <p className="mb-0 fs-3">
                         <span className="fw-semibold text-white">
@@ -44,7 +44,7 @@ export default function Contact() {
                   </div>
 
                   {/* Office Details Box */}
-                  <div className="contact-box contact-box-clickable" onClick={() => window.open('https://www.google.com/maps/place/Insight+Via+Artificial+Intelligence+Pty+Ltd./@-34.9247019,138.6023076,891m/data=!3m3!1e3!4b1!5s0x6ab0ced187e37379:0x817ceba21a9877c7!4m6!3m5!1s0x6ab0d0666cffffff:0x1ba42fefe03da80f!8m2!3d-34.9247064!4d138.6071785!16s%2Fg%2F11ll7cj50b?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D', '_blank')} style={{ cursor: 'pointer' }}>
+                  <div className="contact-box contact-box-clickable contact-box-animate-2" onClick={() => window.open('https://www.google.com/maps/place/Insight+Via+Artificial+Intelligence+Pty+Ltd./@-34.9247019,138.6023076,891m/data=!3m3!1e3!4b1!5s0x6ab0ced187e37379:0x817ceba21a9877c7!4m6!3m5!1s0x6ab0d0666cffffff:0x1ba42fefe03da80f!8m2!3d-34.9247064!4d138.6071785!16s%2Fg%2F11ll7cj50b?entry=ttu&g_ep=EgoyMDI1MTAyMi4wIKXMDSoASAFQAw%3D%3D', '_blank')} style={{ cursor: 'pointer' }}>
                     <div className="contact-box-content text-center">
                       <div className="office-details-split">
                         <div className="office-address">
