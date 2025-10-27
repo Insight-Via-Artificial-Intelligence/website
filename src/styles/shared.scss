@@ -220,6 +220,17 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
+// Solutions page specific button styling
+.navbar-gradient {
+  .btn-primary {
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(74, 168, 107, 0.4);
+      background: linear-gradient(135deg, #29a059 0%, #229450 100%) !important;
+    }
+  }
+}
+
 // Fixed navbar effect
 .fixed-top {
   z-index: 1030;

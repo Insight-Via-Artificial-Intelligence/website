@@ -57,7 +57,14 @@ const Header: React.FC = () => {
               Projects
             </Nav.Link>
             <Link href={isContactPage ? "/" : "/contact"} passHref legacyBehavior>
-              <Button variant="primary" className="ms-3">
+              <Button 
+                variant="primary" 
+                className="ms-3"
+                style={isSolutionsPage ? {
+                  background: 'linear-gradient(135deg, #3dc799ff 0%, #3ba164ff 100%)',
+                  border: 'none'
+                } : {}}
+              >
                 {isContactPage ? "Home" : "Contact Us"}
               </Button>
             </Link>
