@@ -6,8 +6,24 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useEffect, useState } from "react";
 
 export default function VitalGuardian() {
+  const [scrollY, setScrollY] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    
+    // Trigger fade-in animation after component mounts
+    const timer = setTimeout(() => setIsLoaded(true), 500);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timer);
+    };
+  }, []);
   return (
     <>
       <Head>
@@ -23,11 +39,47 @@ export default function VitalGuardian() {
       <Header />
 
       {/* Hero Section */}
-      <section className="vital-guardian-hero-image text-white">
-        <Container>
+      <section className="vital-guardian-hero-image text-white" style={{ overflow: 'visible' }}>
+        <Container style={{ overflow: 'visible' }}>
           <Row className="justify-content-center align-items-center min-vh-100">
-            <Col lg={12} xl={10} className="text-center">
-              <div className="hero-content">
+            <Col lg={12} xl={10} className="text-center position-relative" style={{ overflow: 'visible' }}>
+              {/* VG Person 1 - left side */}
+              <img 
+                src="/vg_person1.png" 
+                alt="VG Person 1"
+                style={{
+                  position: 'absolute',
+                  left: '-25%',
+                  top: '60%',
+                  transform: `translateY(calc(-50% + ${scrollY * 0.05}px)) translateX(${isLoaded ? '0' : '-20px'})`,
+                  width: '400px',
+                  height: 'auto',
+                  opacity: isLoaded ? 0.8 : 0,
+                  mixBlendMode: 'lighten',
+                  zIndex: 15,
+                  transition: 'all 1.2s ease-out'
+                }}
+              />
+              
+              {/* VG Person 2 - right side */}
+              <img 
+                src="/vg_person2.png" 
+                alt="VG Person 2"
+                style={{
+                  position: 'absolute',
+                  right: '-25%',
+                  top: '60%',
+                  transform: `translateY(calc(-50% + ${scrollY * -0.04}px)) translateX(${isLoaded ? '0' : '20px'})`,
+                  width: '400px',
+                  height: 'auto',
+                  opacity: isLoaded ? 0.8 : 0,
+                  mixBlendMode: 'lighten',
+                  zIndex: 1,
+                  transition: 'all 1.2s ease-out'
+                }}
+              />
+              
+              <div className="hero-content" style={{ position: 'relative', zIndex: 10 }}>
                 <div className="hero-logo mb-4">
                   <svg
                     id="vital-guardian-logo"
@@ -184,8 +236,45 @@ export default function VitalGuardian() {
             </Col>
           </Row> */}
 
-          <Row className="justify-content-center">
-            <Col xs={12} lg={10} xl={8}>
+          <Row className="justify-content-center align-items-center">
+            <Col xs={12} lg={10} xl={8} className="position-relative">
+              {/* Watch image - left side */}
+              <img 
+                src="/watch.png" 
+                alt="Smart Watch"
+                style={{
+                  position: 'absolute',
+                  left: '-15%',
+                  top: '70%',
+                  transform: `translateY(calc(-50% + ${scrollY * 0.1}px))`,
+                  width: '300px',
+                  height: 'auto',
+                  opacity: 0.3,
+                  mixBlendMode: 'overlay',
+                  zIndex: 1,
+                  transition: 'transform 0.1s ease-out'
+                }}
+              />
+              
+              {/* Phone image - right side */}
+              <img 
+                src="/phone.png" 
+                alt="Smart Phone"
+                style={{
+                  position: 'absolute',
+                  right: '-20%',
+                  top: '30%',
+                  transform: `translateY(calc(-50% + ${scrollY * -0.08}px))`,
+                  width: '320px',
+                  height: 'auto',
+                  opacity: 0.3,
+                  mixBlendMode: 'overlay',
+                  zIndex: 1,
+                  transition: 'transform 0.1s ease-out'
+                }}
+              />
+              
+              {/* Video container with higher z-index */}
               <div className="position-relative" style={{ 
                 paddingBottom: '56.25%', 
                 height: 0, 
@@ -195,7 +284,8 @@ export default function VitalGuardian() {
                 border: '12px solid rgba(255, 255, 255, 0.7)', 
                 borderRadius: '16px',
                 backdropFilter: 'blur(10px)',
-                boxShadow: '0 0 30px rgba(255, 255, 255, 0.3)'
+                boxShadow: '0 0 30px rgba(255, 255, 255, 0.3)',
+                zIndex: 10
               }}>
                 <iframe
                   src="https://www.youtube.com/embed/ZhF9fEpmuSc"
@@ -207,7 +297,8 @@ export default function VitalGuardian() {
                     width: '100%',
                     height: '100%',
                     border: 'none',
-                    borderRadius: '8px'
+                    borderRadius: '8px',
+                    zIndex: 10
                   }}
                   allowFullScreen
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
