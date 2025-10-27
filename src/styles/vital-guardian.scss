@@ -407,18 +407,19 @@ body:has(.vital-guardian-hero-image) section:not(.vital-guardian-hero-image):not
 #value-section {
   .value-section-bg-icon {
     position: absolute;
-    bottom: 10px;
+    top: 50%;
     right: 10px;
     font-size: 15rem; // Even bigger
     color: rgba(0, 102, 204, 0.08);
     pointer-events: none;
     z-index: 0; // Behind the text
+    transform: translateY(-50%);
     transition: all 0.3s ease;
     
     // Subtle animation on card hover
     .card:hover & {
       color: rgba(0, 102, 204, 0.12);
-      transform: scale(1.02);
+      transform: translateY(-50%) scale(1.02);
     }
   }
   
@@ -439,15 +440,15 @@ body:has(.vital-guardian-hero-image) section:not(.vital-guardian-hero-image):not
 @media (max-width: 768px) {
   #value-section .value-section-bg-icon {
     font-size: 11rem;
-    bottom: 5px;
     right: 5px;
+    // top: 50% and transform: translateY(-50%) inherited from parent
   }
 }
 
 @media (max-width: 576px) {
   #value-section .value-section-bg-icon {
     font-size: 8rem;
-    bottom: 0px;
     right: 0px;
+    // top: 50% and transform: translateY(-50%) inherited from parent
   }
 }

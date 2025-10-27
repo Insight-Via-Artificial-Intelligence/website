@@ -322,7 +322,7 @@ export default function VitalGuardian() {
                   See Vital Guardian in Action
                 </h2>
                 <p className="lead text-muted">
-                  Discover how Vital Guardian revolutionizes health monitoring and team safety
+                  Discover how Vital Guardian revolutionises health monitoring and team safety
                 </p>
               </div>
             </Col>
@@ -408,7 +408,7 @@ export default function VitalGuardian() {
             <Col lg={10}>
               <div className="text-center mb-5">
                 <h2 className="display-5 fw-bold mb-4">
-                  Team Safety Revolutionized
+                  Team Safety Revolutionised
                 </h2>
                 <p className="lead">
                   Vital Guardian combines secure edge AI processing with flexible system integration to deliver privacy-focused health monitoring and actionable intelligence for protecting teams in high-risk environments.
@@ -979,12 +979,17 @@ export default function VitalGuardian() {
       </section>
 
       {/* Value Section */}
-      <section id="value-section" className="py-6">
+      <section id="value-section" className="py-6 bg-light">
         <Container>
           <Row className="justify-content-center">
             <Col lg={10}>
               <div className="text-center mb-5">
                 <h2 className="display-5 fw-bold mb-4">The Value</h2>
+                <p className="lead text-muted mb-0">
+                  Vital Guardian delivers measurable benefits across your entire organisation, 
+                  from executive leadership to frontline personnel, creating a comprehensive 
+                  safety ecosystem that protects people and enhances performance.
+                </p>
               </div>
             </Col>
           </Row>
@@ -992,8 +997,8 @@ export default function VitalGuardian() {
           <Row className="g-5">
             <Col lg={6}>
               <Card className="border-0 shadow-sm h-100">
-                <Card.Body className="p-5 position-relative">
-                  <h4 className="fw-bold mb-4">For Organizations</h4>
+                <Card.Body className="px-5 py-4 position-relative">
+                  <h4 className="fw-bold mb-4">For Organisations</h4>
                   <ul className="list-unstyled">
                     <li 
                       className="mb-3"
@@ -1057,7 +1062,7 @@ export default function VitalGuardian() {
             </Col>
             <Col lg={6}>
               <Card className="border-0 shadow-sm h-100">
-                <Card.Body className="p-5 position-relative">
+                <Card.Body className="px-5 py-4 position-relative">
                   <h4 className="fw-bold mb-4">For Personnel</h4>
                   <ul className="list-unstyled">
                     <li 
@@ -1091,7 +1096,7 @@ export default function VitalGuardian() {
                       }}
                     >
                       <i className="bi bi-check2-circle text-success me-2"></i>
-                      Personalized wellness insights and recommendations
+                      Personalised wellness insights and recommendations
                     </li>
                     <li 
                       className="mb-3"
@@ -1170,7 +1175,7 @@ export default function VitalGuardian() {
               </h2>
               <p className="lead mb-5">
                 Discover how Vital Guardian can enhance team safety, reduce workplace 
-                incidents, and optimize performance in high-risk environments.
+                incidents, and optimise performance in high-risk environments.
               </p>
               
               <Button 
