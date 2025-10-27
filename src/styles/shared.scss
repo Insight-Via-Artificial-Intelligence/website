@@ -50,9 +50,16 @@ $font-family-sans-serif: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Se
 @import "bootstrap/scss/bootstrap.scss";
 
 // Global styles
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   line-height: 1.6;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
 }
 
 // Heading styles - use Avenir LT Std 95 Black (placed after Bootstrap to override)
