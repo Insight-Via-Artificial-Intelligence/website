@@ -85,6 +85,17 @@ export default function Contact() {
                       </div>
                     </div>
                   </div>
+
+                  {/* Brochure Download Box */}
+                  <div className="contact-box mt-4 contact-box-clickable contact-box-animate-3" onClick={() => window.open('/IVAI_BROCHURE.pdf', '_blank')} style={{ cursor: 'pointer' }}>
+                    <div className="contact-box-content text-center">
+                      <p className="mb-0 fs-4">
+                        <span className="fw-semibold text-white">
+                          Download Our Brochure
+                        </span>
+                      </p>
+                    </div>
+                  </div>
                 </Col>
               </Row>
             </Col>

@@ -86,8 +86,8 @@
   }
 
   .contact-hero {
-    padding: 2rem 0;
-    margin-bottom: 3rem;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
     position: relative;
     z-index: 2;
 
@@ -163,6 +163,10 @@
 
     &.contact-box-animate-2 {
       animation: slideUpFadeIn 0.8s ease-out 0.4s both;
+    }
+
+    &.contact-box-animate-3 {
+      animation: slideUpFadeIn 0.8s ease-out 0.6s both;
     }
 
     &:hover {
