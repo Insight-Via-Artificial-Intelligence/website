@@ -12,6 +12,7 @@ export default function VitalGuardian() {
   const [scrollY, setScrollY] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [processVisible, setProcessVisible] = useState(false);
+  const [teamSafetyVisible, setTeamSafetyVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -22,8 +23,12 @@ export default function VitalGuardian() {
     
     // Intersection Observer for process section
     const processSection = document.getElementById('process-section');
+    const teamSafetySection = document.getElementById('team-safety-section');
+    
+    const observers: IntersectionObserver[] = [];
+    
     if (processSection) {
-      const observer = new IntersectionObserver(
+      const processObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -33,18 +38,29 @@ export default function VitalGuardian() {
         },
         { threshold: 0.3 }
       );
-      observer.observe(processSection);
-      
-      return () => {
-        window.removeEventListener('scroll', handleScroll);
-        clearTimeout(timer);
-        observer.disconnect();
-      };
+      processObserver.observe(processSection);
+      observers.push(processObserver);
+    }
+    
+    if (teamSafetySection) {
+      const teamSafetyObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTeamSafetyVisible(true);
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      teamSafetyObserver.observe(teamSafetySection);
+      observers.push(teamSafetyObserver);
     }
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(timer);
+      observers.forEach(observer => observer.disconnect());
     };
   }, []);
   return (
@@ -335,7 +351,7 @@ export default function VitalGuardian() {
       </section>
 
       {/* Overview Section */}
-      <section className="py-6 bg-light">
+      <section id="team-safety-section" className="py-6 bg-light">
         <Container>
           <Row className="justify-content-center">
             <Col lg={10}>
@@ -357,8 +373,8 @@ export default function VitalGuardian() {
                 style={{ 
                   position: 'relative', 
                   marginTop: '80px',
-                  opacity: isLoaded ? 1 : 0,
-                  transform: `translateY(${isLoaded ? '0' : '30px'})`,
+                  opacity: teamSafetyVisible ? 1 : 0,
+                  transform: `translateY(${teamSafetyVisible ? '0' : '30px'})`,
                   transition: 'all 0.8s ease-out 0.2s'
                 }}
               >
@@ -406,8 +422,8 @@ export default function VitalGuardian() {
                 style={{ 
                   position: 'relative', 
                   marginTop: '80px',
-                  opacity: isLoaded ? 1 : 0,
-                  transform: `translateY(${isLoaded ? '0' : '30px'})`,
+                  opacity: teamSafetyVisible ? 1 : 0,
+                  transform: `translateY(${teamSafetyVisible ? '0' : '30px'})`,
                   transition: 'all 0.8s ease-out 0.4s'
                 }}
               >
@@ -455,8 +471,8 @@ export default function VitalGuardian() {
                 style={{ 
                   position: 'relative', 
                   marginTop: '80px',
-                  opacity: isLoaded ? 1 : 0,
-                  transform: `translateY(${isLoaded ? '0' : '30px'})`,
+                  opacity: teamSafetyVisible ? 1 : 0,
+                  transform: `translateY(${teamSafetyVisible ? '0' : '30px'})`,
                   transition: 'all 0.8s ease-out 0.6s'
                 }}
               >
