@@ -168,6 +168,56 @@ export default function VitalGuardian() {
         </Container>
       </section>
 
+      {/* Video Section */}
+      <section className="vital-guardian-hero-image" style={{ height: '80vh', display: 'flex', alignItems: 'center', transform: 'scaleY(-1)' }}>
+        <Container fluid style={{ transform: 'scaleY(-1)' }}>
+          {/* <Row className="justify-content-center">
+            <Col lg={10}>
+              <div className="text-center mb-5">
+                <h2 className="display-5 fw-bold mb-4">
+                  See Vital Guardian in Action
+                </h2>
+                <p className="lead text-muted">
+                  Discover how Vital Guardian revolutionizes health monitoring and team safety
+                </p>
+              </div>
+            </Col>
+          </Row> */}
+
+          <Row className="justify-content-center">
+            <Col xs={12} lg={10} xl={8}>
+              <div className="position-relative" style={{ 
+                paddingBottom: '56.25%', 
+                height: 0, 
+                overflow: 'hidden', 
+                maxWidth: '100%', 
+                maxHeight: '60vh', 
+                border: '12px solid rgba(255, 255, 255, 0.7)', 
+                borderRadius: '16px',
+                backdropFilter: 'blur(10px)',
+                boxShadow: '0 0 30px rgba(255, 255, 255, 0.3)'
+              }}>
+                <iframe
+                  src="https://www.youtube.com/embed/ZhF9fEpmuSc"
+                  title="Vital Guardian Demo Video"
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    border: 'none',
+                    borderRadius: '8px'
+                  }}
+                  allowFullScreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                ></iframe>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
       {/* Overview Section */}
       <section className="py-6 bg-light">
         <Container>
@@ -304,46 +354,6 @@ export default function VitalGuardian() {
                   </p>
                 </Card.Body>
               </Card>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-
-      {/* Video Section */}
-      <section className="py-6">
-        <Container>
-          {/* <Row className="justify-content-center">
-            <Col lg={10}>
-              <div className="text-center mb-5">
-                <h2 className="display-5 fw-bold mb-4">
-                  See Vital Guardian in Action
-                </h2>
-                <p className="lead text-muted">
-                  Discover how Vital Guardian revolutionizes health monitoring and team safety
-                </p>
-              </div>
-            </Col>
-          </Row> */}
-
-          <Row className="justify-content-center">
-            <Col lg={10} xl={8}>
-              <div className="position-relative" style={{ paddingBottom: '56.25%', height: 0, overflow: 'hidden' }}>
-                <iframe
-                  src="https://www.youtube.com/embed/ZhF9fEpmuSc"
-                  title="Vital Guardian Demo Video"
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    border: 'none',
-                    borderRadius: '0.5rem'
-                  }}
-                  allowFullScreen
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                ></iframe>
-              </div>
             </Col>
           </Row>
         </Container>
