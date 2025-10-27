@@ -402,3 +402,52 @@ body:has(.vital-guardian-hero-image) section:not(.vital-guardian-hero-image):not
     }
   }
 }
+
+// Value section background icons
+#value-section {
+  .value-section-bg-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 15rem; // Even bigger
+    color: rgba(0, 102, 204, 0.08);
+    pointer-events: none;
+    z-index: 0; // Behind the text
+    transition: all 0.3s ease;
+    
+    // Subtle animation on card hover
+    .card:hover & {
+      color: rgba(0, 102, 204, 0.12);
+      transform: scale(1.02);
+    }
+  }
+  
+  // Ensure content sits above the icon
+  .card-body {
+    position: relative;
+    z-index: 1;
+  }
+  
+  // Ensure list items and text are above the icon
+  ul, li, h4, p {
+    position: relative;
+    z-index: 1;
+  }
+}
+
+// Mobile adjustments for background icons
+@media (max-width: 768px) {
+  #value-section .value-section-bg-icon {
+    font-size: 11rem;
+    bottom: 5px;
+    right: 5px;
+  }
+}
+
+@media (max-width: 576px) {
+  #value-section .value-section-bg-icon {
+    font-size: 8rem;
+    bottom: 0px;
+    right: 0px;
+  }
+}

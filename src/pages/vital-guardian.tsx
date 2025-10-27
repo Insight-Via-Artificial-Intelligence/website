@@ -992,7 +992,7 @@ export default function VitalGuardian() {
           <Row className="g-5">
             <Col lg={6}>
               <Card className="border-0 shadow-sm h-100">
-                <Card.Body className="p-5">
+                <Card.Body className="p-5 position-relative">
                   <h4 className="fw-bold mb-4">For Organizations</h4>
                   <ul className="list-unstyled">
                     <li 
@@ -1051,12 +1051,13 @@ export default function VitalGuardian() {
                       Data-driven decision making for team safety
                     </li>
                   </ul>
+                  <i className="bi bi-building value-section-bg-icon"></i>
                 </Card.Body>
               </Card>
             </Col>
             <Col lg={6}>
               <Card className="border-0 shadow-sm h-100">
-                <Card.Body className="p-5">
+                <Card.Body className="p-5 position-relative">
                   <h4 className="fw-bold mb-4">For Personnel</h4>
                   <ul className="list-unstyled">
                     <li 
@@ -1115,6 +1116,7 @@ export default function VitalGuardian() {
                       Improved work-life balance and recovery
                     </li>
                   </ul>
+                  <i className="bi bi-people-fill value-section-bg-icon"></i>
                 </Card.Body>
               </Card>
             </Col>
