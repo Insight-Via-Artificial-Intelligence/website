@@ -866,8 +866,8 @@ export default function VitalGuardian() {
       </section>
 
       {/* CTA Section */}
-      <section className="text-white py-6" style={{ background: "linear-gradient(135deg, #61c997 0%, #5bc18e 100%)" }}>
-        <Container>
+      <section className="text-white" style={{ background: "linear-gradient(135deg, #61c997 0%, #5bc18e 100%)" }}>
+        <Container className="py-6">
           <Row className="justify-content-center text-center">
             <Col lg={8}>
               <h2 className="display-5 fw-bold mb-4">
@@ -877,6 +877,7 @@ export default function VitalGuardian() {
                 Discover how Vital Guardian can enhance team safety, reduce workplace 
                 incidents, and optimize performance in high-risk environments.
               </p>
+              
               <Button variant="light" size="lg" className="me-3">
                 Schedule Consultation
               </Button>
@@ -892,6 +893,71 @@ export default function VitalGuardian() {
             </Col>
           </Row>
         </Container>
+        
+        {/* VG Images Row - at bottom with no gaps */}
+        <div className="d-flex position-relative" style={{ height: "400px", overflow: "visible" }}>
+          <div style={{ flex: 1, overflow: "visible" }}>
+            <img 
+              src="/VG_img3.png" 
+              alt="VG Image 3" 
+              style={{ 
+                width: "100%", 
+                height: "400px", 
+                objectFit: "cover",
+                display: "block"
+              }}
+            />
+          </div>
+          <div style={{ flex: 1, overflow: "visible", position: "relative", zIndex: 100 }}>
+            <img 
+              src="/VG_img4.png" 
+              alt="VG Image 4" 
+              style={{ 
+                width: "100%", 
+                height: "400px", 
+                objectFit: "cover",
+                display: "block"
+              }}
+            />
+            {/* VG Shield Green overlay */}
+            <img 
+              src="/VG_shield_green.png" 
+              alt="VG Shield Green" 
+              style={{ 
+                position: "absolute",
+                top: "-70px",
+                left: "-80px",
+                width: "240px",
+                height: "auto",
+                zIndex: 1000
+              }}
+            />
+          </div>
+          <div style={{ flex: 1, overflow: "hidden" }}>
+            <img 
+              src="/VG_img1.png" 
+              alt="VG Image 1" 
+              style={{ 
+                width: "100%", 
+                height: "400px", 
+                objectFit: "cover",
+                display: "block"
+              }}
+            />
+          </div>
+          <div style={{ flex: 1, overflow: "hidden" }}>
+            <img 
+              src="/VG_img2.png" 
+              alt="VG Image 2" 
+              style={{ 
+                width: "100%", 
+                height: "400px", 
+                objectFit: "cover",
+                display: "block"
+              }}
+            />
+          </div>
+        </div>
       </section>
 
       <Footer />
