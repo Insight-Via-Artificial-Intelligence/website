@@ -199,6 +199,8 @@ export default function VitalGuardian() {
                     variant="outline-light"
                     size="lg"
                     style={{ borderColor: "#61c997", color: "#61c997" }}
+                    href="/contact"
+                    as="a"
                   >
                     Request Demo
                   </Button>
@@ -878,7 +880,13 @@ export default function VitalGuardian() {
                 incidents, and optimize performance in high-risk environments.
               </p>
               
-              <Button variant="light" size="lg" className="me-3">
+              <Button 
+                variant="light" 
+                size="lg" 
+                className="me-3"
+                href="/contact"
+                as="a"
+              >
                 Schedule Consultation
               </Button>
               <Button 
