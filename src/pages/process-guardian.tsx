@@ -112,22 +112,22 @@ export default function ProcessGuardian() {
 
               <div
                 className="hero-content"
-                style={{ position: "relative", zIndex: 10, marginTop: "4rem" }}
+                style={{ position: "relative", zIndex: 10, marginTop: "11rem" }}
               >
                 <div className="hero-logo mb-4">
                   <img
                     src="/PG_logo.svg"
                     alt="Process Guardian Logo"
                     style={{
-                      width: "350px",
+                      width: "280px",
                       height: "auto",
-                      marginBottom: "1.5rem",
+                      marginBottom: ".5rem",
                       filter: "drop-shadow(0 0 20px rgba(42, 177, 117, 0.4))",
                     }}
                   />
                   <h1
                     className="hero-tagline fw-bold mb-4"
-                    style={{ fontSize: "3.5rem", lineHeight: "1.1" }}
+                    style={{ fontSize: "2.8rem", lineHeight: "0.8" }}
                   >
                     <span
                       style={{
@@ -143,13 +143,13 @@ export default function ProcessGuardian() {
                 <p
                   className="lead mb-4 hero-motto"
                   style={{
-                    fontSize: "2.5rem",
+                    fontSize: "2rem",
                     textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
                   }}
                 >
                   CLARITY, CONTROL, AND CONFIDENCE
                 </p>
-                <p className="mb-5 opacity-90" style={{ fontSize: "1.1rem" }}>
+                <p className="mb-5 opacity-90" style={{ fontSize: "1rem", paddingLeft: "2rem", paddingRight: "2rem" }}>
                   <b>Process Guardian</b> is your smart assistant for complex
                   operations. It continuously oversees IoT sensor-driven
                   processes—whether individual machines or entire interconnected
@@ -159,11 +159,6 @@ export default function ProcessGuardian() {
                   right solution—preventing downtime, avoiding costly
                   disruptions, and keeping your operations performing at their
                   best.
-                  <br />
-                  <br />
-                  Built to be modular and customisable, it adapts seamlessly to
-                  your world—whether it is a manufacturing process or the
-                  management of complex systems.
                 </p>
 
                 <div className="d-flex gap-3 justify-content-center flex-wrap">
