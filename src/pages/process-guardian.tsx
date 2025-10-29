@@ -77,23 +77,49 @@ export default function ProcessGuardian() {
                 }}
               />
               
-              <div className="hero-content" style={{ position: 'relative', zIndex: 10 }}>
+              {/* PG Circles Gradient Background */}
+              <img 
+                src="/PG_circles_grad.png" 
+                alt="Process Guardian Background Circles"
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '120%',
+                  height: 'auto',
+                  opacity: 0.3,
+                  zIndex: 2,
+                  mixBlendMode: 'lighten',
+                  pointerEvents: 'none'
+                }}
+              />
+              
+              <div className="hero-content" style={{ position: 'relative', zIndex: 10, marginTop: '4rem' }}>
                 <div className="hero-logo mb-4">
-                  <h1 className="hero-tagline fw-bold mb-4" style={{ fontSize: '4.5rem', lineHeight: '1.1' }}>
+                  <img 
+                    src="/PG_logo.svg" 
+                    alt="Process Guardian Logo" 
+                    style={{
+                      width: '350px',
+                      height: 'auto',
+                      marginBottom: '1.5rem',
+                      filter: 'drop-shadow(0 0 20px rgba(42, 177, 117, 0.4))'
+                    }}
+                  />
+                  <h1 className="hero-tagline fw-bold mb-4" style={{ fontSize: '3.5rem', lineHeight: '1.1' }}>
                     <span style={{ 
-                      color: '#0ce76fff', 
-                      textShadow: '0 0 20px rgba(12, 231, 111, 0.8), 0 0 40px rgba(12, 231, 111, 0.4), 0 0 60px rgba(12, 231, 111, 0.2)' 
+                      color: '#2ab175', 
+                      textShadow: '0 0 20px rgba(42, 177, 117, 0.8), 0 0 40px rgba(42, 177, 117, 0.4), 0 0 60px rgba(42, 177, 117, 0.2)' 
                     }}>
                       Process Guardian
                     </span>
                   </h1>
                 </div>
                 <p
-                  className="lead mb-4"
+                  className="lead mb-4 hero-motto"
                   style={{
                     fontSize: "2.5rem",
-                    color: "#0ce76fff",
-                    fontWeight: "500",
                     textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
                   }}
                 >
@@ -113,7 +139,7 @@ export default function ProcessGuardian() {
                   <Button
                     variant="outline-light"
                     size="lg"
-                    style={{ borderColor: "#0ce76fff", color: "#0ce76fff" }}
+                    style={{ borderColor: "#2ab175", color: "#2ab175" }}
                     href="/contact"
                     as="a"
                   >
@@ -122,7 +148,7 @@ export default function ProcessGuardian() {
                   <Button
                     variant="light"
                     size="lg"
-                    style={{ backgroundColor: "#0ce76fff", borderColor: "#0ce76fff", color: "white" }}
+                    style={{ backgroundColor: "#2ab175", borderColor: "#2ab175", color: "white" }}
                     href="/ProcessGuardian_Brochure.pdf"
                     download="ProcessGuardian_Brochure.pdf"
                     as="a"
@@ -156,7 +182,7 @@ export default function ProcessGuardian() {
               <Card className="h-100 border-0 shadow-sm">
                 <Card.Body className="p-4 text-center">
                   <div className="mb-3">
-                    <i className="bi bi-speedometer2" style={{ fontSize: '3rem', color: '#0ce76fff' }}></i>
+                    <i className="bi bi-speedometer2" style={{ fontSize: '3rem', color: '#2ab175' }}></i>
                   </div>
                   <h5 className="fw-bold mb-3">Real-Time Monitoring</h5>
                   <p className="text-muted">
@@ -169,7 +195,7 @@ export default function ProcessGuardian() {
               <Card className="h-100 border-0 shadow-sm">
                 <Card.Body className="p-4 text-center">
                   <div className="mb-3">
-                    <i className="bi bi-graph-up-arrow" style={{ fontSize: '3rem', color: '#0ce76fff' }}></i>
+                    <i className="bi bi-graph-up-arrow" style={{ fontSize: '3rem', color: '#2ab175' }}></i>
                   </div>
                   <h5 className="fw-bold mb-3">Predictive Analytics</h5>
                   <p className="text-muted">
@@ -182,7 +208,7 @@ export default function ProcessGuardian() {
               <Card className="h-100 border-0 shadow-sm">
                 <Card.Body className="p-4 text-center">
                   <div className="mb-3">
-                    <i className="bi bi-gear-wide-connected" style={{ fontSize: '3rem', color: '#0ce76fff' }}></i>
+                    <i className="bi bi-gear-wide-connected" style={{ fontSize: '3rem', color: '#2ab175' }}></i>
                   </div>
                   <h5 className="fw-bold mb-3">Automated Optimization</h5>
                   <p className="text-muted">

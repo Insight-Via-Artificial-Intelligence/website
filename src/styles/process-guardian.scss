@@ -74,8 +74,8 @@ body:has(.process-guardian-hero-image) {
     }
   }
   
-  // Apply Aptly font to buttons on Process Guardian page (excluding footer buttons)
-  .btn:not(footer .btn) {
+  // Apply Aptly font to buttons on Process Guardian page (excluding footer and navbar buttons)
+  .btn:not(footer .btn, .navbar .btn, header .btn) {
     font-family: 'Aptly', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
     font-weight: 400 !important;
     text-transform: uppercase !important;
@@ -112,6 +112,15 @@ body:has(.process-guardian-hero-image) {
   // Special styling for hero tagline
   .hero-tagline {
     letter-spacing: 0.08em !important; // More spacing for large hero text
+  }
+  
+  // Special styling for the motto tagline (MONITOR. OPTIMIZE. EXCEL.)
+  .hero-motto {
+    font-family: 'Aptly', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    font-weight: 400 !important;
+    color: #fc0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
   }
 }
 
