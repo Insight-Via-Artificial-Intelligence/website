@@ -54,12 +54,12 @@ export default function ProcessGuardian() {
             >
               {/* Process monitoring visualization - left side */}
               <img
-                src="/process_visual_1.png"
+                src="/PG_screen.png"
                 alt="Process Monitoring Visualization"
                 style={{
                   position: "absolute",
                   left: "-25%",
-                  top: "60%",
+                  top: "80%",
                   transform: `translateY(calc(-50% + ${
                     scrollY * 0.05
                   }px)) translateX(${isLoaded ? "0" : "-20px"})`,
@@ -74,12 +74,12 @@ export default function ProcessGuardian() {
 
               {/* Process analytics dashboard - right side */}
               <img
-                src="/process_visual_2.png"
+                src="/PG_graph_ab.png"
                 alt="Process Analytics Dashboard"
                 style={{
                   position: "absolute",
-                  right: "-25%",
-                  top: "60%",
+                  right: "-23%",
+                  top: "30%",
                   transform: `translateY(calc(-50% + ${
                     scrollY * -0.04
                   }px)) translateX(${isLoaded ? "0" : "20px"})`,
@@ -187,6 +187,103 @@ export default function ProcessGuardian() {
                     Brochure
                   </Button>
                 </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Video Section */}
+      <section 
+        className="process-guardian-hero-image py-6" 
+        style={{ 
+          minHeight: '80vh', 
+          display: 'flex', 
+          alignItems: 'center',
+          transform: 'scaleY(-1)'
+        }}
+      >
+        <Container style={{ transform: 'scaleY(-1)' }}>
+          <Row className="justify-content-center">
+            <Col lg={10}>
+              <div className="text-center mb-5">
+                <h2 className="display-5 fw-bold mb-4 text-white">
+                  See Process Guardian in Action
+                </h2>
+                <p className="lead text-white opacity-90">
+                  Discover how Process Guardian transforms complex operations into clear, actionable insights
+                </p>
+              </div>
+            </Col>
+          </Row>
+
+          <Row className="justify-content-center align-items-center">
+            <Col xs={12} lg={10} xl={8} className="position-relative">
+              {/* Process monitoring visualization - left side */}
+              <img 
+                src="/PG_pump.png" 
+                alt="Process Monitoring Visualization"
+                style={{
+                  position: 'absolute',
+                  left: '-35%',
+                  top: '70%',
+                  transform: `translateY(calc(-50% + ${scrollY * 0.1}px)) translateX(${isLoaded ? "0" : "-20px"})`,
+                  width: '450px',
+                  height: 'auto',
+                  opacity: isLoaded ? 0.3 : 0,
+                  mixBlendMode: 'overlay',
+                  zIndex: 1,
+                  transition: 'all 1.2s ease-out'
+                }}
+              />
+              
+              {/* Process analytics dashboard - right side */}
+              <img 
+                src="/PG_ship.png" 
+                alt="Process Analytics Dashboard"
+                style={{
+                  position: 'absolute',
+                  right: '-40%',
+                  top: '10%',
+                  transform: `translateY(calc(-50% + ${scrollY * -0.08}px)) translateX(${isLoaded ? "0" : "20px"})`,
+                  width: '780px',
+                  height: 'auto',
+                  opacity: isLoaded ? 0.3 : 0,
+                  mixBlendMode: 'overlay',
+                  zIndex: 1,
+                  transition: 'all 1.2s ease-out'
+                }}
+              />
+              
+              {/* Video container with higher z-index */}
+              <div className="position-relative" style={{ 
+                paddingBottom: '56.25%', 
+                height: 0, 
+                overflow: 'hidden', 
+                maxWidth: '100%', 
+                maxHeight: '60vh', 
+                border: '12px solid rgba(255, 255, 255, 0.7)', 
+                borderRadius: '16px',
+                backdropFilter: 'blur(10px)',
+                boxShadow: '0 0 30px rgba(255, 255, 255, 0.3)',
+                zIndex: 10
+              }}>
+                <iframe
+                  src="https://www.youtube.com/embed/DpjUdc3HmGo"
+                  title="Process Guardian Demo Video"
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    border: 'none',
+                    borderRadius: '8px',
+                    zIndex: 10
+                  }}
+                  allowFullScreen
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                ></iframe>
               </div>
             </Col>
           </Row>
