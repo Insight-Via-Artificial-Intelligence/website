@@ -6,8 +6,25 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { useEffect, useState } from "react";
 
 export default function ProcessGuardian() {
+  const [scrollY, setScrollY] = useState(0);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrollY(window.scrollY);
+    window.addEventListener('scroll', handleScroll);
+    
+    // Trigger fade-in animation after component mounts
+    const timer = setTimeout(() => setIsLoaded(true), 500);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
     <>
       <Head>
@@ -20,31 +37,100 @@ export default function ProcessGuardian() {
       <Header />
 
       {/* Hero Section */}
-      <section className="solutions-hero-gradient text-white">
-        <Container>
+      <section className="process-guardian-hero-image text-white" style={{ overflow: 'visible' }}>
+        <Container style={{ overflow: 'visible' }}>
           <Row className="justify-content-center align-items-center min-vh-100">
-            <Col lg={12} xl={10} className="text-center">
-              <div className="hero-content">
-                <h1 className="hero-tagline fw-bold mb-4" style={{ fontSize: '3.5rem', lineHeight: '1.1' }}>
-                  <span style={{ 
-                    color: '#0ce76fff', 
-                    textShadow: '0 0 20px rgba(72, 243, 86, 0.62), 0 0 40px rgba(6, 182, 212, 0.4), 0 0 60px rgba(6, 182, 212, 0.2)' 
-                  }}>
-                    Process Guardian
-                  </span>
-                </h1>
-                <p className="lead mb-4" style={{ fontSize: '1.5rem' }}>
-                  Intelligent Process Monitoring & Optimization
+            <Col lg={12} xl={10} className="text-center position-relative" style={{ overflow: 'visible' }}>
+              {/* Process monitoring visualization - left side */}
+              <img 
+                src="/process_visual_1.png" 
+                alt="Process Monitoring Visualization"
+                style={{
+                  position: 'absolute',
+                  left: '-25%',
+                  top: '60%',
+                  transform: `translateY(calc(-50% + ${scrollY * 0.05}px)) translateX(${isLoaded ? '0' : '-20px'})`,
+                  width: '400px',
+                  height: 'auto',
+                  opacity: isLoaded ? 0.8 : 0,
+                  mixBlendMode: 'lighten',
+                  zIndex: 15,
+                  transition: 'all 1.2s ease-out'
+                }}
+              />
+              
+              {/* Process analytics dashboard - right side */}
+              <img 
+                src="/process_visual_2.png" 
+                alt="Process Analytics Dashboard"
+                style={{
+                  position: 'absolute',
+                  right: '-25%',
+                  top: '60%',
+                  transform: `translateY(calc(-50% + ${scrollY * -0.04}px)) translateX(${isLoaded ? '0' : '20px'})`,
+                  width: '400px',
+                  height: 'auto',
+                  opacity: isLoaded ? 0.8 : 0,
+                  mixBlendMode: 'lighten',
+                  zIndex: 1,
+                  transition: 'all 1.2s ease-out'
+                }}
+              />
+              
+              <div className="hero-content" style={{ position: 'relative', zIndex: 10 }}>
+                <div className="hero-logo mb-4">
+                  <h1 className="hero-tagline fw-bold mb-4" style={{ fontSize: '4.5rem', lineHeight: '1.1' }}>
+                    <span style={{ 
+                      color: '#0ce76fff', 
+                      textShadow: '0 0 20px rgba(12, 231, 111, 0.8), 0 0 40px rgba(12, 231, 111, 0.4), 0 0 60px rgba(12, 231, 111, 0.2)' 
+                    }}>
+                      Process Guardian
+                    </span>
+                  </h1>
+                </div>
+                <p
+                  className="lead mb-4"
+                  style={{
+                    fontSize: "2.5rem",
+                    color: "#0ce76fff",
+                    fontWeight: "500",
+                    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.7)",
+                  }}
+                >
+                  MONITOR. OPTIMIZE. EXCEL.
                 </p>
-                <p className="mb-5 opacity-90" style={{ fontSize: '1.1rem' }}>
-                  Advanced AI-powered solution for real-time process monitoring, predictive analytics, and automated optimization across industrial and operational environments.
+                <p className="mb-5 opacity-90" style={{ fontSize: "1.1rem" }}>
+                  <b>Process Guardian</b> is an advanced AI-powered solution that
+                  revolutionizes process monitoring and optimization across industrial
+                  and operational environments. From real-time anomaly detection
+                  and predictive analytics to automated optimization workflows,
+                  Process Guardian transforms how organizations manage their critical
+                  processes, ensuring peak performance, reduced downtime, and
+                  enhanced operational excellence.
                 </p>
-                <Button variant="primary" size="lg" className="me-3">
-                  Learn More
-                </Button>
-                <Button variant="outline-light" size="lg">
-                  Request Demo
-                </Button>
+
+                <div className="d-flex gap-3 justify-content-center flex-wrap">
+                  <Button
+                    variant="outline-light"
+                    size="lg"
+                    style={{ borderColor: "#0ce76fff", color: "#0ce76fff" }}
+                    href="/contact"
+                    as="a"
+                  >
+                    Request Demo
+                  </Button>
+                  <Button
+                    variant="light"
+                    size="lg"
+                    style={{ backgroundColor: "#0ce76fff", borderColor: "#0ce76fff", color: "white" }}
+                    href="/ProcessGuardian_Brochure.pdf"
+                    download="ProcessGuardian_Brochure.pdf"
+                    as="a"
+                  >
+                    <i className="bi bi-download me-2"></i>
+                    Brochure
+                  </Button>
+                </div>
               </div>
             </Col>
           </Row>

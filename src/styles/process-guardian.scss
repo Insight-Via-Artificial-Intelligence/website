@@ -3,6 +3,118 @@
 
 // Process Guardian specific styles
 
+// Aptly font face definitions
+@font-face {
+  font-family: 'Aptly';
+  src: url('/fonts/Aptly/Aptly.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aptly';
+  src: url('/fonts/Aptly/Aptly_Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aptly';
+  src: url('/fonts/Aptly/Aptly_Bold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aptly';
+  src: url('/fonts/Aptly/Aptly_Extra_Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aptly';
+  src: url('/fonts/Aptly/Aptly_Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Process Guardian hero with image background
+.process-guardian-hero-image {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    url('/PG_back.png') center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+}
+
+// Apply Aptly font to headings on Process Guardian page only (excluding footer)
+body:has(.process-guardian-hero-image) {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  .display-1, .display-2, .display-3, .display-4, .display-5, .display-6,
+  .hero-tagline {
+    &:not(footer h1, footer h2, footer h3, footer h4, footer h5, footer h6,
+         footer .h1, footer .h2, footer .h3, footer .h4, footer .h5, footer .h6,
+         footer .display-1, footer .display-2, footer .display-3, footer .display-4, footer .display-5, footer .display-6) {
+      font-family: 'Aptly', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+      font-weight: 400 !important; // Thinner weight
+      line-height: 1.2 !important;
+      text-transform: uppercase !important; // All caps
+      letter-spacing: 0.05em !important; // Better spacing for caps
+    }
+  }
+  
+  // Apply Aptly font to buttons on Process Guardian page (excluding footer buttons)
+  .btn:not(footer .btn) {
+    font-family: 'Aptly', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    font-weight: 400 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+  }
+  
+  // Reset footer headings to normal styling
+  footer {
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6,
+    .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+      font-family: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+      font-weight: 900 !important;
+      text-transform: none !important;
+      letter-spacing: normal !important;
+    }
+    
+    // Reset footer buttons to normal styling
+    .btn {
+      font-family: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+      font-weight: 500 !important;
+      text-transform: none !important;
+      letter-spacing: normal !important;
+    }
+  }
+  
+  // Ensure proper spacing for headings with Aptly font
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+    margin-bottom: 1rem !important;
+  }
+  
+  // Special styling for hero tagline
+  .hero-tagline {
+    letter-spacing: 0.08em !important; // More spacing for large hero text
+  }
+}
+
 // Solutions page hero gradient (blue theme)
 .solutions-hero-gradient {
   background: 
