@@ -190,7 +190,7 @@ export default function ProcessGuardian() {
             >
               {/* Process monitoring visualization - left side */}
               <img
-                src="/PG_screen.png"
+                src="/PG_shield.svg"
                 alt="Process Monitoring Visualization"
                 style={{
                   position: "absolute",
@@ -199,7 +199,7 @@ export default function ProcessGuardian() {
                   transform: `translateY(calc(-50% + ${
                     scrollY * 0.05
                   }px)) translateX(${isLoaded ? "0" : "-20px"})`,
-                  width: "400px",
+                  width: "350px",
                   height: "auto",
                   opacity: isLoaded ? 0.8 : 0,
                   mixBlendMode: "lighten",
