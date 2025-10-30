@@ -13,8 +13,13 @@ export default function ProcessGuardian() {
   const [isLoaded, setIsLoaded] = useState(false);
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const [visibleValueCards, setVisibleValueCards] = useState<Set<number>>(new Set());
+  const [visibleIndustryItems, setVisibleIndustryItems] = useState<Set<number>>(new Set());
+  const [visibleTimelineSteps, setVisibleTimelineSteps] = useState<Set<number>>(new Set());
+  const [timelineLineVisible, setTimelineLineVisible] = useState(false);
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const valueCardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const industryItemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const timelineStepRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -45,10 +50,39 @@ export default function ProcessGuardian() {
             setVisibleCards(prev => new Set([...prev, cardIndex]));
           }
           
-          // Check if it's a value card
+          // Check if it's a value card - trigger all value cards when any becomes visible
           const valueCardIndex = valueCardRefs.current.indexOf(entry.target as HTMLDivElement);
           if (valueCardIndex !== -1) {
-            setVisibleValueCards(prev => new Set([...prev, valueCardIndex]));
+            // Trigger all value cards with staggered timing
+            setTimeout(() => setVisibleValueCards(new Set([0])), 0);
+            setTimeout(() => setVisibleValueCards(prev => new Set([...prev, 1])), 150);
+            setTimeout(() => setVisibleValueCards(prev => new Set([...prev, 2])), 300);
+          }
+          
+          // Check if it's an industry item - trigger all industry items when any becomes visible
+          const industryItemIndex = industryItemRefs.current.indexOf(entry.target as HTMLDivElement);
+          if (industryItemIndex !== -1) {
+            // Trigger industry items with staggered timing (left to right, row by row)
+            setTimeout(() => setVisibleIndustryItems(new Set([0])), 0);    // Manufacturing (left, row 1)
+            setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 1])), 100);  // Energy (right, row 1)
+            setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 2])), 200);  // Chemical (left, row 2)
+            setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 3])), 300);  // Healthcare (right, row 2)
+            setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 4])), 400);  // Financial (left, row 3)
+            setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 5])), 500);  // Supply Chain (right, row 3)
+          }
+          
+          // Check if it's a timeline step - trigger all timeline steps and line animation
+          const timelineStepIndex = timelineStepRefs.current.indexOf(entry.target as HTMLDivElement);
+          if (timelineStepIndex !== -1) {
+            // Trigger timeline steps with staggered timing (left to right)
+            setTimeout(() => setVisibleTimelineSteps(new Set([0])), 0);     // Step 1
+            setTimeout(() => setVisibleTimelineSteps(prev => new Set([...prev, 1])), 200);   // Step 2
+            setTimeout(() => setVisibleTimelineSteps(prev => new Set([...prev, 2])), 400);   // Step 3
+            setTimeout(() => setVisibleTimelineSteps(prev => new Set([...prev, 3])), 600);   // Step 4
+            setTimeout(() => setVisibleTimelineSteps(prev => new Set([...prev, 4])), 800);   // Step 5
+            
+            // Start line animation after first step appears
+            setTimeout(() => setTimelineLineVisible(true), 100);
           }
         }
       });
@@ -64,11 +98,27 @@ export default function ProcessGuardian() {
       if (ref) observer.observe(ref);
     });
 
+    // Observe industry items
+    industryItemRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    // Observe timeline steps
+    timelineStepRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
     return () => {
       cardRefs.current.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
       valueCardRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+      industryItemRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+      timelineStepRefs.current.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
     };
@@ -397,7 +447,7 @@ export default function ProcessGuardian() {
                   }}
                   className={`card-animation h-100 w-100 ${visibleCards.has(index) ? 'visible' : ''}`}
                   style={{
-                    animationDelay: `${index * 150}ms`
+                    animationDelay: `${(index % 3) * 200}ms`
                   }}
                 >
                   <Card className="h-100 border-0 shadow-sm">
@@ -569,9 +619,7 @@ export default function ProcessGuardian() {
                     valueCardRefs.current[index] = el;
                   }}
                   className={`card-animation h-100 w-100 ${visibleValueCards.has(index) ? 'visible' : ''}`}
-                  style={{
-                    animationDelay: `${index * 150}ms`
-                  }}
+                  style={{}}
                 >
                   <div 
                     className="text-center p-4 rounded-4 h-100"
@@ -640,42 +688,28 @@ export default function ProcessGuardian() {
           <Row className="justify-content-center">
             <Col lg={8}>
               <Row className="g-4">
-                <Col md={6}>
-                  <div className="d-flex align-items-baseline mb-3">
-                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
-                    <h5 className="fw-bold mb-0">Manufacturing & Production</h5>
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="d-flex align-items-baseline mb-3">
-                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
-                    <h5 className="fw-bold mb-0">Energy & Utilities</h5>
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="d-flex align-items-baseline mb-3">
-                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
-                    <h5 className="fw-bold mb-0">Chemical Processing</h5>
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="d-flex align-items-baseline mb-3">
-                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
-                    <h5 className="fw-bold mb-0">Healthcare Operations</h5>
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="d-flex align-items-baseline mb-3">
-                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
-                    <h5 className="fw-bold mb-0">Financial Services</h5>
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="d-flex align-items-baseline mb-3">
-                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
-                    <h5 className="fw-bold mb-0">Supply Chain Management</h5>
-                  </div>
-                </Col>
+                {[
+                  "Manufacturing & Production",
+                  "Energy & Utilities", 
+                  "Chemical Processing",
+                  "Healthcare Operations",
+                  "Financial Services",
+                  "Supply Chain Management"
+                ].map((industry, index) => (
+                  <Col md={6} key={index}>
+                    <div
+                      ref={(el) => {
+                        industryItemRefs.current[index] = el;
+                      }}
+                      className={`card-animation ${visibleIndustryItems.has(index) ? 'visible' : ''}`}
+                    >
+                      <div className="d-flex align-items-baseline mb-3">
+                        <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
+                        <h5 className="fw-bold mb-0">{industry}</h5>
+                      </div>
+                    </div>
+                  </Col>
+                ))}
               </Row>
             </Col>
           </Row>
@@ -776,7 +810,7 @@ export default function ProcessGuardian() {
               <div className="position-relative">
                 {/* Timeline line - positioned to run through center of circles */}
                 <div 
-                  className="position-absolute d-none d-lg-block"
+                  className={`timeline-line position-absolute d-none d-lg-block ${timelineLineVisible ? 'visible' : ''}`}
                   style={{
                     top: '52px',
                     left: '10%',
@@ -788,106 +822,61 @@ export default function ProcessGuardian() {
                 ></div>
                 
                 <Row className="g-4 position-relative" style={{ zIndex: 2 }}>
-                  <Col lg className="text-center">
-                    <div className="mb-4">
+                  {[
+                    {
+                      number: 1,
+                      title: "Discovery First",
+                      description: "Understand processes, risks, and goals."
+                    },
+                    {
+                      number: 2,
+                      title: "Insight to Action",
+                      description: "Analyse data, uncover insights, and co-design tailored solutions."
+                    },
+                    {
+                      number: 3,
+                      title: "Seamless Integration",
+                      description: "Modular deployment built around your existing systems."
+                    },
+                    {
+                      number: 4,
+                      title: "Agile & Risk-Aware",
+                      description: "Every step shaped by feedback, feasibility, and evolving needs."
+                    },
+                    {
+                      number: 5,
+                      title: "The Result",
+                      description: "Speed with depth — real results, responsibly delivered."
+                    }
+                  ].map((step, index) => (
+                    <Col lg key={index} className="text-center">
                       <div
-                        className="rounded-circle d-inline-flex align-items-center justify-content-center mx-auto"
-                        style={{ 
-                          width: "60px", 
-                          height: "60px",
-                          border: '3px solid #0a2f28',
-                          background: '#0a2f28',
-                          boxShadow: '0 0 20px rgba(10, 47, 40, 0.6), 0 0 40px rgba(10, 47, 40, 0.3)'
+                        ref={(el) => {
+                          timelineStepRefs.current[index] = el;
                         }}
+                        className={`timeline-step ${visibleTimelineSteps.has(index) ? 'visible' : ''}`}
                       >
-                        <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "white", fontFamily: "Aptly" }}>1</span>
+                        <div className="mb-4">
+                          <div
+                            className="rounded-circle d-inline-flex align-items-center justify-content-center mx-auto"
+                            style={{ 
+                              width: "60px", 
+                              height: "60px",
+                              border: '3px solid #0a2f28',
+                              background: '#0a2f28',
+                              boxShadow: '0 0 20px rgba(10, 47, 40, 0.6), 0 0 40px rgba(10, 47, 40, 0.3)'
+                            }}
+                          >
+                            <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "white", fontFamily: "Aptly" }}>{step.number}</span>
+                          </div>
+                        </div>
+                        <h5 className="fw-bold mb-3" style={{ color: "#0a2f28" }}>{step.title}</h5>
+                        <p style={{ color: "#0a2f28", opacity: 0.8 }}>
+                          {step.description}
+                        </p>
                       </div>
-                    </div>
-                    <h5 className="fw-bold mb-3" style={{ color: "#0a2f28" }}>Discovery First</h5>
-                    <p style={{ color: "#0a2f28", opacity: 0.8 }}>
-                      Understand processes, risks, and goals.
-                    </p>
-                  </Col>
-                  <Col lg className="text-center">
-                    <div className="mb-4">
-                      <div
-                        className="rounded-circle d-inline-flex align-items-center justify-content-center mx-auto"
-                        style={{ 
-                          width: "60px", 
-                          height: "60px",
-                          border: '3px solid #0a2f28',
-                          background: '#0a2f28',
-                          boxShadow: '0 0 20px rgba(10, 47, 40, 0.6), 0 0 40px rgba(10, 47, 40, 0.3)'
-                        }}
-                      >
-                        <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "white", fontFamily: "Aptly" }}>2</span>
-                      </div>
-                    </div>
-                    <h5 className="fw-bold mb-3" style={{ color: "#0a2f28" }}>Insight to Action</h5>
-                    <p style={{ color: "#0a2f28", opacity: 0.8 }}>
-                      Analyse data, uncover insights, and co-design tailored solutions.
-                    </p>
-                  </Col>
-                  <Col lg className="text-center">
-                    <div className="mb-4">
-                      <div
-                        className="rounded-circle d-inline-flex align-items-center justify-content-center mx-auto"
-                        style={{ 
-                          width: "60px", 
-                          height: "60px",
-                          border: '3px solid #0a2f28',
-                          background: '#0a2f28',
-                          boxShadow: '0 0 20px rgba(10, 47, 40, 0.6), 0 0 40px rgba(10, 47, 40, 0.3)'
-                        }}
-                      >
-                        <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "white", fontFamily: "Aptly" }}>3</span>
-                      </div>
-                    </div>
-                    <h5 className="fw-bold mb-3" style={{ color: "#0a2f28" }}>Seamless Integration</h5>
-                    <p style={{ color: "#0a2f28", opacity: 0.8 }}>
-                      Modular deployment built around your existing systems.
-                    </p>
-                  </Col>
-                  <Col lg className="text-center">
-                    <div className="mb-4">
-                      <div
-                        className="rounded-circle d-inline-flex align-items-center justify-content-center mx-auto"
-                        style={{ 
-                          width: "60px", 
-                          height: "60px",
-                          border: '3px solid #0a2f28',
-                          background: '#0a2f28',
-                          boxShadow: '0 0 20px rgba(10, 47, 40, 0.6), 0 0 40px rgba(10, 47, 40, 0.3)'
-                        }}
-                      >
-                        <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "white", fontFamily: "Aptly" }}>4</span>
-                      </div>
-                    </div>
-                    <h5 className="fw-bold mb-3" style={{ color: "#0a2f28" }}>Agile & Risk-Aware</h5>
-                    <p style={{ color: "#0a2f28", opacity: 0.8 }}>
-                      Every step shaped by feedback, feasibility, and evolving needs.
-                    </p>
-                  </Col>
-                  <Col lg className="text-center">
-                    <div className="mb-4">
-                      <div
-                        className="rounded-circle d-inline-flex align-items-center justify-content-center mx-auto"
-                        style={{ 
-                          width: "60px", 
-                          height: "60px",
-                          border: '3px solid #0a2f28',
-                          background: '#0a2f28',
-                          boxShadow: '0 0 20px rgba(10, 47, 40, 0.6), 0 0 40px rgba(10, 47, 40, 0.3)'
-                        }}
-                      >
-                        <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "white", fontFamily: "Aptly" }}>5</span>
-                      </div>
-                    </div>
-                    <h5 className="fw-bold mb-3" style={{ color: "#0a2f28" }}>The Result</h5>
-                    <p style={{ color: "#0a2f28", opacity: 0.8 }}>
-                      Speed with depth — real results, responsibly delivered.
-                    </p>
-                  </Col>
+                    </Col>
+                  ))}
                 </Row>
               </div>
             </Col>
