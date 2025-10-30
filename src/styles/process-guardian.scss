@@ -438,3 +438,26 @@ button.cta-btn-outline {
     }
   }
 }
+
+// Arrow animation keyframes
+@keyframes arrowFade1 {
+  0% { opacity: 0.3; transform: translateX(0px); }
+  33% { opacity: 1; transform: translateX(5px); }
+  66% { opacity: 0.3; transform: translateX(0px); }
+  100% { opacity: 0.3; transform: translateX(0px); }
+}
+
+@keyframes arrowFade2 {
+  0% { opacity: 0.3; transform: translateX(0px); }
+  16% { opacity: 0.3; transform: translateX(0px); }
+  50% { opacity: 1; transform: translateX(5px); }
+  83% { opacity: 0.3; transform: translateX(0px); }
+  100% { opacity: 0.3; transform: translateX(0px); }
+}
+
+@keyframes arrowFade3 {
+  0% { opacity: 0.3; transform: translateX(0px); }
+  33% { opacity: 0.3; transform: translateX(0px); }
+  66% { opacity: 1; transform: translateX(5px); }
+  100% { opacity: 0.3; transform: translateX(0px); }
+}

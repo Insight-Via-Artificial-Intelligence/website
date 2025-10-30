@@ -195,7 +195,7 @@ export default function ProcessGuardian() {
 
       {/* Video Section */}
       <section 
-        className="process-guardian-hero-image py-6" 
+        className="process-guardian-hero-image text-white py-6" 
         style={{ 
           minHeight: '80vh', 
           display: 'flex', 
@@ -207,7 +207,7 @@ export default function ProcessGuardian() {
           <Row className="justify-content-center">
             <Col lg={10}>
               <div className="text-center mb-5">
-                <h2 className="display-5 fw-bold mb-4" style={{ color: "#0a2f28" }}>
+                <h2 className="display-5 fw-bold mb-4">
                   See Process Guardian in Action
                 </h2>
                 <p className="lead text-white opacity-90">
@@ -409,6 +409,110 @@ export default function ProcessGuardian() {
         </Container>
       </section>
 
+      {/* Screenshots Section */}
+      <section className="process-guardian-hero-image text-white py-6" style={{ position: "relative", overflow: "hidden" }}>
+        {/* Background Grid */}
+        <img
+          src="/PG_grid.svg"
+          alt="Process Guardian Grid Background"
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "120%",
+            height: "auto",
+            opacity: 0.1,
+            zIndex: 1,
+            pointerEvents: "none"
+          }}
+        />
+        <Container style={{ position: "relative", zIndex: 2 }}>
+          <Row className="justify-content-center mb-5">
+            <Col lg={10}>
+              <div className="text-center">
+                <h2 className="display-5 fw-bold mb-4" style={{ color: "#ffffff" }}>
+                  From Anomaly Detection to Recovery
+                </h2>
+                <p className="lead opacity-90" style={{ fontSize: "1.1rem" }}>
+                  When things go wrong in complex operations, Process Guardian doesn't just raise an alarm. 
+                  It pinpoints the exact cause, explains what's happening, and guides you through the most 
+                  effective actions to bring your system back to normal.
+                </p>
+              </div>
+            </Col>
+          </Row>
+          <Row className="g-4 justify-content-center align-items-center">
+            <Col lg={5}>
+              <div className="text-center">
+                <img
+                  src="/PG_screenshot_1.png"
+                  alt="Process Guardian Screenshot 1"
+                  className="img-fluid rounded shadow"
+                  style={{ maxWidth: "100%", height: "auto" }}
+                />
+              </div>
+            </Col>
+            <Col lg={2} className="d-flex align-items-center justify-content-center">
+              <div className="d-flex" style={{ transform: "translateY(-10%) translateX(-30px)" }}>
+                <div 
+                  style={{ 
+                    fontSize: "20rem", 
+                    fontWeight: "300",
+                    color: "#dd2c15ff",
+                    filter: "drop-shadow(0 0 15px rgba(221, 44, 21, 0.4))",
+                    letterSpacing: "-0.2em",
+                    lineHeight: "1",
+                    whiteSpace: "nowrap",
+                    animation: "arrowFade1 2s ease-in-out infinite"
+                  }}
+                >
+                  ›
+                </div>
+                <div 
+                  style={{ 
+                    fontSize: "20rem", 
+                    fontWeight: "300",
+                    color: "#f2f325",
+                    filter: "drop-shadow(0 0 15px rgba(242, 243, 37, 0.4))",
+                    letterSpacing: "-0.2em",
+                    lineHeight: "1",
+                    whiteSpace: "nowrap",
+                    animation: "arrowFade2 2s ease-in-out infinite"
+                  }}
+                >
+                  ›
+                </div>
+                <div 
+                  style={{ 
+                    fontSize: "20rem", 
+                    fontWeight: "300",
+                    color: "#2ab175",
+                    filter: "drop-shadow(0 0 15px rgba(42, 177, 117, 0.4))",
+                    letterSpacing: "-0.2em",
+                    lineHeight: "1",
+                    whiteSpace: "nowrap",
+                    animation: "arrowFade3 2s ease-in-out infinite"
+                  }}
+                >
+                  ›
+                </div>
+              </div>
+            </Col>
+            <Col lg={5}>
+              <div className="text-center">
+                <img
+                  src="/PG_screenshot_2.png"
+                  alt="Process Guardian Screenshot 2"
+                  className="img-fluid rounded shadow"
+                  style={{ maxWidth: "100%", height: "auto" }}
+                />
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
       {/* The Value Section */}
       <section className="py-6">
         <Container>
@@ -425,58 +529,136 @@ export default function ProcessGuardian() {
 
           <Row className="g-5 justify-content-center">
             <Col md={6} lg={4}>
-              <div className="text-center">
+              <div 
+                className="text-center p-4 rounded-4 h-100"
+                style={{
+                  background: "linear-gradient(135deg, #ff4444 0%, #cc0000 100%)",
+                  boxShadow: "0 10px 30px rgba(255, 68, 68, 0.3), 0 0 20px rgba(255, 68, 68, 0.1)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  backdropFilter: "blur(10px)",
+                  position: "relative",
+                  overflow: "hidden"
+                }}
+              >
+                <div 
+                  style={{
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    right: "0",
+                    height: "2px",
+                    background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)"
+                  }}
+                />
                 <div className="mb-4">
                   <div
-                    className="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center"
-                    style={{ width: "80px", height: "80px" }}
+                    className="rounded-circle d-inline-flex align-items-center justify-content-center"
+                    style={{ 
+                      width: "80px", 
+                      height: "80px",
+                      background: "rgba(255, 255, 255, 0.2)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255, 255, 255, 0.3)"
+                    }}
                   >
                     <i
                       className="bi bi-shield-exclamation"
-                      style={{ fontSize: "2.5rem", color: "#2ab175" }}
+                      style={{ fontSize: "2.5rem", color: "white" }}
                     ></i>
                   </div>
                 </div>
-                <h4 className="fw-bold mb-3" style={{ color: "#2ab175" }}>Early Detection</h4>
-                <p className="text-muted">
+                <h4 className="fw-bold mb-3" style={{ color: "white" }}>Early Detection</h4>
+                <p style={{ color: "rgba(255, 255, 255, 0.9)" }}>
                   Prevent costly disruptions.
                 </p>
               </div>
             </Col>
             <Col md={6} lg={4}>
-              <div className="text-center">
+              <div 
+                className="text-center p-4 rounded-4 h-100"
+                style={{
+                  background: "linear-gradient(135deg, #ffbb00 0%, #ff8800 100%)",
+                  boxShadow: "0 10px 30px rgba(255, 187, 0, 0.3), 0 0 20px rgba(255, 187, 0, 0.1)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  backdropFilter: "blur(10px)",
+                  position: "relative",
+                  overflow: "hidden"
+                }}
+              >
+                <div 
+                  style={{
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    right: "0",
+                    height: "2px",
+                    background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)"
+                  }}
+                />
                 <div className="mb-4">
                   <div
-                    className="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center"
-                    style={{ width: "80px", height: "80px" }}
+                    className="rounded-circle d-inline-flex align-items-center justify-content-center"
+                    style={{ 
+                      width: "80px", 
+                      height: "80px",
+                      background: "rgba(255, 255, 255, 0.2)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255, 255, 255, 0.3)"
+                    }}
                   >
                     <i
                       className="bi bi-graph-up-arrow"
-                      style={{ fontSize: "2.5rem", color: "#2ab175" }}
+                      style={{ fontSize: "2.5rem", color: "white" }}
                     ></i>
                   </div>
                 </div>
-                <h4 className="fw-bold mb-3" style={{ color: "#2ab175" }}>Smarter Decisions</h4>
-                <p className="text-muted">
+                <h4 className="fw-bold mb-3" style={{ color: "white" }}>Smarter Decisions</h4>
+                <p style={{ color: "rgba(255, 255, 255, 0.9)" }}>
                   Actionable, real-time insights.
                 </p>
               </div>
             </Col>
             <Col md={6} lg={4}>
-              <div className="text-center">
+              <div 
+                className="text-center p-4 rounded-4 h-100"
+                style={{
+                  background: "linear-gradient(135deg, #2ab175 0%, #1a8c57 100%)",
+                  boxShadow: "0 10px 30px rgba(42, 177, 117, 0.3), 0 0 20px rgba(42, 177, 117, 0.1)",
+                  border: "1px solid rgba(255, 255, 255, 0.2)",
+                  backdropFilter: "blur(10px)",
+                  position: "relative",
+                  overflow: "hidden"
+                }}
+              >
+                <div 
+                  style={{
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    right: "0",
+                    height: "2px",
+                    background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)"
+                  }}
+                />
                 <div className="mb-4">
                   <div
-                    className="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center"
-                    style={{ width: "80px", height: "80px" }}
+                    className="rounded-circle d-inline-flex align-items-center justify-content-center"
+                    style={{ 
+                      width: "80px", 
+                      height: "80px",
+                      background: "rgba(255, 255, 255, 0.2)",
+                      backdropFilter: "blur(10px)",
+                      border: "1px solid rgba(255, 255, 255, 0.3)"
+                    }}
                   >
                     <i
                       className="bi bi-award"
-                      style={{ fontSize: "2.5rem", color: "#2ab175" }}
+                      style={{ fontSize: "2.5rem", color: "white" }}
                     ></i>
                   </div>
                 </div>
-                <h4 className="fw-bold mb-3" style={{ color: "#2ab175" }}>Stronger Operations</h4>
-                <p className="text-muted">
+                <h4 className="fw-bold mb-3" style={{ color: "white" }}>Stronger Operations</h4>
+                <p style={{ color: "rgba(255, 255, 255, 0.9)" }}>
                   Confidence to operate safely and efficiently.
                 </p>
               </div>
@@ -587,10 +769,39 @@ export default function ProcessGuardian() {
       <section 
         className="py-6" 
         style={{ 
-          background: "linear-gradient(135deg, rgba(255, 187, 0, 1) 0%, #f3de25ff 100%)" 
+          background: "linear-gradient(135deg, rgba(255, 187, 0, 1) 0%, #f3de25ff 100%)",
+          position: "relative",
+          overflow: "hidden"
         }}
       >
-        <Container>
+        {/* Large Semi-Transparent PG Logo Background */}
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-49.4%, -50%)",
+            width: "2400px",
+            height: "2400px",
+            zIndex: 1,
+            pointerEvents: "none"
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: "0",
+              left: "0",
+              right: "0",
+              bottom: "0",
+              background: "radial-gradient(circle at center, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.15) 40%, rgba(255, 255, 255, 0.05) 70%, transparent 100%)",
+              mask: "url(/PG_logo.svg) no-repeat center/contain",
+              WebkitMask: "url(/PG_logo.svg) no-repeat center/contain"
+            }}
+          />
+        </div>
+        
+        <Container style={{ position: "relative", zIndex: 2 }}>
           <Row className="justify-content-center text-center">
             <Col lg={10}>
               <h2 className="display-5 fw-bold mb-4" style={{ color: "#0a2f28" }}>
