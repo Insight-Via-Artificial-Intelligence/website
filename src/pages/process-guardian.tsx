@@ -22,11 +22,16 @@ export default function ProcessGuardian() {
   const [valueCardsAnimated, setValueCardsAnimated] = useState(false);
   const [industryItemsAnimated, setIndustryItemsAnimated] = useState(false);
   const [timelineStepsAnimated, setTimelineStepsAnimated] = useState(false);
+  const [screenshotsAnimated, setScreenshotsAnimated] = useState(false);
+  
+  // Screenshots animation states
+  const [visibleScreenshots, setVisibleScreenshots] = useState<Set<number>>(new Set());
   
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const valueCardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const industryItemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const timelineStepRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const screenshotRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -154,6 +159,31 @@ export default function ProcessGuardian() {
         if (ref) timelineObserver.observe(ref);
       });
       observers.push(timelineObserver);
+    }
+    
+    // Screenshots Observer
+    if (screenshotRefs.current.length > 0 && !screenshotsAnimated) {
+      const screenshotsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setScreenshotsAnimated(true);
+              // Trigger screenshots with left-to-right timing: screenshot1, arrows, screenshot2
+              setTimeout(() => setVisibleScreenshots(new Set([0])), 0);     // First screenshot
+              setTimeout(() => setVisibleScreenshots(prev => new Set([...prev, 1])), 300);   // Arrows
+              setTimeout(() => setVisibleScreenshots(prev => new Set([...prev, 2])), 600);   // Second screenshot
+              // Stop observing after animation triggers
+              screenshotsObserver.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      
+      screenshotRefs.current.forEach(ref => {
+        if (ref) screenshotsObserver.observe(ref);
+      });
+      observers.push(screenshotsObserver);
     }
 
     return () => {
@@ -543,7 +573,12 @@ export default function ProcessGuardian() {
           </Row>
           <Row className="g-4 justify-content-center align-items-center">
             <Col lg={5}>
-              <div className="text-center">
+              <div 
+                ref={(el) => {
+                  screenshotRefs.current[0] = el;
+                }}
+                className={`screenshot-animation text-center ${visibleScreenshots.has(0) ? 'visible' : ''}`}
+              >
                 <img
                   src="/PG_screenshot_1.png"
                   alt="Process Guardian Screenshot 1"
@@ -553,7 +588,13 @@ export default function ProcessGuardian() {
               </div>
             </Col>
             <Col lg={2} className="d-flex align-items-center justify-content-center">
-              <div className="d-flex" style={{ transform: "translateY(-10%) translateX(-30px)" }}>
+              <div 
+                ref={(el) => {
+                  screenshotRefs.current[1] = el;
+                }}
+                className={`arrow-animation d-flex ${visibleScreenshots.has(1) ? 'visible' : ''}`} 
+                style={{ transform: "translateY(-10%) translateX(-30px)" }}
+              >
                 <div 
                   style={{ 
                     fontSize: "20rem", 
@@ -599,7 +640,12 @@ export default function ProcessGuardian() {
               </div>
             </Col>
             <Col lg={5}>
-              <div className="text-center">
+              <div 
+                ref={(el) => {
+                  screenshotRefs.current[2] = el;
+                }}
+                className={`screenshot-animation text-center ${visibleScreenshots.has(2) ? 'visible' : ''}`}
+              >
                 <img
                   src="/PG_screenshot_2.png"
                   alt="Process Guardian Screenshot 2"

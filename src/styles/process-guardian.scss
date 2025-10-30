@@ -507,3 +507,27 @@ button.cta-btn-outline {
     transform: translateY(0);
   }
 }
+
+// Screenshot animations
+.screenshot-animation {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Arrow animations for screenshots section
+.arrow-animation {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  
+  &.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
