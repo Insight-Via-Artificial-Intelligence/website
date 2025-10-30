@@ -548,12 +548,13 @@ export default function ProcessGuardian() {
             position: "absolute",
             top: "50%",
             left: "50%",
-            transform: "translate(-50%, -50%)",
+            transform: `translate(-50%, calc(-30% + ${scrollY * -0.05}px))`,
             width: "120%",
             height: "auto",
             opacity: 0.1,
             zIndex: 1,
-            pointerEvents: "none"
+            pointerEvents: "none",
+            transition: "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)"
           }}
         />
         <Container style={{ position: "relative", zIndex: 2 }}>
@@ -853,11 +854,12 @@ export default function ProcessGuardian() {
             position: "absolute",
             top: "50%",
             left: "50%",
-            transform: "translate(-49.4%, -50%)",
+            transform: `translate(-49.4%, calc(-30% + ${scrollY * -0.08}px))`,
             width: "2400px",
             height: "2400px",
             zIndex: 1,
-            pointerEvents: "none"
+            pointerEvents: "none",
+            transition: "transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)"
           }}
         >
           <div
