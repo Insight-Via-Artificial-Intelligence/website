@@ -16,6 +16,13 @@ export default function ProcessGuardian() {
   const [visibleIndustryItems, setVisibleIndustryItems] = useState<Set<number>>(new Set());
   const [visibleTimelineSteps, setVisibleTimelineSteps] = useState<Set<number>>(new Set());
   const [timelineLineVisible, setTimelineLineVisible] = useState(false);
+  
+  // Boolean states for one-time animations (like vital-guardian)
+  const [processCardsAnimated, setProcessCardsAnimated] = useState(false);
+  const [valueCardsAnimated, setValueCardsAnimated] = useState(false);
+  const [industryItemsAnimated, setIndustryItemsAnimated] = useState(false);
+  const [timelineStepsAnimated, setTimelineStepsAnimated] = useState(false);
+  
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const valueCardRefs = useRef<(HTMLDivElement | null)[]>([]);
   const industryItemRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -34,95 +41,125 @@ export default function ProcessGuardian() {
     };
   }, []);
 
-  // Intersection Observer for card animations
+  // Intersection Observers for card animations - separate observers like vital-guardian and index pages
   useEffect(() => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px",
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          // Check if it's a process intelligence card
-          const cardIndex = cardRefs.current.indexOf(entry.target as HTMLDivElement);
-          if (cardIndex !== -1) {
-            setVisibleCards(prev => new Set([...prev, cardIndex]));
-          }
-          
-          // Check if it's a value card - trigger all value cards when any becomes visible
-          const valueCardIndex = valueCardRefs.current.indexOf(entry.target as HTMLDivElement);
-          if (valueCardIndex !== -1) {
-            // Trigger all value cards with staggered timing
-            setTimeout(() => setVisibleValueCards(new Set([0])), 0);
-            setTimeout(() => setVisibleValueCards(prev => new Set([...prev, 1])), 150);
-            setTimeout(() => setVisibleValueCards(prev => new Set([...prev, 2])), 300);
-          }
-          
-          // Check if it's an industry item - trigger all industry items when any becomes visible
-          const industryItemIndex = industryItemRefs.current.indexOf(entry.target as HTMLDivElement);
-          if (industryItemIndex !== -1) {
-            // Trigger industry items with staggered timing (left to right, row by row)
-            setTimeout(() => setVisibleIndustryItems(new Set([0])), 0);    // Manufacturing (left, row 1)
-            setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 1])), 100);  // Energy (right, row 1)
-            setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 2])), 200);  // Chemical (left, row 2)
-            setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 3])), 300);  // Healthcare (right, row 2)
-            setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 4])), 400);  // Financial (left, row 3)
-            setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 5])), 500);  // Supply Chain (right, row 3)
-          }
-          
-          // Check if it's a timeline step - trigger all timeline steps and line animation
-          const timelineStepIndex = timelineStepRefs.current.indexOf(entry.target as HTMLDivElement);
-          if (timelineStepIndex !== -1) {
-            // Trigger timeline steps with staggered timing (left to right)
-            setTimeout(() => setVisibleTimelineSteps(new Set([0])), 0);     // Step 1
-            setTimeout(() => setVisibleTimelineSteps(prev => new Set([...prev, 1])), 200);   // Step 2
-            setTimeout(() => setVisibleTimelineSteps(prev => new Set([...prev, 2])), 400);   // Step 3
-            setTimeout(() => setVisibleTimelineSteps(prev => new Set([...prev, 3])), 600);   // Step 4
-            setTimeout(() => setVisibleTimelineSteps(prev => new Set([...prev, 4])), 800);   // Step 5
-            
-            // Start line animation after first step appears
-            setTimeout(() => setTimelineLineVisible(true), 100);
-          }
-        }
+    const observers: IntersectionObserver[] = [];
+    
+    // Process Intelligence Cards Observer
+    if (cardRefs.current.length > 0 && !processCardsAnimated) {
+      const processObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setProcessCardsAnimated(true);
+              // Trigger all 6 process cards with staggered timing
+              setTimeout(() => setVisibleCards(new Set([0])), 0);
+              setTimeout(() => setVisibleCards(prev => new Set([...prev, 1])), 200);
+              setTimeout(() => setVisibleCards(prev => new Set([...prev, 2])), 400);
+              setTimeout(() => setVisibleCards(prev => new Set([...prev, 3])), 600);
+              setTimeout(() => setVisibleCards(prev => new Set([...prev, 4])), 800);
+              setTimeout(() => setVisibleCards(prev => new Set([...prev, 5])), 1000);
+              // Stop observing after animation triggers
+              processObserver.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      
+      cardRefs.current.forEach(ref => {
+        if (ref) processObserver.observe(ref);
       });
-    }, observerOptions);
-
-    // Observe process intelligence cards
-    cardRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    // Observe value cards
-    valueCardRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    // Observe industry items
-    industryItemRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
-
-    // Observe timeline steps
-    timelineStepRefs.current.forEach((ref) => {
-      if (ref) observer.observe(ref);
-    });
+      observers.push(processObserver);
+    }
+    
+    // Value Cards Observer
+    if (valueCardRefs.current.length > 0 && !valueCardsAnimated) {
+      const valueObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setValueCardsAnimated(true);
+              // Trigger all value cards with staggered timing
+              setTimeout(() => setVisibleValueCards(new Set([0])), 0);
+              setTimeout(() => setVisibleValueCards(prev => new Set([...prev, 1])), 150);
+              setTimeout(() => setVisibleValueCards(prev => new Set([...prev, 2])), 300);
+              // Stop observing after animation triggers
+              valueObserver.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      
+      valueCardRefs.current.forEach(ref => {
+        if (ref) valueObserver.observe(ref);
+      });
+      observers.push(valueObserver);
+    }
+    
+    // Industry Items Observer
+    if (industryItemRefs.current.length > 0 && !industryItemsAnimated) {
+      const industryObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setIndustryItemsAnimated(true);
+              // Trigger industry items with staggered timing
+              setTimeout(() => setVisibleIndustryItems(new Set([0])), 0);
+              setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 1])), 100);
+              setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 2])), 200);
+              setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 3])), 300);
+              setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 4])), 400);
+              setTimeout(() => setVisibleIndustryItems(prev => new Set([...prev, 5])), 500);
+              // Stop observing after animation triggers
+              industryObserver.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      
+      industryItemRefs.current.forEach(ref => {
+        if (ref) industryObserver.observe(ref);
+      });
+      observers.push(industryObserver);
+    }
+    
+    // Timeline Steps Observer
+    if (timelineStepRefs.current.length > 0 && !timelineStepsAnimated) {
+      const timelineObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setTimelineStepsAnimated(true);
+              // Trigger timeline steps with staggered timing
+              setTimeout(() => setVisibleTimelineSteps(new Set([0])), 0);
+              setTimeout(() => setVisibleTimelineSteps(prev => new Set([...prev, 1])), 200);
+              setTimeout(() => setVisibleTimelineSteps(prev => new Set([...prev, 2])), 400);
+              setTimeout(() => setVisibleTimelineSteps(prev => new Set([...prev, 3])), 600);
+              setTimeout(() => setVisibleTimelineSteps(prev => new Set([...prev, 4])), 800);
+              
+              // Start line animation after first step appears
+              setTimeout(() => setTimelineLineVisible(true), 100);
+              // Stop observing after animation triggers
+              timelineObserver.disconnect();
+            }
+          });
+        },
+        { threshold: 0.3 }
+      );
+      
+      timelineStepRefs.current.forEach(ref => {
+        if (ref) timelineObserver.observe(ref);
+      });
+      observers.push(timelineObserver);
+    }
 
     return () => {
-      cardRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-      valueCardRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-      industryItemRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
-      timelineStepRefs.current.forEach((ref) => {
-        if (ref) observer.unobserve(ref);
-      });
+      observers.forEach(observer => observer.disconnect());
     };
-  }, []);
+  }, []); // Empty dependency array like the working pages
 
   return (
     <>
