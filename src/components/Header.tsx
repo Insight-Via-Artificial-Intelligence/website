@@ -53,9 +53,6 @@ const Header: React.FC = () => {
                 Vital Guardian
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#projects" className="nav-link-modern text-white fw-500 mx-3">
-              Projects
-            </Nav.Link>
             <Link href={isContactPage ? "/" : "/contact"} passHref legacyBehavior>
               <Button 
                 variant="primary" 
