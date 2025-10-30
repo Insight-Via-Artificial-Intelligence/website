@@ -6,11 +6,13 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function ProcessGuardian() {
   const [scrollY, setScrollY] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -22,6 +24,35 @@ export default function ProcessGuardian() {
     return () => {
       window.removeEventListener("scroll", handleScroll);
       clearTimeout(timer);
+    };
+  }, []);
+
+  // Intersection Observer for card animations
+  useEffect(() => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const cardIndex = cardRefs.current.indexOf(entry.target as HTMLDivElement);
+          if (cardIndex !== -1) {
+            setVisibleCards(prev => new Set([...prev, cardIndex]));
+          }
+        }
+      });
+    }, observerOptions);
+
+    cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    return () => {
+      cardRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
     };
   }, []);
 
@@ -309,102 +340,65 @@ export default function ProcessGuardian() {
           </Row>
 
           <Row className="g-4">
-            <Col md={6} lg={4}>
-              <Card className="h-100 border-0 shadow-sm">
-                <Card.Body className="p-4 text-center">
-                  <div className="mb-3">
-                    <i
-                      className="bi bi-cpu"
-                      style={{ fontSize: "3rem", color: "#2ab175" }}
-                    ></i>
-                  </div>
-                  <h5 className="fw-bold mb-3">Learns Your Process</h5>
-                  <p className="text-muted">
-                    Utilises advanced machine learning to understand the normal operation of any business process. From manufacturing production lines to HR workflows, Process Guardian adapts to your unique operational patterns.
-                  </p>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6} lg={4}>
-              <Card className="h-100 border-0 shadow-sm">
-                <Card.Body className="p-4 text-center">
-                  <div className="mb-3">
-                    <i
-                      className="bi bi-speedometer2"
-                      style={{ fontSize: "3rem", color: "#2ab175" }}
-                    ></i>
-                  </div>
-                  <h5 className="fw-bold mb-3">One Score for Total Health</h5>
-                  <p className="text-muted">
-                    Combines hundreds of metrics into a single, easy-to-understand health score. Know at a glance whether your process is performing optimally or needs attention.
-                  </p>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6} lg={4}>
-              <Card className="h-100 border-0 shadow-sm">
-                <Card.Body className="p-4 text-center">
-                  <div className="mb-3">
-                    <i
-                      className="bi bi-crosshair"
-                      style={{ fontSize: "3rem", color: "#2ab175" }}
-                    ></i>
-                  </div>
-                  <h5 className="fw-bold mb-3">Pinpoints the Root Cause</h5>
-                  <p className="text-muted">
-                    When issues arise, Process Guardian doesn't just alert you – it identifies the specific factors causing the problem, saving hours of investigation time.
-                  </p>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6} lg={4}>
-              <Card className="h-100 border-0 shadow-sm">
-                <Card.Body className="p-4 text-center">
-                  <div className="mb-3">
-                    <i
-                      className="bi bi-question-circle"
-                      style={{ fontSize: "3rem", color: "#2ab175" }}
-                    ></i>
-                  </div>
-                  <h5 className="fw-bold mb-3">What If Scenarios</h5>
-                  <p className="text-muted">
-                    Simulate changes before implementing them. Understand the potential impact of operational adjustments on your process health and performance.
-                  </p>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6} lg={4}>
-              <Card className="h-100 border-0 shadow-sm">
-                <Card.Body className="p-4 text-center">
-                  <div className="mb-3">
-                    <i
-                      className="bi bi-bell"
-                      style={{ fontSize: "3rem", color: "#2ab175" }}
-                    ></i>
-                  </div>
-                  <h5 className="fw-bold mb-3">Actionable Alerts</h5>
-                  <p className="text-muted">
-                    Receive intelligent notifications that provide not just what's wrong, but specific steps to resolve issues. Turn reactive maintenance into proactive optimization.
-                  </p>
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col md={6} lg={4}>
-              <Card className="h-100 border-0 shadow-sm">
-                <Card.Body className="p-4 text-center">
-                  <div className="mb-3">
-                    <i
-                      className="bi bi-eye"
-                      style={{ fontSize: "3rem", color: "#2ab175" }}
-                    ></i>
-                  </div>
-                  <h5 className="fw-bold mb-3">Clarity from Complexity</h5>
-                  <p className="text-muted">
-                    Transform overwhelming data streams into clear, actionable insights. Process Guardian makes complex industrial and business processes understandable for everyone.
-                  </p>
-                </Card.Body>
-              </Card>
-            </Col>
+            {[
+              {
+                icon: "bi-cpu",
+                title: "Learns Your Process",
+                description: "Utilises advanced machine learning to understand the normal operation of any business process. From manufacturing production lines to HR workflows, Process Guardian adapts to your unique operational patterns."
+              },
+              {
+                icon: "bi-speedometer2",
+                title: "One Score for Total Health",
+                description: "Combines hundreds of metrics into a single, easy-to-understand health score. Know at a glance whether your process is performing optimally or needs attention."
+              },
+              {
+                icon: "bi-crosshair",
+                title: "Pinpoints the Root Cause",
+                description: "When issues arise, Process Guardian doesn't just alert you – it identifies the specific factors causing the problem, saving hours of investigation time."
+              },
+              {
+                icon: "bi-question-circle",
+                title: "What If Scenarios",
+                description: "Simulate changes before implementing them. Understand the potential impact of operational adjustments on your process health and performance."
+              },
+              {
+                icon: "bi-bell",
+                title: "Actionable Alerts",
+                description: "Receive intelligent notifications that provide not just what's wrong, but specific steps to resolve issues. Turn reactive maintenance into proactive optimization."
+              },
+              {
+                icon: "bi-eye",
+                title: "Clarity from Complexity",
+                description: "Transform overwhelming data streams into clear, actionable insights. Process Guardian makes complex industrial and business processes understandable for everyone."
+              }
+            ].map((card, index) => (
+              <Col md={6} lg={4} key={index} className="d-flex">
+                <div
+                  ref={(el) => {
+                    cardRefs.current[index] = el;
+                  }}
+                  className={`card-animation h-100 w-100 ${visibleCards.has(index) ? 'visible' : ''}`}
+                  style={{
+                    animationDelay: `${index * 150}ms`
+                  }}
+                >
+                  <Card className="h-100 border-0 shadow-sm">
+                    <Card.Body className="p-4 text-center d-flex flex-column">
+                      <div className="mb-3">
+                        <i
+                          className={`bi ${card.icon}`}
+                          style={{ fontSize: "3rem", color: "#2ab175" }}
+                        ></i>
+                      </div>
+                      <h5 className="fw-bold mb-3">{card.title}</h5>
+                      <p className="text-muted flex-grow-1">
+                        {card.description}
+                      </p>
+                    </Card.Body>
+                  </Card>
+                </div>
+              </Col>
+            ))}
           </Row>
         </Container>
       </section>
