@@ -409,104 +409,6 @@ export default function ProcessGuardian() {
         </Container>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-6 bg-light">
-        <Container>
-          <Row className="justify-content-center">
-            <Col lg={10}>
-              <div className="text-center mb-5">
-                <h2 className="display-5 fw-bold mb-4" style={{ color: "#0a2f28" }}>
-                  Why Choose Process Guardian?
-                </h2>
-              </div>
-            </Col>
-          </Row>
-
-          <Row className="g-4">
-            <Col md={6} lg={3}>
-              <div className="text-center">
-                <div className="mb-3">
-                  <div
-                    className="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center"
-                    style={{ width: "80px", height: "80px" }}
-                  >
-                    <i
-                      className="bi bi-shield-check text-white"
-                      style={{ fontSize: "2rem" }}
-                    ></i>
-                  </div>
-                </div>
-                <h5 className="fw-bold mb-3">Enhanced Security</h5>
-                <p className="text-muted">
-                  Built-in security protocols protect your sensitive process
-                  data and ensure compliance with industry standards.
-                </p>
-              </div>
-            </Col>
-            <Col md={6} lg={3}>
-              <div className="text-center">
-                <div className="mb-3">
-                  <div
-                    className="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center"
-                    style={{ width: "80px", height: "80px" }}
-                  >
-                    <i
-                      className="bi bi-lightning text-white"
-                      style={{ fontSize: "2rem" }}
-                    ></i>
-                  </div>
-                </div>
-                <h5 className="fw-bold mb-3">Rapid Deployment</h5>
-                <p className="text-muted">
-                  Quick setup and integration with existing systems, minimizing
-                  disruption to your operations.
-                </p>
-              </div>
-            </Col>
-            <Col md={6} lg={3}>
-              <div className="text-center">
-                <div className="mb-3">
-                  <div
-                    className="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center"
-                    style={{ width: "80px", height: "80px" }}
-                  >
-                    <i
-                      className="bi bi-arrows-fullscreen text-white"
-                      style={{ fontSize: "2rem" }}
-                    ></i>
-                  </div>
-                </div>
-                <h5 className="fw-bold mb-3">Scalable Architecture</h5>
-                <p className="text-muted">
-                  Grows with your organization, from single processes to
-                  enterprise-wide implementations.
-                </p>
-              </div>
-            </Col>
-            <Col md={6} lg={3}>
-              <div className="text-center">
-                <div className="mb-3">
-                  <div
-                    className="bg-primary rounded-circle d-inline-flex align-items-center justify-content-center"
-                    style={{ width: "80px", height: "80px" }}
-                  >
-                    <i
-                      className="bi bi-headset text-white"
-                      style={{ fontSize: "2rem" }}
-                    ></i>
-                  </div>
-                </div>
-                <h5 className="fw-bold mb-3">Expert Support</h5>
-                <p className="text-muted">
-                  Dedicated support team with deep domain expertise to ensure
-                  your success.
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-
       {/* The Value Section */}
       <section className="py-6">
         <Container>
@@ -601,37 +503,37 @@ export default function ProcessGuardian() {
             <Col lg={8}>
               <Row className="g-4">
                 <Col md={6}>
-                  <div className="d-flex align-items-center mb-3">
+                  <div className="d-flex align-items-baseline mb-3">
                     <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
                     <h5 className="fw-bold mb-0">Manufacturing & Production</h5>
                   </div>
                 </Col>
                 <Col md={6}>
-                  <div className="d-flex align-items-center mb-3">
+                  <div className="d-flex align-items-baseline mb-3">
                     <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
                     <h5 className="fw-bold mb-0">Energy & Utilities</h5>
                   </div>
                 </Col>
                 <Col md={6}>
-                  <div className="d-flex align-items-center mb-3">
+                  <div className="d-flex align-items-baseline mb-3">
                     <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
                     <h5 className="fw-bold mb-0">Chemical Processing</h5>
                   </div>
                 </Col>
                 <Col md={6}>
-                  <div className="d-flex align-items-center mb-3">
+                  <div className="d-flex align-items-baseline mb-3">
                     <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
                     <h5 className="fw-bold mb-0">Healthcare Operations</h5>
                   </div>
                 </Col>
                 <Col md={6}>
-                  <div className="d-flex align-items-center mb-3">
+                  <div className="d-flex align-items-baseline mb-3">
                     <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
                     <h5 className="fw-bold mb-0">Financial Services</h5>
                   </div>
                 </Col>
                 <Col md={6}>
-                  <div className="d-flex align-items-center mb-3">
+                  <div className="d-flex align-items-baseline mb-3">
                     <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
                     <h5 className="fw-bold mb-0">Supply Chain Management</h5>
                   </div>
@@ -645,7 +547,7 @@ export default function ProcessGuardian() {
 
       {/* Industry Images Banner */}
       <div className="w-100">
-        <div className="d-flex w-100" style={{ height: "200px" }}>
+        <div className="d-flex w-100" style={{ height: "250px" }}>
           <div className="flex-fill">
             <img
               src="/PG_in_1.png"
