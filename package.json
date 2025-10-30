@@ -1,9 +1,10 @@
 {
-  "name": "react-nextjs",
-  "version": "0.0.0",
+  "name": "IVAI",
+  "version": "1.0.0",
   "private": true,
   "repository": "twbs/examples",
   "license": "MIT",
+  "homepage": "https://Insight-Via-Artificial-Intelligence.github.io/website",
   "stackblitz": {
     "startCommand": "npm start"
   },
@@ -12,7 +13,9 @@
     "start": "next dev",
     "lint": "eslint .",
     "fix": "eslint --fix .",
-    "test": "npm run build"
+    "test": "npm run build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d .next"
   },
   "dependencies": {
     "@types/node": "^24.6.2",
@@ -30,6 +33,7 @@
     "@eslint/js": "^9.37.0",
     "eslint": "^9.37.0",
     "eslint-config-next": "^15.5.4",
+    "gh-pages": "^6.3.0",
     "sass": "^1.93.2"
   }
 }
