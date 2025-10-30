@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -134,9 +135,11 @@ export default function VitalGuardian() {
           <Row className="justify-content-center align-items-center min-vh-100">
             <Col lg={12} xl={10} className="text-center position-relative" style={{ overflow: 'visible' }}>
               {/* VG Person 1 - left side */}
-              <img 
+              <Image 
                 src="/vg_person1.png" 
                 alt="VG Person 1"
+                width={400}
+                height={400}
                 style={{
                   position: 'absolute',
                   left: '-25%',
@@ -152,9 +155,11 @@ export default function VitalGuardian() {
               />
               
               {/* VG Person 2 - right side */}
-              <img 
+              <Image 
                 src="/vg_person2.png" 
                 alt="VG Person 2"
+                width={400}
+                height={400}
                 style={{
                   position: 'absolute',
                   right: '-25%',
@@ -331,9 +336,11 @@ export default function VitalGuardian() {
           <Row className="justify-content-center align-items-center">
             <Col xs={12} lg={10} xl={8} className="position-relative">
               {/* Watch image - left side */}
-              <img 
+              <Image 
                 src="/watch.png" 
                 alt="Smart Watch"
+                width={300}
+                height={300}
                 style={{
                   position: 'absolute',
                   left: '-15%',
@@ -349,9 +356,11 @@ export default function VitalGuardian() {
               />
               
               {/* Phone image - right side */}
-              <img 
+              <Image 
                 src="/phone.png" 
                 alt="Smart Phone"
+                width={320}
+                height={320}
                 style={{
                   position: 'absolute',
                   right: '-20%',
@@ -441,9 +450,11 @@ export default function VitalGuardian() {
                     justifyContent: 'center'
                   }}
                 >
-                  <img 
+                  <Image 
                     src="/VGHex.png" 
                     alt="Hexagon background" 
+                    width={160}
+                    height={160}
                     style={{
                       height: '160px',
                       width: 'auto',
@@ -490,9 +501,11 @@ export default function VitalGuardian() {
                     justifyContent: 'center'
                   }}
                 >
-                  <img 
+                  <Image 
                     src="/VGHex.png" 
                     alt="Hexagon background" 
+                    width={160}
+                    height={160}
                     style={{
                       height: '160px',
                       width: 'auto',
@@ -539,9 +552,11 @@ export default function VitalGuardian() {
                     justifyContent: 'center'
                   }}
                 >
-                  <img 
+                  <Image 
                     src="/VGHex.png" 
                     alt="Hexagon background" 
+                    width={160}
+                    height={160}
                     style={{
                       height: '160px',
                       width: 'auto',
@@ -586,9 +601,11 @@ export default function VitalGuardian() {
           <Row className="justify-content-center d-none d-xl-flex">
             <Col xs={12}>
               <div className="text-center position-relative" style={{ paddingTop: "4rem", paddingBottom: "4rem" }}>
-                <img 
+                <Image 
                   src="/VG_OP_hexes.png" 
                   alt="Our Process" 
+                  width={800}
+                  height={600}
                   className="img-fluid"
                   style={{
                     width: "100%",
@@ -784,9 +801,11 @@ export default function VitalGuardian() {
                     justifyContent: 'center'
                   }}
                 >
-                  <img 
+                  <Image 
                     src="/VGHex.png" 
                     alt="Hexagon background" 
+                    width={160}
+                    height={160}
                     style={{
                       height: '160px',
                       width: 'auto',
@@ -825,9 +844,11 @@ export default function VitalGuardian() {
                     justifyContent: 'center'
                   }}
                 >
-                  <img 
+                  <Image 
                     src="/VGHex.png" 
                     alt="Hexagon background" 
+                    width={160}
+                    height={160}
                     style={{
                       height: '160px',
                       width: 'auto',
@@ -866,9 +887,11 @@ export default function VitalGuardian() {
                     justifyContent: 'center'
                   }}
                 >
-                  <img 
+                  <Image 
                     src="/VGHex.png" 
                     alt="Hexagon background" 
+                    width={160}
+                    height={160}
                     style={{
                       height: '160px',
                       width: 'auto',
@@ -907,9 +930,11 @@ export default function VitalGuardian() {
                     justifyContent: 'center'
                   }}
                 >
-                  <img 
+                  <Image 
                     src="/VGHex.png" 
                     alt="Hexagon background" 
+                    width={160}
+                    height={160}
                     style={{
                       height: '160px',
                       width: 'auto',
@@ -948,9 +973,11 @@ export default function VitalGuardian() {
                     justifyContent: 'center'
                   }}
                 >
-                  <img 
+                  <Image 
                     src="/VGHex.png" 
                     alt="Hexagon background" 
+                    width={160}
+                    height={160}
                     style={{
                       height: '160px',
                       width: 'auto',
@@ -1145,9 +1172,11 @@ export default function VitalGuardian() {
                   Signals to Insights
                 </h2>
               </div>
-              <img 
+              <Image 
                 src="/VG_ins_outs_hr.png" 
                 alt="Vital Guardian Inputs and Outputs" 
+                width={1200}
+                height={800}
                 className="img-fluid"
                 style={{
                   width: "70%",
@@ -1203,9 +1232,11 @@ export default function VitalGuardian() {
         {/* VG Images Row - at bottom with no gaps */}
         <div className="d-flex position-relative" style={{ height: "400px", overflow: "visible" }}>
           <div style={{ flex: 1, overflow: "visible" }}>
-            <img 
+            <Image 
               src="/VG_img3.png" 
               alt="VG Image 3" 
+              width={400}
+              height={400}
               style={{ 
                 width: "100%", 
                 height: "400px", 
@@ -1215,9 +1246,11 @@ export default function VitalGuardian() {
             />
           </div>
           <div style={{ flex: 1, overflow: "visible", position: "relative", zIndex: 100 }}>
-            <img 
+            <Image 
               src="/VG_img4.png" 
               alt="VG Image 4" 
+              width={400}
+              height={400}
               style={{ 
                 width: "100%", 
                 height: "400px", 
@@ -1226,9 +1259,11 @@ export default function VitalGuardian() {
               }}
             />
             {/* VG Shield Green overlay */}
-            <img 
+            <Image 
               src="/VG_shield_green.png" 
               alt="VG Shield Green" 
+              width={240}
+              height={240}
               style={{ 
                 position: "absolute",
                 top: "-70px",
@@ -1243,9 +1278,11 @@ export default function VitalGuardian() {
             />
           </div>
           <div style={{ flex: 1, overflow: "hidden" }}>
-            <img 
+            <Image 
               src="/VG_img1.png" 
               alt="VG Image 1" 
+              width={400}
+              height={400}
               style={{ 
                 width: "100%", 
                 height: "400px", 
@@ -1255,9 +1292,11 @@ export default function VitalGuardian() {
             />
           </div>
           <div style={{ flex: 1, overflow: "hidden" }}>
-            <img 
+            <Image 
               src="/VG_img2.png" 
               alt="VG Image 2" 
+              width={400}
+              height={400}
               style={{ 
                 width: "100%", 
                 height: "400px", 

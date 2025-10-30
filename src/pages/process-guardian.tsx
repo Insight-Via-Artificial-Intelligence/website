@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Image from "next/image";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -189,7 +190,7 @@ export default function ProcessGuardian() {
     return () => {
       observers.forEach(observer => observer.disconnect());
     };
-  }, []); // Empty dependency array like the working pages
+  }, [industryItemsAnimated, processCardsAnimated, screenshotsAnimated, timelineStepsAnimated, valueCardsAnimated]); // Add missing dependencies
 
   return (
     <>
@@ -219,9 +220,11 @@ export default function ProcessGuardian() {
               style={{ overflow: "visible" }}
             >
               {/* Process monitoring visualization - left side */}
-              <img
+              <Image
                 src="/PG_shield.svg"
                 alt="Process Monitoring Visualization"
+                width={350}
+                height={350}
                 style={{
                   position: "absolute",
                   left: "-25%",
@@ -239,9 +242,11 @@ export default function ProcessGuardian() {
               />
 
               {/* Process analytics dashboard - right side */}
-              <img
+              <Image
                 src="/PG_graph_ab.png"
                 alt="Process Analytics Dashboard"
+                width={400}
+                height={400}
                 style={{
                   position: "absolute",
                   right: "-23%",
@@ -259,9 +264,11 @@ export default function ProcessGuardian() {
               />
 
               {/* PG Circles Gradient Background */}
-              <img
+              <Image
                 src="/PG_circles_grad.png"
                 alt="Process Guardian Background Circles"
+                width={800}
+                height={600}
                 style={{
                   position: "absolute",
                   top: "50%",
@@ -281,9 +288,11 @@ export default function ProcessGuardian() {
                 style={{ position: "relative", zIndex: 10, marginTop: "11rem" }}
               >
                 <div className="hero-logo mb-4">
-                  <img
+                  <Image
                     src="/PG_logo.svg"
                     alt="Process Guardian Logo"
+                    width={280}
+                    height={100}
                     style={{
                       width: "280px",
                       height: "auto",
@@ -386,9 +395,11 @@ export default function ProcessGuardian() {
           <Row className="justify-content-center align-items-center">
             <Col xs={12} lg={10} xl={8} className="position-relative">
               {/* Process monitoring visualization - left side */}
-              <img 
+              <Image 
                 src="/PG_pump.png" 
                 alt="Process Monitoring Visualization"
+                width={450}
+                height={450}
                 style={{
                   position: 'absolute',
                   left: '-35%',
@@ -404,9 +415,11 @@ export default function ProcessGuardian() {
               />
               
               {/* Process analytics dashboard - right side */}
-              <img 
+              <Image 
                 src="/PG_ship.png" 
                 alt="Process Analytics Dashboard"
+                width={780}
+                height={500}
                 style={{
                   position: 'absolute',
                   right: '-40%',
@@ -541,9 +554,11 @@ export default function ProcessGuardian() {
       {/* Screenshots Section */}
       <section className="process-guardian-hero-image text-white py-6" style={{ position: "relative", overflow: "hidden" }}>
         {/* Background Grid */}
-        <img
+        <Image
           src="/PG_grid.svg"
           alt="Process Guardian Grid Background"
+          width={800}
+          height={600}
           style={{
             position: "absolute",
             top: "50%",
@@ -565,8 +580,8 @@ export default function ProcessGuardian() {
                   From Anomaly Detection to Recovery
                 </h2>
                 <p className="lead opacity-90" style={{ fontSize: "1.1rem" }}>
-                  When things go wrong in complex operations, Process Guardian doesn't just raise an alarm. 
-                  It pinpoints the exact cause, explains what's happening, and guides you through the most 
+                  When things go wrong in complex operations, Process Guardian doesn&apos;t just raise an alarm. 
+                  It pinpoints the exact cause, explains what&apos;s happening, and guides you through the most 
                   effective actions to bring your system back to normal.
                 </p>
               </div>
@@ -580,9 +595,11 @@ export default function ProcessGuardian() {
                 }}
                 className={`screenshot-animation text-center ${visibleScreenshots.has(0) ? 'visible' : ''}`}
               >
-                <img
+                <Image
                   src="/PG_screenshot_1.png"
                   alt="Process Guardian Screenshot 1"
+                  width={500}
+                  height={350}
                   className="img-fluid rounded shadow"
                   style={{ maxWidth: "100%", height: "auto" }}
                 />
@@ -647,9 +664,11 @@ export default function ProcessGuardian() {
                 }}
                 className={`screenshot-animation text-center ${visibleScreenshots.has(2) ? 'visible' : ''}`}
               >
-                <img
+                <Image
                   src="/PG_screenshot_2.png"
                   alt="Process Guardian Screenshot 2"
+                  width={500}
+                  height={350}
                   className="img-fluid rounded shadow"
                   style={{ maxWidth: "100%", height: "auto" }}
                 />
@@ -805,33 +824,41 @@ export default function ProcessGuardian() {
       <div className="w-100">
         <div className="d-flex w-100" style={{ height: "250px" }}>
           <div className="flex-fill">
-            <img
+            <Image
               src="/PG_in_1.png"
               alt="Industry Application 1"
+              width={400}
+              height={250}
               className="w-100 h-100"
               style={{ objectFit: "cover" }}
             />
           </div>
           <div className="flex-fill">
-            <img
+            <Image
               src="/PG_in_4.png"
               alt="Industry Application 4"
+              width={400}
+              height={250}
               className="w-100 h-100"
               style={{ objectFit: "cover" }}
             />
           </div>
           <div className="flex-fill">
-            <img
+            <Image
               src="/PG_in_2.png"
               alt="Industry Application 2"
+              width={400}
+              height={250}
               className="w-100 h-100"
               style={{ objectFit: "cover" }}
             />
           </div>
           <div className="flex-fill">
-            <img
+            <Image
               src="/PG_in_3.png"
               alt="Industry Application 3"
+              width={400}
+              height={250}
               className="w-100 h-100"
               style={{ objectFit: "cover" }}
             />

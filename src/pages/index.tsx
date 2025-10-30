@@ -1,10 +1,8 @@
 import Head from "next/head";
+import Image from "next/image";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
-import Badge from "react-bootstrap/Badge";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useEffect, useRef, useState } from "react";
@@ -700,7 +698,7 @@ export default function Home() {
                   Our PhD-qualified team has proven experience across diverse domains, including Defence, Health, Government, and Culture. We work closely with clients, collaborators, and end-users to deliver end-to-end systems that are transparent, explainable, and reliable, even in the most critical environments.
                 </p>
                 <p className="mb-4">
-                  At our core, we believe that trust is foundational. That's why we embed security, ethics, and accountability into every layer of our technology. We measure our success not only through innovation but through the lasting value and empowerment our solutions bring to individuals, organisations, and communities.
+                  At our core, we believe that trust is foundational. That&apos;s why we embed security, ethics, and accountability into every layer of our technology. We measure our success not only through innovation but through the lasting value and empowerment our solutions bring to individuals, organisations, and communities.
                 </p>
                 <p>
                   Through this partnership-driven approach, we turn cutting-edge research into practical tools that enhance human capability, support informed choices, and create meaningful impact. Our commitment is simple: to deliver technology that respects human dignity, inspires confidence, and enables people to flourish.
@@ -747,12 +745,14 @@ export default function Home() {
         
         {/* Research & Development - Full Width Image with Text Below */}
         <div className="mb-0" ref={capabilitiesRnDRef}>
-          <div className="capability-image position-relative">
-            <img 
+          <div className="capability-image position-relative" style={{ width: '100vw', height: '100vh' }}>
+            <Image 
               src="/research.jpg" 
               alt="Research & Development" 
-              className="img-fluid shadow-lg"
-              style={{ width: '100vw', height: '100vh', objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+              className="shadow-lg"
+              style={{ objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+              fill
+              sizes="100vw"
             />
             {/* Overlay all text on bottom of image */}
             <div className="position-absolute w-100" style={{ 
@@ -837,12 +837,14 @@ export default function Home() {
 
           {/* Trusted & Secure Technology - Full Width Image with Text Below */}
           <div className="mb-0" ref={capabilitiesTrustedRef}>
-            <div className="capability-image position-relative" style={{ marginLeft: '-100px', marginRight: '-15px' }}>
-              <img 
+            <div className="capability-image position-relative" style={{ width: '100vw', height: '100vh', left: '50%', transform: 'translateX(-50%)' }}>
+              <Image 
                 src="/trusted.jpg" 
                 alt="Trusted & Secure Technology" 
-                className="img-fluid shadow-lg"
-                style={{ width: '100vw', height: '100vh', objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+                className="shadow-lg"
+                style={{ objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+                fill
+                sizes="100vw"
               />
               {/* Overlay all text on bottom of image */}
               <div className="position-absolute w-100" style={{ 
@@ -927,12 +929,14 @@ export default function Home() {
 
           {/* Real-World Impact - Full Width Image with Text Below */}
           <div className="mb-0">
-            <div className="capability-image position-relative">
-              <img 
+            <div className="capability-image position-relative" style={{ width: '100vw', height: '100vh' }}>
+              <Image 
                 src="/realworld.jpg" 
                 alt="Real-World Impact" 
-                className="img-fluid shadow-lg"
-                style={{ width: '100vw', height: '100vh', objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+                className="shadow-lg"
+                style={{ objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+                fill
+                sizes="100vw"
               />
               {/* Overlay all text on bottom of image */}
               <div className="position-absolute w-100" style={{ 
@@ -1052,7 +1056,7 @@ export default function Home() {
               >
                 <div className="text-center">
                   <h5 className="fw-bold mb-2">Human-first technology</h5>
-                  <p className="text-muted mb-0">We design solutions that empower and augment people's capabilities, always prioritising human agency and dignity. Technology should be a tool that enhances potential, never a replacement that diminishes it.</p>
+                  <p className="text-muted mb-0">We design solutions that empower and augment people&apos;s capabilities, always prioritising human agency and dignity. Technology should be a tool that enhances potential, never a replacement that diminishes it.</p>
                 </div>
               </div>
             </Col>
