@@ -272,6 +272,95 @@ body:has(.process-guardian-hero-image) {
   }
 }
 
+// Override button styles in CTA section to use dark green
+.btn.cta-btn-primary,
+button.cta-btn-primary {
+  // Reset all Bootstrap button styles first
+  background-image: none !important;
+  background: #0a2f28 !important;
+  background-color: #0a2f28 !important;
+  border-color: #0a2f28 !important;
+  color: white !important;
+  border: 2px solid #0a2f28 !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: none !important;
+  
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  &:focus-visible,
+  &.focus {
+    background-image: none !important;
+    background: #083421 !important;
+    background-color: #083421 !important;
+    border-color: #083421 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(10, 47, 40, 0.4) !important;
+    outline: none !important;
+  }
+  
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled).focus {
+    background-image: none !important;
+    background: #083421 !important;
+    background-color: #083421 !important;
+    border-color: #083421 !important;
+    color: white !important;
+    box-shadow: 0 8px 25px rgba(10, 47, 40, 0.4) !important;
+  }
+}
+
+.btn.cta-btn-outline,
+button.cta-btn-outline {
+  // Reset all Bootstrap button styles first
+  background-image: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: #0a2f28 !important;
+  color: #0a2f28 !important;
+  border: 2px solid #0a2f28 !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: none !important;
+  
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  &:focus-visible,
+  &.focus {
+    background-image: none !important;
+    background: #0a2f28 !important;
+    background-color: #0a2f28 !important;
+    border-color: #0a2f28 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(10, 47, 40, 0.4) !important;
+    outline: none !important;
+  }
+  
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled).focus {
+    background-image: none !important;
+    background: #0a2f28 !important;
+    background-color: #0a2f28 !important;
+    border-color: #0a2f28 !important;
+    color: white !important;
+    box-shadow: 0 8px 25px rgba(10, 47, 40, 0.4) !important;
+  }
+}
+
 .btn-outline-light {
   border: 2px solid white;
   color: white;

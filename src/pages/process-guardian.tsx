@@ -207,7 +207,7 @@ export default function ProcessGuardian() {
           <Row className="justify-content-center">
             <Col lg={10}>
               <div className="text-center mb-5">
-                <h2 className="display-5 fw-bold mb-4 text-white">
+                <h2 className="display-5 fw-bold mb-4" style={{ color: "#0a2f28" }}>
                   See Process Guardian in Action
                 </h2>
                 <p className="lead text-white opacity-90">
@@ -296,7 +296,7 @@ export default function ProcessGuardian() {
           <Row className="justify-content-center">
             <Col lg={10}>
               <div className="text-center mb-5">
-                <h2 className="display-4 fw-bold mb-4">
+                <h2 className="display-4 fw-bold mb-4" style={{ color: "#0a2f28" }}>
                   Process Intelligence Redefined
                 </h2>
                 <p className="lead">
@@ -314,14 +314,29 @@ export default function ProcessGuardian() {
                 <Card.Body className="p-4 text-center">
                   <div className="mb-3">
                     <i
+                      className="bi bi-cpu"
+                      style={{ fontSize: "3rem", color: "#2ab175" }}
+                    ></i>
+                  </div>
+                  <h5 className="fw-bold mb-3">Learns Your Process</h5>
+                  <p className="text-muted">
+                    Utilises advanced machine learning to understand the normal operation of any business process. From manufacturing production lines to HR workflows, Process Guardian adapts to your unique operational patterns.
+                  </p>
+                </Card.Body>
+              </Card>
+            </Col>
+            <Col md={6} lg={4}>
+              <Card className="h-100 border-0 shadow-sm">
+                <Card.Body className="p-4 text-center">
+                  <div className="mb-3">
+                    <i
                       className="bi bi-speedometer2"
                       style={{ fontSize: "3rem", color: "#2ab175" }}
                     ></i>
                   </div>
-                  <h5 className="fw-bold mb-3">Real-Time Monitoring</h5>
+                  <h5 className="fw-bold mb-3">One Score for Total Health</h5>
                   <p className="text-muted">
-                    Continuous process surveillance with intelligent anomaly
-                    detection and instant alerting for critical deviations.
+                    Combines hundreds of metrics into a single, easy-to-understand health score. Know at a glance whether your process is performing optimally or needs attention.
                   </p>
                 </Card.Body>
               </Card>
@@ -331,14 +346,13 @@ export default function ProcessGuardian() {
                 <Card.Body className="p-4 text-center">
                   <div className="mb-3">
                     <i
-                      className="bi bi-graph-up-arrow"
+                      className="bi bi-crosshair"
                       style={{ fontSize: "3rem", color: "#2ab175" }}
                     ></i>
                   </div>
-                  <h5 className="fw-bold mb-3">Predictive Analytics</h5>
+                  <h5 className="fw-bold mb-3">Pinpoints the Root Cause</h5>
                   <p className="text-muted">
-                    Advanced machine learning models that predict process
-                    failures and optimization opportunities before they occur.
+                    When issues arise, Process Guardian doesn't just alert you – it identifies the specific factors causing the problem, saving hours of investigation time.
                   </p>
                 </Card.Body>
               </Card>
@@ -348,142 +362,48 @@ export default function ProcessGuardian() {
                 <Card.Body className="p-4 text-center">
                   <div className="mb-3">
                     <i
-                      className="bi bi-gear-wide-connected"
+                      className="bi bi-question-circle"
                       style={{ fontSize: "3rem", color: "#2ab175" }}
                     ></i>
                   </div>
-                  <h5 className="fw-bold mb-3">Automated Optimization</h5>
+                  <h5 className="fw-bold mb-3">What If Scenarios</h5>
                   <p className="text-muted">
-                    Self-learning algorithms that continuously improve process
-                    efficiency and adapt to changing operational conditions.
+                    Simulate changes before implementing them. Understand the potential impact of operational adjustments on your process health and performance.
                   </p>
                 </Card.Body>
               </Card>
             </Col>
-          </Row>
-        </Container>
-      </section>
-
-      {/* Key Features Section */}
-      <section className="py-6">
-        <Container>
-          <Row className="justify-content-center">
-            <Col lg={10}>
-              <div className="text-center mb-5">
-                <h2 className="display-5 fw-bold mb-4">Key Features</h2>
-              </div>
+            <Col md={6} lg={4}>
+              <Card className="h-100 border-0 shadow-sm">
+                <Card.Body className="p-4 text-center">
+                  <div className="mb-3">
+                    <i
+                      className="bi bi-bell"
+                      style={{ fontSize: "3rem", color: "#2ab175" }}
+                    ></i>
+                  </div>
+                  <h5 className="fw-bold mb-3">Actionable Alerts</h5>
+                  <p className="text-muted">
+                    Receive intelligent notifications that provide not just what's wrong, but specific steps to resolve issues. Turn reactive maintenance into proactive optimization.
+                  </p>
+                </Card.Body>
+              </Card>
             </Col>
-          </Row>
-
-          <Row className="justify-content-center">
-            <Col lg={8}>
-              <div className="mb-4">
-                <h5 className="fw-bold text-primary">
-                  Learns Your Process
-                </h5>
-                <p className="text-muted">
-                  Utilises advanced machine learning to understand the normal operation of any business process. From manufacturing production lines to HR workflows, Process Guardian adapts to your unique operational patterns.
-                </p>
-              </div>
-              <div className="mb-4">
-                <h5 className="fw-bold text-primary">
-                  One Score for Total Health
-                </h5>
-                <p className="text-muted">
-                  Combines hundreds of metrics into a single, easy-to-understand health score. Know at a glance whether your process is performing optimally or needs attention.
-                </p>
-              </div>
-              <div className="mb-4">
-                <h5 className="fw-bold text-primary">
-                  Pinpoints the Root Cause
-                </h5>
-                <p className="text-muted">
-                  When issues arise, Process Guardian doesn't just alert you – it identifies the specific factors causing the problem, saving hours of investigation time.
-                </p>
-              </div>
-              <div className="mb-4">
-                <h5 className="fw-bold text-primary">
-                  What If Scenarios
-                </h5>
-                <p className="text-muted">
-                  Simulate changes before implementing them. Understand the potential impact of operational adjustments on your process health and performance.
-                </p>
-              </div>
-              <div className="mb-4">
-                <h5 className="fw-bold text-primary">
-                  Actionable Alerts
-                </h5>
-                <p className="text-muted">
-                  Receive intelligent notifications that provide not just what's wrong, but specific steps to resolve issues. Turn reactive maintenance into proactive optimization.
-                </p>
-              </div>
-              <div className="mb-4">
-                <h5 className="fw-bold text-primary">
-                  Clarity from Complexity
-                </h5>
-                <p className="text-muted">
-                  Transform overwhelming data streams into clear, actionable insights. Process Guardian makes complex industrial and business processes understandable for everyone.
-                </p>
-              </div>
-            </Col>
-          </Row>
-        </Container>
-      </section>
-
-      {/* Industries We Serve Section */}
-      <section className="py-6 bg-light">
-        <Container>
-          <Row className="justify-content-center">
-            <Col lg={10}>
-              <div className="text-center mb-5">
-                <h2 className="display-5 fw-bold mb-4">Industries We Serve</h2>
-                <p className="lead text-muted">
-                  Process Guardian adapts to diverse industries, delivering tailored solutions for your unique operational challenges.
-                </p>
-              </div>
-            </Col>
-          </Row>
-
-          <Row className="justify-content-center">
-            <Col lg={8}>
-              <Row className="g-4">
-                <Col md={6}>
-                  <div className="d-flex align-items-center mb-3">
-                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
-                    <h5 className="fw-bold mb-0">Manufacturing & Production</h5>
+            <Col md={6} lg={4}>
+              <Card className="h-100 border-0 shadow-sm">
+                <Card.Body className="p-4 text-center">
+                  <div className="mb-3">
+                    <i
+                      className="bi bi-eye"
+                      style={{ fontSize: "3rem", color: "#2ab175" }}
+                    ></i>
                   </div>
-                </Col>
-                <Col md={6}>
-                  <div className="d-flex align-items-center mb-3">
-                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
-                    <h5 className="fw-bold mb-0">Energy & Utilities</h5>
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="d-flex align-items-center mb-3">
-                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
-                    <h5 className="fw-bold mb-0">Chemical Processing</h5>
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="d-flex align-items-center mb-3">
-                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
-                    <h5 className="fw-bold mb-0">Healthcare Operations</h5>
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="d-flex align-items-center mb-3">
-                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
-                    <h5 className="fw-bold mb-0">Financial Services</h5>
-                  </div>
-                </Col>
-                <Col md={6}>
-                  <div className="d-flex align-items-center mb-3">
-                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
-                    <h5 className="fw-bold mb-0">Supply Chain Management</h5>
-                  </div>
-                </Col>
-              </Row>
+                  <h5 className="fw-bold mb-3">Clarity from Complexity</h5>
+                  <p className="text-muted">
+                    Transform overwhelming data streams into clear, actionable insights. Process Guardian makes complex industrial and business processes understandable for everyone.
+                  </p>
+                </Card.Body>
+              </Card>
             </Col>
           </Row>
         </Container>
@@ -495,7 +415,7 @@ export default function ProcessGuardian() {
           <Row className="justify-content-center">
             <Col lg={10}>
               <div className="text-center mb-5">
-                <h2 className="display-5 fw-bold mb-4">
+                <h2 className="display-5 fw-bold mb-4" style={{ color: "#0a2f28" }}>
                   Why Choose Process Guardian?
                 </h2>
               </div>
@@ -587,23 +507,332 @@ export default function ProcessGuardian() {
         </Container>
       </section>
 
+      {/* The Value Section */}
+      <section className="py-6">
+        <Container>
+          <Row className="justify-content-center">
+            <Col lg={10}>
+              <div className="text-center mb-5">
+                <h2 className="display-5 fw-bold mb-4" style={{ color: "#0a2f28" }}>The Value</h2>
+                <p className="lead text-muted">
+                  Unlock tangible benefits that transform your operations
+                </p>
+              </div>
+            </Col>
+          </Row>
+
+          <Row className="g-5 justify-content-center">
+            <Col md={6} lg={4}>
+              <div className="text-center">
+                <div className="mb-4">
+                  <div
+                    className="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center"
+                    style={{ width: "80px", height: "80px" }}
+                  >
+                    <i
+                      className="bi bi-shield-exclamation"
+                      style={{ fontSize: "2.5rem", color: "#2ab175" }}
+                    ></i>
+                  </div>
+                </div>
+                <h4 className="fw-bold mb-3" style={{ color: "#2ab175" }}>Early Detection</h4>
+                <p className="text-muted">
+                  Prevent costly disruptions.
+                </p>
+              </div>
+            </Col>
+            <Col md={6} lg={4}>
+              <div className="text-center">
+                <div className="mb-4">
+                  <div
+                    className="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center"
+                    style={{ width: "80px", height: "80px" }}
+                  >
+                    <i
+                      className="bi bi-graph-up-arrow"
+                      style={{ fontSize: "2.5rem", color: "#2ab175" }}
+                    ></i>
+                  </div>
+                </div>
+                <h4 className="fw-bold mb-3" style={{ color: "#2ab175" }}>Smarter Decisions</h4>
+                <p className="text-muted">
+                  Actionable, real-time insights.
+                </p>
+              </div>
+            </Col>
+            <Col md={6} lg={4}>
+              <div className="text-center">
+                <div className="mb-4">
+                  <div
+                    className="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center"
+                    style={{ width: "80px", height: "80px" }}
+                  >
+                    <i
+                      className="bi bi-award"
+                      style={{ fontSize: "2.5rem", color: "#2ab175" }}
+                    ></i>
+                  </div>
+                </div>
+                <h4 className="fw-bold mb-3" style={{ color: "#2ab175" }}>Stronger Operations</h4>
+                <p className="text-muted">
+                  Confidence to operate safely and efficiently.
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Industries We Serve Section */}
+      <section className="py-6 bg-light">
+        <Container>
+          <Row className="justify-content-center">
+            <Col lg={10}>
+              <div className="text-center mb-5">
+                <h2 className="display-5 fw-bold mb-4" style={{ color: "#0a2f28" }}>Industries We Serve</h2>
+                <p className="lead text-muted">
+                  Process Guardian adapts to diverse industries, delivering tailored solutions for your unique operational challenges.
+                </p>
+              </div>
+            </Col>
+          </Row>
+
+          <Row className="justify-content-center">
+            <Col lg={8}>
+              <Row className="g-4">
+                <Col md={6}>
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
+                    <h5 className="fw-bold mb-0">Manufacturing & Production</h5>
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
+                    <h5 className="fw-bold mb-0">Energy & Utilities</h5>
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
+                    <h5 className="fw-bold mb-0">Chemical Processing</h5>
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
+                    <h5 className="fw-bold mb-0">Healthcare Operations</h5>
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
+                    <h5 className="fw-bold mb-0">Financial Services</h5>
+                  </div>
+                </Col>
+                <Col md={6}>
+                  <div className="d-flex align-items-center mb-3">
+                    <i className="bi bi-check-circle-fill text-success me-3" style={{ fontSize: "1.5rem" }}></i>
+                    <h5 className="fw-bold mb-0">Supply Chain Management</h5>
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+
+        </Container>
+      </section>
+
+      {/* Industry Images Banner */}
+      <div className="w-100">
+        <div className="d-flex w-100" style={{ height: "200px" }}>
+          <div className="flex-fill">
+            <img
+              src="/PG_in_1.png"
+              alt="Industry Application 1"
+              className="w-100 h-100"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div className="flex-fill">
+            <img
+              src="/PG_in_4.png"
+              alt="Industry Application 4"
+              className="w-100 h-100"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div className="flex-fill">
+            <img
+              src="/PG_in_2.png"
+              alt="Industry Application 2"
+              className="w-100 h-100"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+          <div className="flex-fill">
+            <img
+              src="/PG_in_3.png"
+              alt="Industry Application 3"
+              className="w-100 h-100"
+              style={{ objectFit: "cover" }}
+            />
+          </div>
+        </div>
+      </div>
+
       {/* CTA Section */}
-      <section className="solutions-cta-gradient text-white py-6">
+      <section 
+        className="py-6" 
+        style={{ 
+          background: "linear-gradient(135deg, rgba(255, 187, 0, 1) 0%, #f3de25ff 100%)" 
+        }}
+      >
         <Container>
           <Row className="justify-content-center text-center">
-            <Col lg={8}>
-              <h2 className="display-5 fw-bold mb-4">
+            <Col lg={10}>
+              <h2 className="display-5 fw-bold mb-4" style={{ color: "#0a2f28" }}>
                 Ready to Transform Your Processes?
               </h2>
-              <p className="lead mb-5">
+              <p className="lead mb-5" style={{ color: "#0a2f28" }}>
                 Discover how Process Guardian can optimize your operations,
                 reduce costs, and improve efficiency.
               </p>
-              <Button variant="light" size="lg" className="me-3">
+            </Col>
+          </Row>
+
+          {/* Process Timeline */}
+          <Row className="justify-content-center mb-5">
+            <Col lg={10}>
+              <div className="position-relative">
+                {/* Timeline line - positioned to run through center of circles */}
+                <div 
+                  className="position-absolute d-none d-lg-block"
+                  style={{
+                    top: '52px',
+                    left: '10%',
+                    right: '10%',
+                    height: '3px',
+                    background: 'linear-gradient(90deg, rgba(10, 47, 40, 0.2) 0%, rgba(10, 47, 40, 0.6) 50%, rgba(10, 47, 40, 0.2) 100%)',
+                    zIndex: 1
+                  }}
+                ></div>
+                
+                <Row className="g-4 position-relative" style={{ zIndex: 2 }}>
+                  <Col lg className="text-center">
+                    <div className="mb-4">
+                      <div
+                        className="rounded-circle d-inline-flex align-items-center justify-content-center mx-auto"
+                        style={{ 
+                          width: "60px", 
+                          height: "60px",
+                          border: '3px solid #0a2f28',
+                          background: '#0a2f28',
+                          boxShadow: '0 0 20px rgba(10, 47, 40, 0.6), 0 0 40px rgba(10, 47, 40, 0.3)'
+                        }}
+                      >
+                        <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "white", fontFamily: "Aptly" }}>1</span>
+                      </div>
+                    </div>
+                    <h5 className="fw-bold mb-3" style={{ color: "#0a2f28" }}>Discovery First</h5>
+                    <p style={{ color: "#0a2f28", opacity: 0.8 }}>
+                      Understand processes, risks, and goals.
+                    </p>
+                  </Col>
+                  <Col lg className="text-center">
+                    <div className="mb-4">
+                      <div
+                        className="rounded-circle d-inline-flex align-items-center justify-content-center mx-auto"
+                        style={{ 
+                          width: "60px", 
+                          height: "60px",
+                          border: '3px solid #0a2f28',
+                          background: '#0a2f28',
+                          boxShadow: '0 0 20px rgba(10, 47, 40, 0.6), 0 0 40px rgba(10, 47, 40, 0.3)'
+                        }}
+                      >
+                        <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "white", fontFamily: "Aptly" }}>2</span>
+                      </div>
+                    </div>
+                    <h5 className="fw-bold mb-3" style={{ color: "#0a2f28" }}>Insight to Action</h5>
+                    <p style={{ color: "#0a2f28", opacity: 0.8 }}>
+                      Analyse data, uncover insights, and co-design tailored solutions.
+                    </p>
+                  </Col>
+                  <Col lg className="text-center">
+                    <div className="mb-4">
+                      <div
+                        className="rounded-circle d-inline-flex align-items-center justify-content-center mx-auto"
+                        style={{ 
+                          width: "60px", 
+                          height: "60px",
+                          border: '3px solid #0a2f28',
+                          background: '#0a2f28',
+                          boxShadow: '0 0 20px rgba(10, 47, 40, 0.6), 0 0 40px rgba(10, 47, 40, 0.3)'
+                        }}
+                      >
+                        <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "white", fontFamily: "Aptly" }}>3</span>
+                      </div>
+                    </div>
+                    <h5 className="fw-bold mb-3" style={{ color: "#0a2f28" }}>Seamless Integration</h5>
+                    <p style={{ color: "#0a2f28", opacity: 0.8 }}>
+                      Modular deployment built around your existing systems.
+                    </p>
+                  </Col>
+                  <Col lg className="text-center">
+                    <div className="mb-4">
+                      <div
+                        className="rounded-circle d-inline-flex align-items-center justify-content-center mx-auto"
+                        style={{ 
+                          width: "60px", 
+                          height: "60px",
+                          border: '3px solid #0a2f28',
+                          background: '#0a2f28',
+                          boxShadow: '0 0 20px rgba(10, 47, 40, 0.6), 0 0 40px rgba(10, 47, 40, 0.3)'
+                        }}
+                      >
+                        <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "white", fontFamily: "Aptly" }}>4</span>
+                      </div>
+                    </div>
+                    <h5 className="fw-bold mb-3" style={{ color: "#0a2f28" }}>Agile & Risk-Aware</h5>
+                    <p style={{ color: "#0a2f28", opacity: 0.8 }}>
+                      Every step shaped by feedback, feasibility, and evolving needs.
+                    </p>
+                  </Col>
+                  <Col lg className="text-center">
+                    <div className="mb-4">
+                      <div
+                        className="rounded-circle d-inline-flex align-items-center justify-content-center mx-auto"
+                        style={{ 
+                          width: "60px", 
+                          height: "60px",
+                          border: '3px solid #0a2f28',
+                          background: '#0a2f28',
+                          boxShadow: '0 0 20px rgba(10, 47, 40, 0.6), 0 0 40px rgba(10, 47, 40, 0.3)'
+                        }}
+                      >
+                        <span style={{ fontSize: "1.5rem", fontWeight: "bold", color: "white", fontFamily: "Aptly" }}>5</span>
+                      </div>
+                    </div>
+                    <h5 className="fw-bold mb-3" style={{ color: "#0a2f28" }}>The Result</h5>
+                    <p style={{ color: "#0a2f28", opacity: 0.8 }}>
+                      Speed with depth — real results, responsibly delivered.
+                    </p>
+                  </Col>
+                </Row>
+              </div>
+            </Col>
+          </Row>
+
+          <Row className="justify-content-center text-center">
+            <Col lg={8}>
+              <Button 
+                size="lg" 
+                className="me-3 cta-btn-primary"
+                href="/contact"
+                as="a"
+              >
                 Schedule Consultation
-              </Button>
-              <Button variant="outline-light" size="lg">
-                Download Datasheet
               </Button>
             </Col>
           </Row>
