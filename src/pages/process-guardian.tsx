@@ -12,7 +12,9 @@ export default function ProcessGuardian() {
   const [scrollY, setScrollY] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
+  const [visibleValueCards, setVisibleValueCards] = useState<Set<number>>(new Set());
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const valueCardRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
     const handleScroll = () => setScrollY(window.scrollY);
@@ -37,20 +39,36 @@ export default function ProcessGuardian() {
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          // Check if it's a process intelligence card
           const cardIndex = cardRefs.current.indexOf(entry.target as HTMLDivElement);
           if (cardIndex !== -1) {
             setVisibleCards(prev => new Set([...prev, cardIndex]));
+          }
+          
+          // Check if it's a value card
+          const valueCardIndex = valueCardRefs.current.indexOf(entry.target as HTMLDivElement);
+          if (valueCardIndex !== -1) {
+            setVisibleValueCards(prev => new Set([...prev, valueCardIndex]));
           }
         }
       });
     }, observerOptions);
 
+    // Observe process intelligence cards
     cardRefs.current.forEach((ref) => {
+      if (ref) observer.observe(ref);
+    });
+
+    // Observe value cards
+    valueCardRefs.current.forEach((ref) => {
       if (ref) observer.observe(ref);
     });
 
     return () => {
       cardRefs.current.forEach((ref) => {
+        if (ref) observer.unobserve(ref);
+      });
+      valueCardRefs.current.forEach((ref) => {
         if (ref) observer.unobserve(ref);
       });
     };
@@ -522,141 +540,85 @@ export default function ProcessGuardian() {
           </Row>
 
           <Row className="g-5 justify-content-center">
-            <Col md={6} lg={4}>
-              <div 
-                className="text-center p-4 rounded-4 h-100"
-                style={{
-                  background: "linear-gradient(135deg, #ff4444 0%, #cc0000 100%)",
-                  boxShadow: "0 10px 30px rgba(255, 68, 68, 0.3), 0 0 20px rgba(255, 68, 68, 0.1)",
-                  border: "1px solid rgba(255, 255, 255, 0.2)",
-                  backdropFilter: "blur(10px)",
-                  position: "relative",
-                  overflow: "hidden"
-                }}
-              >
-                <div 
-                  style={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    right: "0",
-                    height: "2px",
-                    background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)"
+            {[
+              {
+                icon: "bi-shield-exclamation",
+                title: "Early Detection",
+                description: "Prevent costly disruptions.",
+                gradient: "linear-gradient(135deg, #ff4444 0%, #cc0000 100%)",
+                shadowColor: "rgba(255, 68, 68, 0.3)"
+              },
+              {
+                icon: "bi-graph-up-arrow",
+                title: "Smarter Decisions",
+                description: "Actionable, real-time insights.",
+                gradient: "linear-gradient(135deg, #ffbb00 0%, #ff8800 100%)",
+                shadowColor: "rgba(255, 187, 0, 0.3)"
+              },
+              {
+                icon: "bi-award",
+                title: "Stronger Operations",
+                description: "Confidence to operate safely and efficiently.",
+                gradient: "linear-gradient(135deg, #2ab175 0%, #1a8c57 100%)",
+                shadowColor: "rgba(42, 177, 117, 0.3)"
+              }
+            ].map((valueCard, index) => (
+              <Col md={6} lg={4} key={index} className="d-flex">
+                <div
+                  ref={(el) => {
+                    valueCardRefs.current[index] = el;
                   }}
-                />
-                <div className="mb-4">
-                  <div
-                    className="rounded-circle d-inline-flex align-items-center justify-content-center"
-                    style={{ 
-                      width: "80px", 
-                      height: "80px",
-                      background: "rgba(255, 255, 255, 0.2)",
+                  className={`card-animation h-100 w-100 ${visibleValueCards.has(index) ? 'visible' : ''}`}
+                  style={{
+                    animationDelay: `${index * 150}ms`
+                  }}
+                >
+                  <div 
+                    className="text-center p-4 rounded-4 h-100"
+                    style={{
+                      background: valueCard.gradient,
+                      boxShadow: `0 10px 30px ${valueCard.shadowColor}, 0 0 20px ${valueCard.shadowColor.replace('0.3', '0.1')}`,
+                      border: "1px solid rgba(255, 255, 255, 0.2)",
                       backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255, 255, 255, 0.3)"
+                      position: "relative",
+                      overflow: "hidden"
                     }}
                   >
-                    <i
-                      className="bi bi-shield-exclamation"
-                      style={{ fontSize: "2.5rem", color: "white" }}
-                    ></i>
+                    <div 
+                      style={{
+                        position: "absolute",
+                        top: "0",
+                        left: "0",
+                        right: "0",
+                        height: "2px",
+                        background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)"
+                      }}
+                    />
+                    <div className="mb-4">
+                      <div
+                        className="rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style={{ 
+                          width: "80px", 
+                          height: "80px",
+                          background: "rgba(255, 255, 255, 0.2)",
+                          backdropFilter: "blur(10px)",
+                          border: "1px solid rgba(255, 255, 255, 0.3)"
+                        }}
+                      >
+                        <i
+                          className={`bi ${valueCard.icon}`}
+                          style={{ fontSize: "2.5rem", color: "white" }}
+                        ></i>
+                      </div>
+                    </div>
+                    <h4 className="fw-bold mb-3" style={{ color: "white" }}>{valueCard.title}</h4>
+                    <p style={{ color: "rgba(255, 255, 255, 0.9)" }}>
+                      {valueCard.description}
+                    </p>
                   </div>
                 </div>
-                <h4 className="fw-bold mb-3" style={{ color: "white" }}>Early Detection</h4>
-                <p style={{ color: "rgba(255, 255, 255, 0.9)" }}>
-                  Prevent costly disruptions.
-                </p>
-              </div>
-            </Col>
-            <Col md={6} lg={4}>
-              <div 
-                className="text-center p-4 rounded-4 h-100"
-                style={{
-                  background: "linear-gradient(135deg, #ffbb00 0%, #ff8800 100%)",
-                  boxShadow: "0 10px 30px rgba(255, 187, 0, 0.3), 0 0 20px rgba(255, 187, 0, 0.1)",
-                  border: "1px solid rgba(255, 255, 255, 0.2)",
-                  backdropFilter: "blur(10px)",
-                  position: "relative",
-                  overflow: "hidden"
-                }}
-              >
-                <div 
-                  style={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    right: "0",
-                    height: "2px",
-                    background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)"
-                  }}
-                />
-                <div className="mb-4">
-                  <div
-                    className="rounded-circle d-inline-flex align-items-center justify-content-center"
-                    style={{ 
-                      width: "80px", 
-                      height: "80px",
-                      background: "rgba(255, 255, 255, 0.2)",
-                      backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255, 255, 255, 0.3)"
-                    }}
-                  >
-                    <i
-                      className="bi bi-graph-up-arrow"
-                      style={{ fontSize: "2.5rem", color: "white" }}
-                    ></i>
-                  </div>
-                </div>
-                <h4 className="fw-bold mb-3" style={{ color: "white" }}>Smarter Decisions</h4>
-                <p style={{ color: "rgba(255, 255, 255, 0.9)" }}>
-                  Actionable, real-time insights.
-                </p>
-              </div>
-            </Col>
-            <Col md={6} lg={4}>
-              <div 
-                className="text-center p-4 rounded-4 h-100"
-                style={{
-                  background: "linear-gradient(135deg, #2ab175 0%, #1a8c57 100%)",
-                  boxShadow: "0 10px 30px rgba(42, 177, 117, 0.3), 0 0 20px rgba(42, 177, 117, 0.1)",
-                  border: "1px solid rgba(255, 255, 255, 0.2)",
-                  backdropFilter: "blur(10px)",
-                  position: "relative",
-                  overflow: "hidden"
-                }}
-              >
-                <div 
-                  style={{
-                    position: "absolute",
-                    top: "0",
-                    left: "0",
-                    right: "0",
-                    height: "2px",
-                    background: "linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent)"
-                  }}
-                />
-                <div className="mb-4">
-                  <div
-                    className="rounded-circle d-inline-flex align-items-center justify-content-center"
-                    style={{ 
-                      width: "80px", 
-                      height: "80px",
-                      background: "rgba(255, 255, 255, 0.2)",
-                      backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(255, 255, 255, 0.3)"
-                    }}
-                  >
-                    <i
-                      className="bi bi-award"
-                      style={{ fontSize: "2.5rem", color: "white" }}
-                    ></i>
-                  </div>
-                </div>
-                <h4 className="fw-bold mb-3" style={{ color: "white" }}>Stronger Operations</h4>
-                <p style={{ color: "rgba(255, 255, 255, 0.9)" }}>
-                  Confidence to operate safely and efficiently.
-                </p>
-              </div>
-            </Col>
+              </Col>
+            ))}
           </Row>
         </Container>
       </section>
