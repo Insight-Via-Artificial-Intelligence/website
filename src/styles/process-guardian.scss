@@ -52,9 +52,25 @@
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
   padding-top: 0;
+  padding-bottom: 0;
+  
+  // Remove flex positioning on mobile to allow absolute positioning to work
+  @media (max-width: 991.98px) {
+    display: block; // Remove flex layout on mobile
+    min-height: 80vh; // Shorter on mobile
+  }
+  
+  // Desktop keeps flex layout
+  @media (min-width: 992px) {
+    display: flex;
+    align-items: center;
+  }
+  
+  // Bootstrap sm breakpoint (< 576px) - Reduce height on small screens
+  @media (max-width: 575.98px) {
+    min-height: 70vh; // Even shorter on small mobile screens
+  }
 }
 
 // Apply Aptly font to headings on Process Guardian page only (excluding footer)
@@ -213,7 +229,7 @@ body:has(.process-guardian-hero-image) {
 // Hero content styling for process guardian page
 .pg-hero-tagline {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   font-size: clamp(2.5rem, 6vw, 4rem);
   line-height: 1.1;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -225,10 +241,46 @@ body:has(.process-guardian-hero-image) {
   }
 }
 
-.hero-content {
+.process-guardian-hero-image .hero-content {
   position: relative;
-  z-index: 2;
-  padding: 2rem 0;
+  z-index: 5;
+  padding: 2rem;
+  text-align: center;
+  
+  // Desktop keeps normal relative positioning with flex parent
+  @media (min-width: 992px) {
+    position: relative;
+    transform: none;
+    width: auto;
+    max-width: none;
+    margin-top: 8rem; // Push content down on desktop
+  }
+  
+  // Mobile uses absolute positioning
+  @media (max-width: 991.98px) {
+    position: absolute;
+    top: 50vh;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: 90%;
+    max-width: 1200px;
+    padding: 1rem;
+    margin-top: 0;
+  }
+  
+  // Bootstrap md breakpoint (< 768px)
+  @media (max-width: 767.98px) {
+    top: 45vh;
+    padding: 0.8rem;
+    transform: translateX(-50%) translateY(-50%);
+  }
+  
+  // Bootstrap sm breakpoint (< 576px)
+  @media (max-width: 575.98px) {
+    top: 40vh;
+    padding: 0.5rem;
+    transform: translateX(-50%) translateY(-50%);
+  }
 }
 
 // Card styles for Process Guardian
