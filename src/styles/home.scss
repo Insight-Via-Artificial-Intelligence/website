@@ -18,10 +18,24 @@
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-  display: flex;
-  align-items: flex-end; // Position content at bottom
   padding-top: 0; // Reset padding
   padding-bottom: 0; // Reset padding
+  
+  // Remove flex positioning on mobile to allow absolute positioning to work
+  @media (max-width: 991.98px) {
+    display: block; // Remove flex layout on mobile
+  }
+  
+  // Desktop keeps flex layout
+  @media (min-width: 992px) {
+    display: flex;
+    align-items: flex-end; // Position content at bottom on desktop only
+  }
+  
+  // Bootstrap sm breakpoint (< 576px) - Reduce height on small screens
+  @media (max-width: 575.98px) {
+    min-height: 60vh; // Much shorter hero on small mobile screens
+  }
   
   &::before {
     content: '';
@@ -93,18 +107,20 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-  z-index: 1;
+  z-index: 1; // Behind text containers (company name z-index: 10, hero-content z-index: 5)
   opacity: 0.8; // Make it subtle behind the text
   animation: slideUpFade 1.5s ease-out 0.2s both; // Slide up with fade, slight delay
   
-  @media (max-width: 768px) {
+  // Bootstrap md breakpoint (< 768px)
+  @media (max-width: 767.98px) {
     max-width: 900px;
     top: 8vh;
     height: 65vh;
     opacity: 0.4; // More subtle on mobile
   }
   
-  @media (max-width: 576px) {
+  // Bootstrap sm breakpoint (< 576px)
+  @media (max-width: 575.98px) {
     max-width: 700px;
     top: 5vh;
     height: 60vh;
@@ -120,17 +136,51 @@
   min-height: 100vh;
 }
 
+.hero-company-name-top {
+  position: relative;
+  z-index: 3;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size:  4.5vw; // Larger font size
+  line-height: 1.2;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5); // Stronger shadow for readability
+  letter-spacing: 0.02em;
+  opacity: 0.95;
+  text-align: center;
+  width: 100%;
+  animation: slideDownFade 1.2s ease-out 0.3s both; // Different animation
+
+  @media (max-width: 575.98px) {
+    font-size: 3.8vw; // Desktop size (was inline)
+    top: 0vw; // More space below company name to prevent overlap
+  }
+  
+}
+
 .hero-tagline {
   position: relative;
   z-index: 3; // Same as hero-content to ensure it's above background image
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: 4rem; // Desktop size
   line-height: 1.1;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   letter-spacing: -0.02em;
   
-  @media (max-width: 768px) {
-    font-size: clamp(1.8rem, 6vw, 3rem);
-    line-height: 1.2;
+  // Bootstrap lg breakpoint (< 992px)
+  @media (max-width: 991.98px) {
+    font-size: 3.8vw; // Desktop size (was inline)
+    top: 15vw; // More space below company name to prevent overlap
+  }
+  
+  // Bootstrap md breakpoint (< 768px)
+  @media (max-width: 767.98px) {
+    font-size: 3.8vw; // Desktop size (was inline)
+  }
+  
+  // Bootstrap sm breakpoint (< 576px)
+  @media (max-width: 575.98px) {
+    font-size: 3.8vw; // Desktop size (was inline)
+    top: 50vw; // More space below company name to prevent overlap  
   }
 }
 
@@ -141,10 +191,34 @@
   transform: translateX(-50%); // Center horizontally
   width: 90%;
   max-width: 1200px;
-  z-index: 3; // Higher than background image (z-index: 1)
+  z-index: 5; // Higher than background image (z-index: 1) but lower than company name (z-index: 10)
   padding: 2rem;
   text-align: center;
   animation: slideUpFadeContent 1.2s ease-out 0.5s both; // Slide up with fade, delayed start
+  
+  // Bootstrap lg breakpoint (< 992px)
+  @media (max-width: 991.98px) {
+    top: 60vh; // Much more space below company name to prevent overlap
+    bottom: auto; // Remove bottom positioning
+    padding: 1rem;
+    transform: translateX(-50%) scale(0.5); // Scale down while maintaining structure
+  }
+  
+  // Bootstrap md breakpoint (< 768px)
+  @media (max-width: 767.98px) {
+    top: 58vh; // Below company name with more spacing
+    bottom: auto;
+    padding: 0.8rem;
+    transform: translateX(-50%) scale(0.7); // Smaller scale for medium mobile
+  }
+  
+  // Bootstrap sm breakpoint (< 576px)
+  @media (max-width: 575.98px) {
+    top: 15vh; // Below company name in 60vh hero with adequate spacing
+    bottom: auto;
+    padding: 0.5rem;
+    transform: translateX(-50%) scale(0.6); // Smallest scale for small mobile
+  }
 }
 
 @keyframes float {
@@ -179,6 +253,17 @@
   }
   100% {
     opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-20px);
+  }
+  100% {
+    opacity: 0.95;
     transform: translateX(-50%) translateY(0);
   }
 }
@@ -352,15 +437,17 @@
   mix-blend-mode: lighten;
   pointer-events: none;
   
-  @media (max-width: 768px) {
-    width: 180%;
-    height: 130%;
+  // Bootstrap md breakpoint (< 768px) - Keep flower large on mobile
+  @media (max-width: 767.98px) {
+    width: 220%; // Keep it bigger on mobile to prevent bottom showing
+    height: 160%; // Keep height proportional
     opacity: 0.1;
   }
   
-  @media (max-width: 576px) {
-    width: 160%;
-    height: 120%;
+  // Bootstrap sm breakpoint (< 576px) - Keep flower large on small mobile
+  @media (max-width: 575.98px) {
+    width: 240%; // Even bigger on small screens to ensure coverage
+    height: 170%; // Keep height proportional
     opacity: 0.1;
   }
 }
@@ -610,17 +697,5 @@
     letter-spacing: 0.03em;
     background: none !important;
     -webkit-text-fill-color: initial !important;
-  }
-}
-
-// Responsive adjustments
-@media (max-width: 768px) {
-  .py-6 {
-    padding-top: 4rem !important;
-    padding-bottom: 4rem !important;
-  }
-  
-  .hero-tagline {
-    font-size: 2.5rem !important;
   }
 }

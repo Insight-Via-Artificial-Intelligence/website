@@ -655,8 +655,15 @@ export default function Home() {
         <Container>
           <Row className="justify-content-center">
             <Col lg={12} xl={10} className="text-center position-relative">
+              
               <div className="hero-content">
-                <h1 className="hero-tagline fw-bold mb-0" style={{ fontSize: '4rem', lineHeight: '1.1' }}>
+                <h1 className="hero-company-name-top d-lg-none">
+                <div>
+                  <span style={{ fontWeight: 900 }}>INSIGHT</span> <span style={{ fontWeight: 400 }}>VIA</span>
+                </div>
+                <div style={{ fontWeight: 900 }}>ARTIFICIAL INTELLIGENCE</div>
+              </h1>
+                <h2 className="hero-tagline fw-bold mb-0">
                   <span style={{ 
                     color: '#52d37b', 
                     textShadow: '0 0 20px rgba(72, 243, 86, 0.62), 0 0 40px rgba(6, 182, 212, 0.4), 0 0 60px rgba(6, 182, 212, 0.2)' 
@@ -665,7 +672,7 @@ export default function Home() {
                   </span>
                   <br />
                   with Trusted Technology
-                </h1>
+                </h2>
               </div>
             </Col>
           </Row>

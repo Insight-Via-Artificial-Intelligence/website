@@ -35,7 +35,17 @@ const Header: React.FC = () => {
     >
       <Container>
         <Navbar.Brand as={Link} href="/" className="fw-bold text-white d-flex align-items-center">
-          <span style={{ fontWeight: 900 }}>INSIGHT <span style={{ fontWeight: 400 }}>VIA</span> ARTIFICIAL INTELLIGENCE</span>
+          {/* Desktop text - hidden on mobile */}
+          <span className="d-none d-lg-inline" style={{ fontWeight: 900 }}>
+            INSIGHT <span style={{ fontWeight: 400 }}>VIA</span> ARTIFICIAL INTELLIGENCE
+          </span>
+          {/* Mobile logo - hidden on desktop */}
+          <img 
+            src="/logo_only_gray.svg" 
+            alt="IVAI Logo" 
+            className="d-lg-none navbar-logo-mobile"
+            style={{ height: '40px', width: 'auto' }}
+          />
         </Navbar.Brand>
         
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

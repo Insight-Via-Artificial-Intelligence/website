@@ -301,7 +301,7 @@ export default function ProcessGuardian() {
                     }}
                   />
                   <h1
-                    className="hero-tagline fw-bold mb-4"
+                    className="pg-hero-tagline fw-bold mb-4"
                     style={{ fontSize: "2.8rem", lineHeight: "0.8" }}
                   >
                     <span

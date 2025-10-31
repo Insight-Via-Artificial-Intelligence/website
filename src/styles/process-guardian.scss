@@ -62,7 +62,7 @@ body:has(.process-guardian-hero-image) {
   h1, h2, h3, h4, h5, h6,
   .h1, .h2, .h3, .h4, .h5, .h6,
   .display-1, .display-2, .display-3, .display-4, .display-5, .display-6,
-  .hero-tagline {
+  .pg-hero-tagline {
     &:not(footer h1, footer h2, footer h3, footer h4, footer h5, footer h6,
          footer .h1, footer .h2, footer .h3, footer .h4, footer .h5, footer .h6,
          footer .display-1, footer .display-2, footer .display-3, footer .display-4, footer .display-5, footer .display-6) {
@@ -110,7 +110,7 @@ body:has(.process-guardian-hero-image) {
   }
   
   // Special styling for hero tagline
-  .hero-tagline {
+  .pg-hero-tagline {
     letter-spacing: 0.08em !important; // More spacing for large hero text
   }
   
@@ -210,8 +210,8 @@ body:has(.process-guardian-hero-image) {
   }
 }
 
-// Hero content styling for solutions pages
-.hero-tagline {
+// Hero content styling for process guardian page
+.pg-hero-tagline {
   position: relative;
   z-index: 2;
   font-size: clamp(2.5rem, 6vw, 4rem);
@@ -413,7 +413,7 @@ button.cta-btn-outline {
     padding-bottom: 4rem !important;
   }
   
-  .hero-tagline {
+  .pg-hero-tagline {
     font-size: 2.2rem !important;
   }
   

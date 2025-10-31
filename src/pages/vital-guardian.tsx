@@ -268,7 +268,7 @@ export default function VitalGuardian() {
                   </svg>
                 </div>
                 <p
-                  className="lead mb-4"
+                  className="vg-hero-tagline lead mb-4"
                   style={{
                     fontSize: "2.5rem",
                     color: "#61c997",
