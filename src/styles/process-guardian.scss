@@ -730,4 +730,12 @@ button.cta-btn-outline {
     opacity: 1;
     transform: scale(1);
   }
+  
+  // Mobile rotation - rotate 90 degrees clockwise
+  @media (max-width: 991.98px) {
+    &.visible {
+      opacity: 1;
+      transform: translateY(-10%) translateX(30px) scale(1) rotate(90deg) !important;
+    }
+  }
 }
