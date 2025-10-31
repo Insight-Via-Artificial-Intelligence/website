@@ -1,0 +1,746 @@
+// Import shared styles
+@import './shared.scss';
+
+// Process Guardian specific styles
+
+// Aptly font face definitions
+@font-face {
+  font-family: 'Aptly';
+  src: url('/fonts/Aptly/Aptly.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aptly';
+  src: url('/fonts/Aptly/Aptly_Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aptly';
+  src: url('/fonts/Aptly/Aptly_Bold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aptly';
+  src: url('/fonts/Aptly/Aptly_Extra_Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Aptly';
+  src: url('/fonts/Aptly/Aptly_Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+// Process Guardian hero with image background
+.process-guardian-hero-image {
+  background: 
+    linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+    url('/PG_back.png') center/cover no-repeat;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  padding-top: 0;
+  padding-bottom: 0;
+  
+  // Keep flex layout on all screen sizes for proper centering
+  display: flex;
+  align-items: center;
+  
+  // Mobile screens - match parent and child heights
+  @media (max-width: 991.98px) {
+    min-height: 80vh;
+  }
+  
+  // Override Bootstrap row classes with higher specificity
+  @media (max-width: 991.98px) {
+    .container .row.justify-content-center.align-items-center.min-vh-100 {
+      min-height: 80vh !important;
+    }
+  }
+  
+  // Bootstrap sm breakpoint (< 576px) - Reduce height on small screens
+  @media (max-width: 575.98px) {
+    min-height: 70vh;
+  }
+  
+  @media (max-width: 575.98px) {
+    .container .row.justify-content-center.align-items-center.min-vh-100 {
+      min-height: 70vh !important;
+    }
+  }
+  
+  // Mobile sizing for parallax images (PG_shield.svg, PG_graph_ab.png, etc.)
+  @media (max-width: 991.98px) {
+    img[src*="PG_shield"], 
+    img[src*="PG_graph"], 
+    img[src*="PG_pump"], 
+    img[src*="PG_ship"] {
+      width: 75% !important; // 75% size on mobile
+      max-width: 300px !important;
+    }
+  }
+  
+  @media (max-width: 767.98px) {
+    // Hide hero section parallax images on smaller screens
+    img[src*="PG_shield"], 
+    img[src*="PG_graph"] {
+      display: none !important;
+    }
+    
+    // Keep other parallax images but make them smaller
+    img[src*="PG_pump"], 
+    img[src*="PG_ship"] {
+      width: 65% !important; // Smaller on medium mobile
+      max-width: 250px !important;
+    }
+  }
+  
+  @media (max-width: 575.98px) {
+    img[src*="PG_shield"], 
+    img[src*="PG_graph"], 
+    img[src*="PG_pump"], 
+    img[src*="PG_ship"] {
+      width: 55% !important; // Smallest on small mobile
+      max-width: 200px !important;
+    }
+  }
+}
+
+// Apply Aptly font to headings on Process Guardian page only (excluding footer)
+body:has(.process-guardian-hero-image) {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  .display-1, .display-2, .display-3, .display-4, .display-5, .display-6,
+  .pg-hero-tagline {
+    &:not(footer h1, footer h2, footer h3, footer h4, footer h5, footer h6,
+         footer .h1, footer .h2, footer .h3, footer .h4, footer .h5, footer .h6,
+         footer .display-1, footer .display-2, footer .display-3, footer .display-4, footer .display-5, footer .display-6) {
+      font-family: 'Aptly', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+      font-weight: 400 !important; // Thinner weight
+      line-height: 1.2 !important;
+      text-transform: uppercase !important; // All caps
+      letter-spacing: 0.05em !important; // Better spacing for caps
+    }
+  }
+  
+  // Apply Aptly font to buttons on Process Guardian page (excluding footer and navbar buttons)
+  .btn:not(footer .btn, .navbar .btn, header .btn) {
+    font-family: 'Aptly', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    font-weight: 400 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+  }
+  
+  // Reset footer headings to normal styling
+  footer {
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6,
+    .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+      font-family: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+      font-weight: 900 !important;
+      text-transform: none !important;
+      letter-spacing: normal !important;
+    }
+    
+    // Reset footer buttons to normal styling
+    .btn {
+      font-family: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+      font-weight: 500 !important;
+      text-transform: none !important;
+      letter-spacing: normal !important;
+    }
+  }
+  
+  // Ensure proper spacing for headings with Aptly font
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  .display-1, .display-2, .display-3, .display-4, .display-5, .display-6 {
+    margin-bottom: 1rem !important;
+  }
+  
+  // Special styling for hero tagline
+  .pg-hero-tagline {
+    letter-spacing: 0.08em !important; // More spacing for large hero text
+  }
+  
+  // Special styling for the motto tagline (MONITOR. OPTIMIZE. EXCEL.)
+  .hero-motto {
+    font-family: 'Aptly', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    font-weight: 400 !important;
+    color: #fc0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+  }
+}
+
+// Solutions page hero gradient (blue theme)
+.solutions-hero-gradient {
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(59, 130, 246, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(29, 78, 216, 0.7) 0%, transparent 50%),
+    radial-gradient(circle at 60% 80%, rgba(37, 99, 235, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 90% 70%, rgba(30, 58, 138, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 10% 20%, rgba(30, 64, 175, 0.7) 0%, transparent 50%),
+    linear-gradient(135deg, #0c1445 0%, #1e40af 25%, #1d4ed8 50%, #2563eb 75%, #3b82f6 100%);
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 25% 75%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 25%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+    opacity: 0.6;
+  }
+}
+
+// Solutions page CTA gradient (blue theme)
+.solutions-cta-gradient {
+  background: 
+    radial-gradient(circle at 30% 40%, rgba(29, 78, 216, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(37, 99, 235, 0.7) 0%, transparent 50%),
+    radial-gradient(circle at 90% 20%, rgba(59, 130, 246, 0.6) 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(14, 165, 233, 0.7) 0%, transparent 50%),
+    linear-gradient(135deg, #1e3a8a 0%, #1e40af 25%, #1d4ed8 50%, #2563eb 75%, #3b82f6 100%);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.02) 0%, transparent 50%),
+      radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.01) 0%, transparent 50%);
+    opacity: 0.8;
+  }
+  
+  // Override text colors for dark background
+  .text-muted {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+  
+  .lead {
+    color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  // Override gradient headings to be white text
+  .display-4,
+  .display-5,
+  .h2.fw-bold {
+    color: white !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -moz-background-clip: unset !important;
+    background-clip: unset !important;
+    -webkit-text-fill-color: white !important;
+    font-family: 'Avenir LT Std', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif !important;
+    font-weight: 900 !important;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  // Content positioning
+  .container {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// Hero content styling for process guardian page
+.pg-hero-tagline {
+  position: relative;
+  z-index: 3;
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  line-height: 1.1;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.02em;
+  
+  @media (max-width: 991.98px) {
+    font-size: clamp(1.5rem, 4vw, 2.2rem); // Smaller on mobile
+    line-height: 1.2;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: clamp(1.3rem, 3.5vw, 1.8rem); // Even smaller
+    line-height: 1.3;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: clamp(1.1rem, 3vw, 1.5rem); // Smallest for small screens
+    line-height: 1.3;
+  }
+}
+
+.process-guardian-hero-image .hero-content {
+  position: relative;
+  z-index: 5;
+  padding: 2rem;
+  text-align: center;
+  
+  // Desktop keeps normal relative positioning with flex parent
+  @media (min-width: 992px) {
+    position: relative;
+    transform: none;
+    width: auto;
+    max-width: none;
+    margin-top: 8rem; // Push content down more on desktop
+    z-index: 10;
+  }
+  
+  // Mobile 576px-991px - use absolute positioning to center in hero section
+  @media (max-width: 991.98px) and (min-width: 576px) {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 1200px;
+    padding: 1rem;
+    margin-top: 0;
+  }
+  
+  // Small mobile ≤576px - keep relative for simplicity
+  @media (max-width: 575.98px) {
+    position: relative;
+    padding: 0.5rem;
+    margin-top: 0;
+  }
+  
+  // Bootstrap md breakpoint (< 768px)
+  @media (max-width: 767.98px) {
+    padding: 0.8rem;
+    transform: translateX(-50%);
+  }
+  
+  // Bootstrap sm breakpoint (< 576px)
+  @media (max-width: 575.98px) {
+    padding: 0.5rem;
+    transform: translateX(-50%);
+  }
+  
+  // Mobile sizing for all hero text elements
+  @media (max-width: 991.98px) {
+    // Logo sizing
+    img, svg {
+      max-width: 150px !important; // Smaller logo
+      height: auto !important;
+    }
+    
+    // Main title "PROCESS GUARDIAN" text
+    h1, .h1, .display-1, .display-2, .display-3, .display-4 {
+      font-size: 1.5rem !important; // Smaller main title
+    }
+    
+    .lead {
+      font-size: 0.9rem; // Smaller lead text
+    }
+    
+    p {
+      font-size: 0.85rem; // Smaller paragraph text
+    }
+    
+    .hero-motto {
+      font-size: 0.8rem !important; // Smaller motto text
+    }
+    
+    .btn {
+      font-size: 0.8rem; // Smaller button text
+      padding: 8px 16px; // Smaller button padding
+    }
+  }
+  
+  @media (max-width: 768px) {
+    // Logo sizing
+    img, svg {
+      max-width: 70px !important; // Even smaller logo
+      height: auto !important;
+    }
+    
+    // Main title "PROCESS GUARDIAN" text
+    h1, .h1, .display-1, .display-2, .display-3, .display-4 {
+      font-size: 1.3rem !important; // Smaller main title
+    }
+    
+    .lead {
+      font-size: 0.85rem;
+    }
+    
+    p {
+      font-size: 0.8rem;
+    }
+    
+    .hero-motto {
+      font-size: 0.75rem !important;
+    }
+    
+    .btn {
+      font-size: 0.75rem;
+      padding: 6px 12px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    // Logo sizing
+    img, svg {
+      max-width: 60px !important; // Smallest logo
+      height: auto !important;
+    }
+    
+    // Main title "PROCESS GUARDIAN" text
+    h1, .h1, .display-1, .display-2, .display-3, .display-4 {
+      font-size: 1.1rem !important; // Smallest main title
+    }
+    
+    .lead {
+      font-size: 0.8rem;
+    }
+    
+    p {
+      font-size: 0.75rem;
+    }
+    
+    .hero-motto {
+      font-size: 0.7rem !important;
+    }
+    
+    .btn {
+      font-size: 0.7rem;
+      padding: 6px 10px;
+    }
+  }
+}
+
+// Card styles for Process Guardian
+.card {
+  border: none;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// Icon styles
+.bi {
+  transition: all 0.3s ease;
+}
+
+// Primary color for Process Guardian (blue theme)
+.text-primary {
+  color: #2563eb !important;
+}
+
+.bg-primary {
+  background-color: #2563eb !important;
+}
+
+// Button styles
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+  }
+}
+
+// Override button styles in CTA section to use dark green
+.btn.cta-btn-primary,
+button.cta-btn-primary {
+  // Reset all Bootstrap button styles first
+  background-image: none !important;
+  background: #0a2f28 !important;
+  background-color: #0a2f28 !important;
+  border-color: #0a2f28 !important;
+  color: white !important;
+  border: 2px solid #0a2f28 !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: none !important;
+  
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  &:focus-visible,
+  &.focus {
+    background-image: none !important;
+    background: #083421 !important;
+    background-color: #083421 !important;
+    border-color: #083421 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(10, 47, 40, 0.4) !important;
+    outline: none !important;
+  }
+  
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled).focus {
+    background-image: none !important;
+    background: #083421 !important;
+    background-color: #083421 !important;
+    border-color: #083421 !important;
+    color: white !important;
+    box-shadow: 0 8px 25px rgba(10, 47, 40, 0.4) !important;
+  }
+}
+
+.btn.cta-btn-outline,
+button.cta-btn-outline {
+  // Reset all Bootstrap button styles first
+  background-image: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  border-color: #0a2f28 !important;
+  color: #0a2f28 !important;
+  border: 2px solid #0a2f28 !important;
+  border-radius: 8px !important;
+  padding: 12px 24px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  box-shadow: none !important;
+  
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  &:focus-visible,
+  &.focus {
+    background-image: none !important;
+    background: #0a2f28 !important;
+    background-color: #0a2f28 !important;
+    border-color: #0a2f28 !important;
+    color: white !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(10, 47, 40, 0.4) !important;
+    outline: none !important;
+  }
+  
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  &:not(:disabled):not(.disabled):focus,
+  &:not(:disabled):not(.disabled).focus {
+    background-image: none !important;
+    background: #0a2f28 !important;
+    background-color: #0a2f28 !important;
+    border-color: #0a2f28 !important;
+    color: white !important;
+    box-shadow: 0 8px 25px rgba(10, 47, 40, 0.4) !important;
+  }
+}
+
+.btn-outline-light {
+  border: 2px solid white;
+  color: white;
+  background: transparent;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: white;
+    color: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+  }
+}
+
+.btn-light {
+  background: white;
+  color: #1e40af;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #f8fafc;
+    color: #1e40af;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 64, 175, 0.2);
+  }
+}
+
+// Section spacing
+.py-6 {
+  padding-top: 6rem !important;
+  padding-bottom: 6rem !important;
+}
+
+// Success color for checkmarks
+.text-success {
+  color: #10b981 !important;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .py-6 {
+    padding-top: 4rem !important;
+    padding-bottom: 4rem !important;
+  }
+  
+  .pg-hero-tagline {
+    font-size: 2.2rem !important;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-content {
+    padding: 1rem 0;
+  }
+  
+  .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Arrow animation keyframes
+@keyframes arrowFade1 {
+  0% { opacity: 0.3; transform: translateX(0px); }
+  33% { opacity: 1; transform: translateX(5px); }
+  66% { opacity: 0.3; transform: translateX(0px); }
+  100% { opacity: 0.3; transform: translateX(0px); }
+}
+
+@keyframes arrowFade2 {
+  0% { opacity: 0.3; transform: translateX(0px); }
+  16% { opacity: 0.3; transform: translateX(0px); }
+  50% { opacity: 1; transform: translateX(5px); }
+  83% { opacity: 0.3; transform: translateX(0px); }
+  100% { opacity: 0.3; transform: translateX(0px); }
+}
+
+@keyframes arrowFade3 {
+  0% { opacity: 0.3; transform: translateX(0px); }
+  33% { opacity: 0.3; transform: translateX(0px); }
+  66% { opacity: 1; transform: translateX(5px); }
+  100% { opacity: 0.3; transform: translateX(0px); }
+}
+
+// Card animation styles for Process Intelligence Redefined section
+.card-animation {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Keyframes for fade in and up animation
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Timeline line growing animation
+.timeline-line {
+  width: 0%;
+  transition: width 2s ease-out;
+  
+  &.visible {
+    width: 80%;
+  }
+}
+
+// Timeline step animation
+.timeline-step {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Screenshot animations
+.screenshot-animation {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  
+  &.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// Arrow animations for screenshots section
+.arrow-animation {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  
+  &.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  // Mobile rotation - rotate 90 degrees clockwise
+  @media (max-width: 991.98px) {
+    &.visible {
+      opacity: 1;
+      transform: translateY(-10%) translateX(30px) scale(1) rotate(90deg) !important;
+    }
+  }
+}

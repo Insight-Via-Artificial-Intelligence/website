@@ -1,0 +1,1336 @@
+import Head from "next/head";
+import Image from "next/image";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { useEffect, useRef, useState } from "react";
+
+export default function Home() {
+  const [isWhoWeAreVisible, setIsWhoWeAreVisible] = useState(false);
+  const [isMissionVisible, setIsMissionVisible] = useState(false);
+  const [isVisionVisible, setIsVisionVisible] = useState(false);
+  const [isWhyWorkWithUsVisible, setIsWhyWorkWithUsVisible] = useState(false); // Change back to false after testing
+  const [isWhatWeDeliverVisible, setIsWhatWeDeliverVisible] = useState(false);
+  const [isValuesVisible, setIsValuesVisible] = useState(false);
+  const [isCapabilitiesRnDVisible, setIsCapabilitiesRnDVisible] = useState(false);
+  const [isCapabilitiesTrustedVisible, setIsCapabilitiesTrustedVisible] = useState(false);
+  const [isCapabilitiesImpactVisible, setIsCapabilitiesImpactVisible] = useState(false);
+  const whoWeAreRef = useRef<HTMLElement>(null);
+  const missionRef = useRef<HTMLElement>(null);
+  const visionRef = useRef<HTMLElement>(null);
+  const whyWorkWithUsRef = useRef<HTMLElement>(null);
+  const whatWeDeliverRef = useRef<HTMLElement>(null);
+  const valuesRef = useRef<HTMLElement>(null);
+  const capabilitiesRnDRef = useRef<HTMLDivElement>(null);
+  const capabilitiesTrustedRef = useRef<HTMLDivElement>(null);
+  const capabilitiesImpactRef = useRef<HTMLDivElement>(null);
+
+  // Debug: Log state changes
+  useEffect(() => {
+    console.log('Why Work With Us visibility changed:', isWhyWorkWithUsVisible);
+  }, [isWhyWorkWithUsVisible]);
+
+  useEffect(() => {
+    const currentRef = whoWeAreRef.current;
+    
+    // Add a small delay to ensure the page is fully loaded
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setIsWhoWeAreVisible(true);
+              // Stop observing after animation triggers
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.5, // Trigger when 50% of the section is visible
+          rootMargin: '-50px 0px -50px 0px' // Only trigger when well into the viewport
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      // Cleanup function for the timer's observer
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500); // 500ms delay
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const currentRef = missionRef.current;
+    
+    // Add a small delay to ensure the page is fully loaded
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setIsMissionVisible(true);
+              // Stop observing after animation triggers
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.5, // Trigger when 50% of the section is visible
+          rootMargin: '-50px 0px -50px 0px' // Only trigger when well into the viewport
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      // Cleanup function for the timer's observer
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500); // 500ms delay
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const currentRef = visionRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setIsVisionVisible(true);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.5,
+          rootMargin: '-50px 0px -50px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  useEffect(() => {
+    const currentRef = whyWorkWithUsRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            console.log('Why Work With Us intersection:', entry.isIntersecting, entry.intersectionRatio);
+            if (entry.isIntersecting) {
+              console.log('Why Work With Us section visible, triggering animation');
+              setTimeout(() => {
+                console.log('Setting isWhyWorkWithUsVisible to true');
+                setIsWhyWorkWithUsVisible(true);
+              }, 100); // Small delay to ensure proper state update
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.3,
+          rootMargin: '-100px 0px -100px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // What We Deliver intersection observer
+  useEffect(() => {
+    const currentRef = whatWeDeliverRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            console.log('What We Deliver intersection:', entry.isIntersecting, entry.intersectionRatio);
+            if (entry.isIntersecting) {
+              console.log('What We Deliver section visible, triggering animation');
+              setTimeout(() => {
+                console.log('Setting isWhatWeDeliverVisible to true');
+                setIsWhatWeDeliverVisible(true);
+              }, 100);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // Values intersection observer
+  useEffect(() => {
+    const currentRef = valuesRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            console.log('Values intersection:', entry.isIntersecting, entry.intersectionRatio);
+            if (entry.isIntersecting) {
+              console.log('Values section visible, triggering animation');
+              setTimeout(() => {
+                console.log('Setting isValuesVisible to true');
+                setIsValuesVisible(true);
+              }, 100);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.3,
+          rootMargin: '-100px 0px -100px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // Capabilities R&D intersection observer
+  useEffect(() => {
+    const currentRef = capabilitiesRnDRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            console.log('Capabilities R&D intersection:', entry.isIntersecting, entry.intersectionRatio);
+            if (entry.isIntersecting) {
+              console.log('Capabilities R&D section visible, triggering animation');
+              setTimeout(() => {
+                console.log('Setting isCapabilitiesRnDVisible to true');
+                setIsCapabilitiesRnDVisible(true);
+              }, 100);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.3,
+          rootMargin: '0px 0px -150px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // Capabilities Trusted intersection observer
+  useEffect(() => {
+    const currentRef = capabilitiesTrustedRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            console.log('Capabilities Trusted intersection:', entry.isIntersecting, entry.intersectionRatio);
+            if (entry.isIntersecting) {
+              console.log('Capabilities Trusted section visible, triggering animation');
+              setTimeout(() => {
+                console.log('Setting isCapabilitiesTrustedVisible to true');
+                setIsCapabilitiesTrustedVisible(true);
+              }, 100);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.3,
+          rootMargin: '0px 0px -150px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  // Capabilities Impact intersection observer
+  useEffect(() => {
+    const currentRef = capabilitiesImpactRef.current;
+    
+    const timer = setTimeout(() => {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            console.log('Capabilities Impact intersection:', entry.isIntersecting, entry.intersectionRatio);
+            if (entry.isIntersecting) {
+              console.log('Capabilities Impact section visible, triggering animation');
+              setTimeout(() => {
+                console.log('Setting isCapabilitiesImpactVisible to true');
+                setIsCapabilitiesImpactVisible(true);
+              }, 100);
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { 
+          threshold: 0.1,
+          rootMargin: '0px 0px -50px 0px'
+        }
+      );
+
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef);
+        }
+      };
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, []);
+
+  return (
+    <>
+      <Head>
+        <title>Insight via Artificial Intelligence</title>
+        <meta name="description" content="A modern, responsive website built with Next.js, React, and Bootstrap" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <style jsx global>{`
+        @keyframes rotateGradient {
+          0% {
+            background: linear-gradient(white, white) padding-box, linear-gradient(0deg, #3b82f6 0%, #10b981 100%) border-box;
+          }
+          25% {
+            background: linear-gradient(white, white) padding-box, linear-gradient(90deg, #3b82f6 0%, #10b981 100%) border-box;
+          }
+          50% {
+            background: linear-gradient(white, white) padding-box, linear-gradient(180deg, #3b82f6 0%, #10b981 100%) border-box;
+          }
+          75% {
+            background: linear-gradient(white, white) padding-box, linear-gradient(270deg, #3b82f6 0%, #10b981 100%) border-box;
+          }
+          100% {
+            background: linear-gradient(white, white) padding-box, linear-gradient(360deg, #3b82f6 0%, #10b981 100%) border-box;
+          }
+        }
+
+        @keyframes slideInFromRight {
+          from {
+            opacity: 0;
+            transform: translateX(50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        @keyframes slideInFromLeft {
+          from {
+            opacity: 0;
+            transform: translateX(-50px);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+        
+        .rotating-gradient {
+          animation: rotateGradient 4s linear infinite;
+        }
+
+        .slide-in-right {
+          opacity: 0;
+          transform: translateX(50px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+          will-change: opacity, transform;
+        }
+
+        .slide-in-right.animate {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        .slide-in-left {
+          opacity: 0;
+          transform: translateX(-50px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+          transition-delay: 0.2s;
+          will-change: opacity, transform;
+        }
+
+        .slide-in-left.animate {
+          opacity: 1;
+          transform: translateX(0);
+        }
+
+        .slide-in-up {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+          will-change: opacity, transform;
+        }
+
+        .slide-in-up.animate {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .slide-in-up p {
+          opacity: 0;
+          transform: translateY(20px);
+          transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .slide-in-up.animate p {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .slide-in-up.animate p:nth-child(1) { transition-delay: 0.1s; }
+        .slide-in-up.animate p:nth-child(2) { transition-delay: 0.2s; }
+        .slide-in-up.animate p:nth-child(3) { transition-delay: 0.3s; }
+        .slide-in-up.animate p:nth-child(4) { transition-delay: 0.4s; }
+
+        /* Vision blur-to-focus animation */
+        .blur-to-focus {
+          filter: blur(8px);
+          opacity: 0.3;
+          transform: translateY(20px);
+          transition: filter 1.2s ease-out, opacity 1.2s ease-out, transform 1.2s ease-out;
+          will-change: filter, opacity, transform;
+        }
+
+        .blur-to-focus.animate {
+          filter: blur(0px);
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        /* Why Work With Us cascade animation - Force override all Bootstrap styles */
+        #why-work-with-us .why-item {
+          opacity: 0 !important;
+          transform: translateY(40px) !important;
+          transition: all 1.2s ease-out !important;
+          will-change: opacity, transform !important;
+          backface-visibility: hidden !important;
+        }
+
+        #why-work-with-us .why-item.visible {
+          opacity: 1 !important;
+          transform: translateY(0px) !important;
+        }
+
+        /* Force staggered delays - much more aggressive */
+        #why-work-with-us .why-item:nth-child(1) { 
+          transition-delay: 0.2s !important; 
+        }
+        #why-work-with-us .why-item:nth-child(2) { 
+          transition-delay: 0.5s !important; 
+        }
+        #why-work-with-us .why-item:nth-child(3) { 
+          transition-delay: 0.8s !important; 
+        }
+        #why-work-with-us .why-item:nth-child(4) { 
+          transition-delay: 1.1s !important; 
+        }
+        #why-work-with-us .why-item:nth-child(5) { 
+          transition-delay: 1.4s !important; 
+        }
+
+        /* What We Deliver cascade animation - Alternating slide directions */
+        #what-we-deliver .delivery-item {
+          opacity: 0 !important;
+          transition: all 1.2s ease-out !important;
+          will-change: opacity, transform !important;
+          backface-visibility: hidden !important;
+        }
+
+        /* Slide from right (odd items: 1st, 3rd, 5th) */
+        #what-we-deliver .delivery-item:nth-child(odd) {
+          transform: translateX(60px) !important;
+        }
+
+        /* Slide from left (even items: 2nd, 4th) */
+        #what-we-deliver .delivery-item:nth-child(even) {
+          transform: translateX(-60px) !important;
+        }
+
+        #what-we-deliver .delivery-item.visible {
+          opacity: 1 !important;
+          transform: translateX(0px) !important;
+        }
+
+        /* Staggered delays for cascade effect */
+        #what-we-deliver .delivery-item:nth-child(1) { 
+          transition-delay: 0.1s !important; 
+        }
+        #what-we-deliver .delivery-item:nth-child(2) { 
+          transition-delay: 0.3s !important; 
+        }
+        #what-we-deliver .delivery-item:nth-child(3) { 
+          transition-delay: 0.5s !important; 
+        }
+        #what-we-deliver .delivery-item:nth-child(4) { 
+          transition-delay: 0.7s !important; 
+        }
+        #what-we-deliver .delivery-item:nth-child(5) { 
+          transition-delay: 0.9s !important; 
+        }
+
+        /* Values section fade-in and slide-up animation */
+        #values .value-item {
+          opacity: 0 !important;
+          transform: translateY(40px) !important;
+          transition: all 1.2s ease-out !important;
+          will-change: opacity, transform !important;
+          backface-visibility: hidden !important;
+        }
+
+        #values .value-item.visible {
+          opacity: 1 !important;
+          transform: translateY(0px) !important;
+        }
+
+        /* Staggered delays for cascade effect */
+        #values .value-item:nth-child(1) { 
+          transition-delay: 0.1s !important; 
+        }
+        #values .value-item:nth-child(2) { 
+          transition-delay: 0.3s !important; 
+        }
+        #values .value-item:nth-child(3) { 
+          transition-delay: 0.5s !important; 
+        }
+        #values .value-item:nth-child(4) { 
+          transition-delay: 0.7s !important; 
+        }
+        #values .value-item:nth-child(5) { 
+          transition-delay: 0.9s !important; 
+        }
+        #values .value-item:nth-child(6) { 
+          transition-delay: 1.1s !important; 
+        }
+
+        /* Capabilities sections fade-in and slide-up animation */
+        #capabilities .cap-item {
+          opacity: 0 !important;
+          transform: translateY(30px) !important;
+          transition: all 1.0s ease-out !important;
+          will-change: opacity, transform !important;
+          backface-visibility: hidden !important;
+        }
+
+        #capabilities .cap-item.visible {
+          opacity: 1 !important;
+          transform: translateY(0px) !important;
+        }
+
+        /* Staggered delays for capabilities cascade effect */
+        #capabilities .cap-item:nth-child(1) { 
+          transition-delay: 0.1s !important; 
+        }
+        #capabilities .cap-item:nth-child(2) { 
+          transition-delay: 0.25s !important; 
+        }
+        #capabilities .cap-item:nth-child(3) { 
+          transition-delay: 0.4s !important; 
+        }
+        #capabilities .cap-item:nth-child(4) { 
+          transition-delay: 0.55s !important; 
+        }
+      `}</style>
+
+      <Header />
+
+      {/* Hero Section */}
+      <section className="hero-section-gradient text-white">
+        <div className="hero-dots-background"></div>
+        <div className="hero-circles-background"></div>
+        <div className="hero-flower-background"></div>
+        <div className="hero-background-image"></div>
+        <Container>
+          <Row className="justify-content-center">
+            <Col lg={12} xl={10} className="text-center position-relative">
+              
+              <div className="hero-content">
+                <h1 className="hero-company-name-top d-lg-none">
+                <div>
+                  <span style={{ fontWeight: 900 }}>INSIGHT</span> <span style={{ fontWeight: 400 }}>VIA</span>
+                </div>
+                <div style={{ fontWeight: 900 }}>ARTIFICIAL INTELLIGENCE</div>
+              </h1>
+                <h2 className="hero-tagline fw-bold mb-0">
+                  <span style={{ 
+                    color: '#52d37b', 
+                    textShadow: '0 0 20px rgba(72, 243, 86, 0.62), 0 0 40px rgba(6, 182, 212, 0.4), 0 0 60px rgba(6, 182, 212, 0.2)' 
+                  }}>
+                    Amplifying Human Potential
+                  </span>
+                  <br />
+                  with Trusted Technology
+                </h2>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Who We Are Section */}
+      <section ref={whoWeAreRef} id="who-we-are" className="py-6 bg-light">
+        <Container>
+          <div className="text-center mb-5">
+            <h2 className="display-4 fw-bold mb-4" data-text="WHO WE ARE">WHO WE ARE</h2>
+          </div>
+          <Row className="justify-content-center align-items-center">
+            <Col lg={5} className="mb-4 mb-lg-0">
+              <div className={`who-we-are-image slide-in-left ${isWhoWeAreVisible ? 'animate' : ''}`}>
+                <img 
+                  src="/who.jpg" 
+                  alt="Who We Are - IVAI Team" 
+                  className="img-fluid rounded shadow-lg"
+                  style={{ width: '100%', height: '600px', objectFit: 'cover' }}
+                />
+              </div>
+            </Col>
+            <Col lg={7}>
+              <div className={`content-text slide-in-right ${isWhoWeAreVisible ? 'animate' : ''}`}>
+                <p className="mb-4">
+                  IVAI is an Australian-based technology company dedicated to transforming frontier research into secure, human-centred solutions. By integrating advanced AI, statistical computing, UX design, and systems engineering, we create operational technologies that serve people and society — from sensor to signal to solution.
+                </p>
+                <p className="mb-4">
+                  Our PhD-qualified team has proven experience across diverse domains, including Defence, Health, Government, and Culture. We work closely with clients, collaborators, and end-users to deliver end-to-end systems that are transparent, explainable, and reliable, even in the most critical environments.
+                </p>
+                <p className="mb-4">
+                  At our core, we believe that trust is foundational. That&apos;s why we embed security, ethics, and accountability into every layer of our technology. We measure our success not only through innovation but through the lasting value and empowerment our solutions bring to individuals, organisations, and communities.
+                </p>
+                <p>
+                  Through this partnership-driven approach, we turn cutting-edge research into practical tools that enhance human capability, support informed choices, and create meaningful impact. Our commitment is simple: to deliver technology that respects human dignity, inspires confidence, and enables people to flourish.
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Mission Section */}
+      <section ref={missionRef} id="mission" className="mission-section-gradient text-white py-6">
+        <div className="mission-flower-background"></div>
+        <Container className="position-relative" style={{ zIndex: 2 }}>
+          <Row className="justify-content-center">
+            <Col lg={10}>
+              <div className="text-center mb-5">
+                <h2 className="display-4 fw-bold mb-4" data-text="MISSION">MISSION</h2>
+              </div>
+              <div className={`content-text slide-in-up ${isMissionVisible ? 'animate' : ''}`}>
+                <p className="fs-5 lh-base mb-4">
+                  We transform frontier research into secure, human-aligned artificial intelligence systems that serve people and society — from sensor to signal to solution. Our mission is to build operational, trustworthy technology that empowers confident, ethical decision-making across diverse fields including Defence, Health, Government, and Culture.
+                </p>
+                <p className="fs-5 lh-base mb-4">
+                  We believe that trust is foundational — our systems are designed to be transparent, explainable, and reliable, so users and partners can depend on them even in the most critical environments.
+                </p>
+                <p className="fs-5 lh-base mb-4">
+                  At our core, we are collaborators — working closely with domain experts, end-users, and stakeholders to ensure our solutions address real-world needs and create meaningful impact. Through this partnership-driven approach, we turn cutting-edge research into practical tools that enhance human capability and societal wellbeing.
+                </p>
+                <p className="fs-5 lh-base">
+                  Our impact is measured not only by technological innovation but by the lasting value and empowerment we deliver to communities, organisations, and individuals. We exist to create solutions that respect human dignity, support informed choices, and ultimately enable people to flourish.
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Capabilities Section */}
+      <section id="capabilities" className="capabilities-section-gradient text-white position-relative" style={{ padding: '0' }}>
+        <div className="position-absolute w-100 d-flex justify-content-center" style={{ top: '60px', zIndex: 1000 }}>
+          <h2 className="display-4 fw-bold mb-0" data-text="CAPABILITIES">CAPABILITIES</h2>
+        </div>
+        
+        {/* Research & Development - Full Width Image with Text Below */}
+        <div className="mb-0" ref={capabilitiesRnDRef}>
+          <div className="capability-image position-relative" style={{ width: '100vw', height: '100vh' }}>
+            <Image 
+              src="/research.jpg" 
+              alt="Research & Development" 
+              className="shadow-lg"
+              style={{ objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+              fill
+              sizes="100vw"
+            />
+            {/* Overlay all text on bottom of image */}
+            <div className="position-absolute w-100" style={{ 
+              bottom: '0', 
+              left: '0', 
+              background: 'linear-gradient(transparent, rgba(5, 10, 20, 0.99))',
+              padding: '6rem 2rem 4rem 2rem'
+            }}>
+                <Container>
+                  <Row className="justify-content-center">
+                    <Col lg={10}>
+                      <div className="text-center mb-5">
+                        <h3 className="h2 fw-bold mb-3 text-white">RESEARCH & DEVELOPMENT</h3>
+                        <p className="lead mb-0 text-white">
+                          Our team drives innovation at the cutting edge of AI and immersive technologies, delivering technical breakthroughs that underpin our solutions.
+                        </p>
+                      </div>
+                      <Row className="g-4">
+                        <Col md={6} className={`cap-item ${isCapabilitiesRnDVisible ? 'visible' : ''}`}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap1.svg" alt="Frontier AI expertise" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Frontier AI expertise</h5>
+                              <p className="text-white opacity-75 mb-0">Advanced machine learning, computer vision, natural language processing, and multimodal data fusion.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6} className={`cap-item ${isCapabilitiesRnDVisible ? 'visible' : ''}`}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap2.svg" alt="Immersive VR/AR solutions" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Immersive VR/AR solutions</h5>
+                              <p className="text-white opacity-75 mb-0">Using human-factors research to create realistic, effective, and safe training, simulation, and scenario validation tools.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6} className={`cap-item ${isCapabilitiesRnDVisible ? 'visible' : ''}`}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap3.svg" alt="Human–machine teaming" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Human–machine teaming</h5>
+                              <p className="text-white opacity-75 mb-0">Optimising how AI systems and people interact to maximise decision-making speed, accuracy, and effectiveness.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6} className={`cap-item ${isCapabilitiesRnDVisible ? 'visible' : ''}`}>
+                          <div className="d-flex align-items-start">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap4.svg" alt="Applied innovation" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Applied innovation</h5>
+                              <p className="text-white opacity-75 mb-0">Rapidly turning new research insights into demonstrable prototypes and proof-of-concept systems.</p>
+                            </div>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+            </div>
+          </div>
+
+          {/* Trusted & Secure Technology - Full Width Image with Text Below */}
+          <div className="mb-0" ref={capabilitiesTrustedRef}>
+            <div className="capability-image position-relative" style={{ width: '100vw', height: '100vh', left: '50%', transform: 'translateX(-50%)' }}>
+              <Image 
+                src="/trusted.jpg" 
+                alt="Trusted & Secure Technology" 
+                className="shadow-lg"
+                style={{ objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+                fill
+                sizes="100vw"
+              />
+              {/* Overlay all text on bottom of image */}
+              <div className="position-absolute w-100" style={{ 
+                bottom: '0', 
+                left: '0', 
+                background: 'linear-gradient(transparent, rgba(5, 10, 20, 0.99))',
+                padding: '6rem 2rem 4rem 2rem'
+              }}>
+                <Container>
+                  <Row className="justify-content-center">
+                    <Col lg={10}>
+                      <div className="text-center mb-5">
+                        <h3 className="h2 fw-bold mb-3 text-white">TRUSTED & SECURE TECHNOLOGY</h3>
+                        <p className="lead mb-0 text-white">
+                          We build systems and platforms that organisations can rely on, embedding privacy, security, and ethical assurance at every layer of technology. Our capabilities serve critical sectors including Defence, Government, and Health.
+                        </p>
+                      </div>
+                      <Row className="g-4">
+                        <Col md={6} className={`cap-item ${isCapabilitiesTrustedVisible ? 'visible' : ''}`}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap5.svg" alt="Privacy by design" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Privacy by design</h5>
+                              <p className="text-white opacity-75 mb-0">Protecting sensitive data through encryption, access control, and robust governance practices.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6} className={`cap-item ${isCapabilitiesTrustedVisible ? 'visible' : ''}`}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap6.svg" alt="Security-hardened systems" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Security-hardened systems</h5>
+                              <p className="text-white opacity-75 mb-0">Architectures designed for cloud, hybrid, and isolated air-gapped environments.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6} className={`cap-item ${isCapabilitiesTrustedVisible ? 'visible' : ''}`}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap7.svg" alt="Ethical and compliant frameworks" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Ethical and compliant frameworks</h5>
+                              <p className="text-white opacity-75 mb-0">Aligning solutions with Defence, Government, Health, and industry standards for trust, transparency, and accountability.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6} className={`cap-item ${isCapabilitiesTrustedVisible ? 'visible' : ''}`}>
+                          <div className="d-flex align-items-start">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap8.svg" alt="Operational assurance" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Operational assurance</h5>
+                              <p className="text-white opacity-75 mb-0">Technologies built to be auditable, resilient, and verifiable in mission-critical environments.</p>
+                            </div>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+            </div>
+          </div>
+
+          {/* Real-World Impact - Full Width Image with Text Below */}
+          <div className="mb-0">
+            <div className="capability-image position-relative" style={{ width: '100vw', height: '100vh' }}>
+              <Image 
+                src="/realworld.jpg" 
+                alt="Real-World Impact" 
+                className="shadow-lg"
+                style={{ objectFit: 'cover', objectPosition: 'center 30%', borderRadius: '0', opacity: '0.4' }}
+                fill
+                sizes="100vw"
+              />
+              {/* Overlay all text on bottom of image */}
+              <div className="position-absolute w-100" style={{ 
+                bottom: '0', 
+                left: '0', 
+                background: 'linear-gradient(transparent, rgba(5, 10, 20, 0.99))',
+                padding: '6rem 2rem 4rem 2rem'
+              }}>
+                <Container>
+                  <Row className="justify-content-center">
+                    <Col lg={10}>
+                      <div className="text-center mb-5">
+                        <h3 className="h2 fw-bold mb-3 text-white">REAL-WORLD IMPACT</h3>
+                        <p className="lead mb-0 text-white">
+                          We deliver operational solutions that scale, integrate, and provide tangible outcomes in complex environments.
+                        </p>
+                      </div>
+                      <Row ref={capabilitiesImpactRef} className="g-4">
+                        <Col md={6} className={`cap-item ${isCapabilitiesImpactVisible ? 'visible' : ''}`}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap9.svg" alt="End-to-end delivery" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">End-to-end delivery</h5>
+                              <p className="text-white opacity-75 mb-0">Managing the full lifecycle from concept and prototyping through deployment, maintenance, and continuous improvement.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6} className={`cap-item ${isCapabilitiesImpactVisible ? 'visible' : ''}`}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap10.svg" alt="Flexible, modular platforms" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Flexible, modular platforms</h5>
+                              <p className="text-white opacity-75 mb-0">Architectures designed to run reliably across cloud, hybrid, and fully on-prem environments, while integrating with existing enterprise and government systems.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6} className={`cap-item ${isCapabilitiesImpactVisible ? 'visible' : ''}`}>
+                          <div className="d-flex align-items-start mb-3">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap11.svg" alt="Adoption-focused design" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Adoption-focused design</h5>
+                              <p className="text-white opacity-75 mb-0">Co-created with end-users and domain experts to ensure usability, relevance, and practical impact.</p>
+                            </div>
+                          </div>
+                        </Col>
+                        <Col md={6} className={`cap-item ${isCapabilitiesImpactVisible ? 'visible' : ''}`}>
+                          <div className="d-flex align-items-start">
+                            <div className="capability-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                              <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                              <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                              <img src="/cap12.svg" alt="Sustainable capability" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                            </div>
+                            <div className="text-start">
+                              <h5 className="fw-bold mb-2 text-white">Sustainable capability</h5>
+                              <p className="text-white opacity-75 mb-0">Solutions that evolve with your organisation, adapting to new challenges, data sources, and operational demands.</p>
+                            </div>
+                          </div>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+            </div>
+          </div>
+      </section>
+
+      {/* Vision Section */}
+      <section ref={visionRef} id="vision" className="vision-section-gradient text-white">
+        <div className="vision-background-text">VISION</div>
+        <Container>
+          <Row className="justify-content-center align-items-center h-100">
+            <Col lg={10} xl={8}>
+              <div className="text-center vision-content">
+                <p className={`fs-4 fw-semibold lh-base blur-to-focus ${isVisionVisible ? 'animate' : ''}`}>
+                  A future where technology amplifies human potential—never replaces it—and is built and deployed with unwavering commitment to scientific rigour, ethical responsibility, and masterful craftsmanship.
+                </p>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Values Section */}
+      <section ref={valuesRef} id="values" className="py-6 bg-light">
+        <Container>
+          <div className="text-center mb-5">
+            <h2 className="display-4 fw-bold mb-4" data-text="VALUES">VALUES</h2>
+            <p className="lead text-muted">
+              Our values are the foundation of every project and partnership at IVAI. They ensure we build technology that empowers people, while fostering genuine collaboration, and prioritising meaningful impact over empty promises.
+            </p>
+          </div>
+          
+          <Row className="g-4">
+            <Col lg={6} className={`value-item ${isValuesVisible ? 'visible' : ''}`}>
+              <div 
+                className="p-4 rounded-3 h-100 rotating-gradient" 
+                style={{ 
+                  border: '2px solid transparent'
+                }}
+              >
+                <div className="text-center">
+                  <h5 className="fw-bold mb-2">Human-first technology</h5>
+                  <p className="text-muted mb-0">We design solutions that empower and augment people&apos;s capabilities, always prioritising human agency and dignity. Technology should be a tool that enhances potential, never a replacement that diminishes it.</p>
+                </div>
+              </div>
+            </Col>
+            <Col lg={6} className={`value-item ${isValuesVisible ? 'visible' : ''}`}>
+              <div 
+                className="p-4 rounded-3 h-100 rotating-gradient" 
+                style={{ 
+                  border: '2px solid transparent'
+                }}
+              >
+                <div className="text-center">
+                  <h5 className="fw-bold mb-2">Together, not transactional</h5>
+                  <p className="text-muted mb-0">We believe relationships are built on shared purpose and mutual respect. Whether with users, clients, or colleagues, we treat everyone as valued partners, not just means to a business outcome.</p>
+                </div>
+              </div>
+            </Col>
+            <Col lg={6} className={`value-item ${isValuesVisible ? 'visible' : ''}`}>
+              <div 
+                className="p-4 rounded-3 h-100 rotating-gradient" 
+                style={{ 
+                  border: '2px solid transparent'
+                }}
+              >
+                <div className="text-center">
+                  <h5 className="fw-bold mb-2">Purpose over hype</h5>
+                  <p className="text-muted mb-0">Our innovation is guided by genuine needs and meaningful impact, not by fleeting trends or empty buzzwords. Every idea is tested against real-world relevance and long-term value.</p>
+                </div>
+              </div>
+            </Col>
+            <Col lg={6} className={`value-item ${isValuesVisible ? 'visible' : ''}`}>
+              <div 
+                className="p-4 rounded-3 h-100 rotating-gradient" 
+                style={{ 
+                  border: '2px solid transparent'
+                }}
+              >
+                <div className="text-center">
+                  <h5 className="fw-bold mb-2">Craft with integrity</h5>
+                  <p className="text-muted mb-0">Excellence in technology requires a foundation of ethics and honesty. We hold ourselves accountable to the highest standards, ensuring that our work is trustworthy, responsible, and transparent.</p>
+                </div>
+              </div>
+            </Col>
+            <Col lg={6} className={`value-item ${isValuesVisible ? 'visible' : ''}`}>
+              <div 
+                className="p-4 rounded-3 h-100 rotating-gradient" 
+                style={{ 
+                  border: '2px solid transparent'
+                }}
+              >
+                <div className="text-center">
+                  <h5 className="fw-bold mb-2">Proof through delivery</h5>
+                  <p className="text-muted mb-0">Ideas are only as good as their execution. We measure success by delivering working, reliable systems that users can trust, understand, and rely on day after day.</p>
+                </div>
+              </div>
+            </Col>
+            <Col lg={6} className={`value-item ${isValuesVisible ? 'visible' : ''}`}>
+              <div 
+                className="p-4 rounded-3 h-100 rotating-gradient" 
+                style={{ 
+                  border: '2px solid transparent'
+                }}
+              >
+                <div className="text-center">
+                  <h5 className="fw-bold mb-2">Trust matters</h5>
+                  <p className="text-muted mb-0">Trust is the cornerstone of everything we do. We cultivate openness, consistency, and integrity in all relationships and solutions, building confidence that lasts beyond contracts and deadlines.</p>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* What We Deliver Section */}
+      <section ref={whatWeDeliverRef} id="what-we-deliver" className="py-6">
+        <Container>
+          <div className="text-center mb-5">
+            <h2 className="display-4 fw-bold mb-4" data-text="WHAT WE DELIVER">WHAT WE DELIVER</h2>
+            <p className="lead text-muted">
+              At IVAI, we build technology that turns complexity into clarity, enabling people and organisations to act with confidence and achieve real-world impact.
+            </p>
+          </div>
+          
+          <Row className="g-2">
+            <Col lg={11} className={`offset-lg-0 delivery-item ${isWhatWeDeliverVisible ? 'visible' : ''}`}>
+              <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
+                <div className="d-flex align-items-center text-white">
+                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                    <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                    <img src="/del1.svg" alt="Comprehensive systems" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                  </div>
+                  <div>
+                    <h5 className="fw-bold mb-2 text-white">Comprehensive systems</h5>
+                    <p className="mb-0 opacity-90">From initial research and prototyping to deployment and ongoing improvement, we deliver solutions that work end-to-end.</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col lg={11} className={`offset-lg-1 delivery-item ${isWhatWeDeliverVisible ? 'visible' : ''}`}>
+              <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
+                <div className="d-flex align-items-center text-white">
+                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                    <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                    <img src="/del2.svg" alt="Human-first design" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                  </div>
+                  <div>
+                    <h5 className="fw-bold mb-2 text-white">Human-first design</h5>
+                    <p className="mb-0 opacity-90">Interfaces and workflows that prioritise usability, transparency, and empowerment, so technology amplifies human capability rather than replacing it.</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col lg={11} className={`offset-lg-0 delivery-item ${isWhatWeDeliverVisible ? 'visible' : ''}`}>
+              <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
+                <div className="d-flex align-items-center text-white">
+                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                    <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                    <img src="/del3.svg" alt="Actionable intelligence" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                  </div>
+                  <div>
+                    <h5 className="fw-bold mb-2 text-white">Actionable intelligence</h5>
+                    <p className="mb-0 opacity-90">Transform diverse, complex datasets into insights that are understandable, timely, and directly usable in operational decisions.</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col lg={11} className={`offset-lg-1 delivery-item ${isWhatWeDeliverVisible ? 'visible' : ''}`}>
+              <div className="p-3 rounded-pill mb-2" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
+                <div className="d-flex align-items-center text-white">
+                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                    <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                    <img src="/del4.svg" alt="Secure, resilient platforms" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                  </div>
+                  <div>
+                    <h5 className="fw-bold mb-2 text-white">Secure, resilient platforms</h5>
+                    <p className="mb-0 opacity-90">Engineered for mission-critical and regulated environments, ensuring data protection, compliance, and uninterrupted performance.</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+            <Col lg={11} className={`offset-lg-0 delivery-item ${isWhatWeDeliverVisible ? 'visible' : ''}`}>
+              <div className="p-3 rounded-pill" style={{ background: 'linear-gradient(135deg, #2a77cfff 0%, #21be8fff 100%)', boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)' }}>
+                <div className="d-flex align-items-center text-white">
+                  <div className="delivery-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                    <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                    <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                    <img src="/del5.svg" alt="Collaborative innovation" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                  </div>
+                  <div>
+                    <h5 className="fw-bold mb-2 text-white">Collaborative innovation</h5>
+                    <p className="mb-0 opacity-90">Co-created with end-users, domain experts, and stakeholders, ensuring relevance, adoption, and measurable impact.</p>
+                  </div>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      {/* Why Work With Us Section */}
+      <section ref={whyWorkWithUsRef} id="why-work-with-us" className="why-work-with-us-section-gradient text-white py-6 position-relative">
+        {/* Background Image */}
+        <div className="position-absolute w-100 h-100" style={{ 
+          top: '0', 
+          left: '0', 
+          backgroundImage: 'url(/girl_code.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: '0.2',
+          zIndex: '1'
+        }}></div>
+        
+        <Container className="position-relative" style={{ zIndex: '2' }}>
+          <div className="text-center mb-5">
+            <h2 className="display-4 fw-bold mb-4" data-text="WHY WORK WITH US">WHY WORK WITH US</h2>
+            <p className="lead">
+              We are a trusted partner who delivers solutions that work in the real world. Our team combines deep technical expertise with ethical, human-centred approaches to create systems that are reliable, transparent, and meaningful.
+            </p>
+          </div>
+          
+          <Row className={`g-2 justify-content-center why-items ${isWhyWorkWithUsVisible ? 'animate' : ''}`}>
+            <Col lg={10} className={`why-item ${isWhyWorkWithUsVisible ? 'visible' : ''}`}>
+              <div className="d-flex align-items-center mb-2 p-4 rounded-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)' }}>
+                <div className="why-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                  {/* Three long dashes positioned around the circle */}
+                  <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                  <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                  <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                  <img src="/why1.svg" alt="Reliable results" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                </div>
+                <div>
+                  <h5 className="fw-bold mb-2 text-white">Reliable results</h5>
+                  <p className="text-white opacity-75 mb-0">Robust, well-engineered systems that integrate seamlessly and perform under real-world conditions.</p>
+                </div>
+              </div>
+            </Col>
+            <Col lg={10} className={`why-item ${isWhyWorkWithUsVisible ? 'visible' : ''}`}>
+              <div className="d-flex align-items-center mb-2 p-4 rounded-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)' }}>
+                <div className="why-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                  {/* Three long dashes positioned around the circle */}
+                  <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                  <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                  <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                  <img src="/why2.svg" alt="Deep technical expertise" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                </div>
+                <div>
+                  <h5 className="fw-bold mb-2 text-white">Deep technical expertise</h5>
+                  <p className="text-white opacity-75 mb-0">Advanced AI, immersive technologies, data science, and systems engineering applied to complex challenges.</p>
+                </div>
+              </div>
+            </Col>
+            <Col lg={10} className={`why-item ${isWhyWorkWithUsVisible ? 'visible' : 'hidden'}`}>
+              <div className="d-flex align-items-center mb-2 p-4 rounded-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)' }}>
+                <div className="why-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                  <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                  <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                  <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                  <img src="/why3.svg" alt="Clarity and collaboration" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                </div>
+                <div>
+                  <h5 className="fw-bold mb-2 text-white">Clarity and collaboration</h5>
+                  <p className="text-white opacity-75 mb-0">Open communication and co-design practices that ensure teams stay aligned and empowered.</p>
+                </div>
+              </div>
+            </Col>
+            <Col lg={10} className={`why-item ${isWhyWorkWithUsVisible ? 'visible' : ''}`}>
+              <div className="d-flex align-items-center mb-2 p-4 rounded-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)' }}>
+                <div className="why-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                  <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                  <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                  <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                  <img src="/why4.svg" alt="Reduced operational burden" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                </div>
+                <div>
+                  <h5 className="fw-bold mb-2 text-white">Reduced operational burden</h5>
+                  <p className="text-white opacity-75 mb-0">We anticipate challenges, manage complexity, and streamline processes so your teams can focus on core priorities.</p>
+                </div>
+              </div>
+            </Col>
+            <Col lg={10} className={`why-item ${isWhyWorkWithUsVisible ? 'visible' : ''}`}>
+              <div className="d-flex align-items-center p-4 rounded-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.3)', backdropFilter: 'blur(10px)' }}>
+                <div className="why-icon me-3 d-flex align-items-center justify-content-center rounded-circle position-relative" style={{ width: '80px', height: '80px', minWidth: '80px', backgroundColor: 'transparent' }}>
+                  <div className="position-absolute rounded-circle" style={{ width: '80px', height: '80px', border: '1px solid rgba(255,255,255,0.6)', boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)' }}></div>
+                  <div className="position-absolute rounded-circle" style={{ width: '70px', height: '70px', border: '2px solid #3b82f6', boxShadow: '0 0 15px rgba(59, 130, 246, 0.6), 0 0 30px rgba(59, 130, 246, 0.3)', top: '5px', left: '5px' }}></div>
+                  <div className="position-absolute rounded-circle" style={{ width: '60px', height: '60px', border: '1px dashed #10b981', boxShadow: '0 0 8px rgba(16, 185, 129, 0.4), 0 0 16px rgba(16, 185, 129, 0.2), inset 0 0 8px rgba(16, 185, 129, 0.3)', top: '10px', left: '10px' }}></div>
+                  <img src="/why5.svg" alt="Integrity and trust" className="position-relative" style={{ zIndex: 1, maxWidth: '32px', maxHeight: '32px', width: 'auto', height: 'auto', filter: 'drop-shadow(0 0 8px rgba(255, 255, 255, 0.8)) drop-shadow(0 0 16px rgba(255, 255, 255, 0.4))' }} />
+                </div>
+                <div>
+                  <h5 className="fw-bold mb-2 text-white">Integrity and trust</h5>
+                  <p className="text-white opacity-75 mb-0">We build confidence through consistent delivery, ethical practice, and transparent decision-making, not empty promises.</p>
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </Container>
+      </section>
+
+      <Footer />
+    </>
+  );
+}
