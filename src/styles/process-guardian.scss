@@ -94,8 +94,13 @@
   }
   
   @media (max-width: 767.98px) {
+    // Hide hero section parallax images on smaller screens
     img[src*="PG_shield"], 
-    img[src*="PG_graph"], 
+    img[src*="PG_graph"] {
+      display: none !important;
+    }
+    
+    // Keep other parallax images but make them smaller
     img[src*="PG_pump"], 
     img[src*="PG_ship"] {
       width: 65% !important; // Smaller on medium mobile
