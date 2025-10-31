@@ -55,21 +55,62 @@
   padding-top: 0;
   padding-bottom: 0;
   
-  // Remove flex positioning on mobile to allow absolute positioning to work
+  // Keep flex layout on all screen sizes for proper centering
+  display: flex;
+  align-items: center;
+  
+  // Mobile screens - match parent and child heights
   @media (max-width: 991.98px) {
-    display: block; // Remove flex layout on mobile
-    min-height: 80vh; // Shorter on mobile
+    min-height: 80vh;
   }
   
-  // Desktop keeps flex layout
-  @media (min-width: 992px) {
-    display: flex;
-    align-items: center;
+  // Override Bootstrap row classes with higher specificity
+  @media (max-width: 991.98px) {
+    .container .row.justify-content-center.align-items-center.min-vh-100 {
+      min-height: 80vh !important;
+    }
   }
   
   // Bootstrap sm breakpoint (< 576px) - Reduce height on small screens
   @media (max-width: 575.98px) {
-    min-height: 70vh; // Even shorter on small mobile screens
+    min-height: 70vh;
+  }
+  
+  @media (max-width: 575.98px) {
+    .container .row.justify-content-center.align-items-center.min-vh-100 {
+      min-height: 70vh !important;
+    }
+  }
+  
+  // Mobile sizing for parallax images (PG_shield.svg, PG_graph_ab.png, etc.)
+  @media (max-width: 991.98px) {
+    img[src*="PG_shield"], 
+    img[src*="PG_graph"], 
+    img[src*="PG_pump"], 
+    img[src*="PG_ship"] {
+      width: 75% !important; // 75% size on mobile
+      max-width: 300px !important;
+    }
+  }
+  
+  @media (max-width: 767.98px) {
+    img[src*="PG_shield"], 
+    img[src*="PG_graph"], 
+    img[src*="PG_pump"], 
+    img[src*="PG_ship"] {
+      width: 65% !important; // Smaller on medium mobile
+      max-width: 250px !important;
+    }
+  }
+  
+  @media (max-width: 575.98px) {
+    img[src*="PG_shield"], 
+    img[src*="PG_graph"], 
+    img[src*="PG_pump"], 
+    img[src*="PG_ship"] {
+      width: 55% !important; // Smallest on small mobile
+      max-width: 200px !important;
+    }
   }
 }
 
@@ -235,9 +276,19 @@ body:has(.process-guardian-hero-image) {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   letter-spacing: -0.02em;
   
-  @media (max-width: 768px) {
-    font-size: clamp(1.8rem, 5vw, 2.8rem);
+  @media (max-width: 991.98px) {
+    font-size: clamp(1.5rem, 4vw, 2.2rem); // Smaller on mobile
     line-height: 1.2;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: clamp(1.3rem, 3.5vw, 1.8rem); // Even smaller
+    line-height: 1.3;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: clamp(1.1rem, 3vw, 1.5rem); // Smallest for small screens
+    line-height: 1.3;
   }
 }
 
@@ -253,33 +304,130 @@ body:has(.process-guardian-hero-image) {
     transform: none;
     width: auto;
     max-width: none;
-    margin-top: 8rem; // Push content down on desktop
+    margin-top: 8rem; // Push content down more on desktop
+    z-index: 10;
   }
   
-  // Mobile uses absolute positioning
-  @media (max-width: 991.98px) {
-    position: absolute;
-    top: 50vh;
+  // Mobile 576px-991px - use absolute positioning to center in hero section
+  @media (max-width: 991.98px) and (min-width: 576px) {
+    position: relative;
+    top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translate(-50%, -50%);
     width: 90%;
     max-width: 1200px;
     padding: 1rem;
     margin-top: 0;
   }
   
+  // Small mobile ≤576px - keep relative for simplicity
+  @media (max-width: 575.98px) {
+    position: relative;
+    padding: 0.5rem;
+    margin-top: 0;
+  }
+  
   // Bootstrap md breakpoint (< 768px)
   @media (max-width: 767.98px) {
-    top: 45vh;
     padding: 0.8rem;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%);
   }
   
   // Bootstrap sm breakpoint (< 576px)
   @media (max-width: 575.98px) {
-    top: 40vh;
     padding: 0.5rem;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%);
+  }
+  
+  // Mobile sizing for all hero text elements
+  @media (max-width: 991.98px) {
+    // Logo sizing
+    img, svg {
+      max-width: 150px !important; // Smaller logo
+      height: auto !important;
+    }
+    
+    // Main title "PROCESS GUARDIAN" text
+    h1, .h1, .display-1, .display-2, .display-3, .display-4 {
+      font-size: 1.5rem !important; // Smaller main title
+    }
+    
+    .lead {
+      font-size: 0.9rem; // Smaller lead text
+    }
+    
+    p {
+      font-size: 0.85rem; // Smaller paragraph text
+    }
+    
+    .hero-motto {
+      font-size: 0.8rem !important; // Smaller motto text
+    }
+    
+    .btn {
+      font-size: 0.8rem; // Smaller button text
+      padding: 8px 16px; // Smaller button padding
+    }
+  }
+  
+  @media (max-width: 768px) {
+    // Logo sizing
+    img, svg {
+      max-width: 70px !important; // Even smaller logo
+      height: auto !important;
+    }
+    
+    // Main title "PROCESS GUARDIAN" text
+    h1, .h1, .display-1, .display-2, .display-3, .display-4 {
+      font-size: 1.3rem !important; // Smaller main title
+    }
+    
+    .lead {
+      font-size: 0.85rem;
+    }
+    
+    p {
+      font-size: 0.8rem;
+    }
+    
+    .hero-motto {
+      font-size: 0.75rem !important;
+    }
+    
+    .btn {
+      font-size: 0.75rem;
+      padding: 6px 12px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    // Logo sizing
+    img, svg {
+      max-width: 60px !important; // Smallest logo
+      height: auto !important;
+    }
+    
+    // Main title "PROCESS GUARDIAN" text
+    h1, .h1, .display-1, .display-2, .display-3, .display-4 {
+      font-size: 1.1rem !important; // Smallest main title
+    }
+    
+    .lead {
+      font-size: 0.8rem;
+    }
+    
+    p {
+      font-size: 0.75rem;
+    }
+    
+    .hero-motto {
+      font-size: 0.7rem !important;
+    }
+    
+    .btn {
+      font-size: 0.7rem;
+      padding: 6px 10px;
+    }
   }
 }
 

@@ -285,7 +285,6 @@ export default function ProcessGuardian() {
 
               <div
                 className="hero-content"
-                style={{ position: "relative", zIndex: 10, marginTop: "11rem" }}
               >
                 <div className="hero-logo mb-4">
                   <Image
